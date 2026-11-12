@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes Somos | H.G.Travel & Tours Panamá</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/gJdFBW42/Whats-App-Image-2026-11-05-at-11-18-28-AM-removebg-preview.png">
+    
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Consolidado HTML5 & Diseño Profesional -->
+    <style>
+        :root {
+            --color-dark-navy: #0A1931;
+            --color-deep-blue: #1A3D63;
+            --color-mid-blue: #4A7FA7;
+            --color-soft-blue: #B3CFE5;
+            --color-light-bg: #F6FAFD;
+            --color-white: #FFFFFF;
+            --font-main: 'Montserrat', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --box-shadow: 0 20px 40px rgba(10, 25, 49, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-main);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--color-light-bg);
+            color: var(--color-dark-navy);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* HEADER & NAVIGATION */
+        header {
+            background-color: var(--color-dark-navy);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0.8rem 2rem;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-logo img {
+            height: 55px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .brand-title {
+            color: var(--color-white);
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-title span {
+            color: var(--color-soft-blue);
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 400;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.8rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--color-white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--color-soft-blue);
+        }
+
+        /* Selector de Idioma Estilizado */
+        .lang-selector {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--color-soft-blue);
+            color: var(--color-white);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .lang-selector option {
+            background-color: var(--color-dark-navy);
+            color: var(--color-white);
+        }
+
+        .lang-selector:hover {
+            background: var(--color-mid-blue);
+        }
+
+        .btn-nav-quote {
+            background-color: var(--color-mid-blue);
+            color: var(--color-white);
+            padding: 0.6rem 1.4rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .btn-nav-quote:hover {
+            background-color: var(--color-deep-blue);
+        }
+
+        .menu-toggle {
+            display: none;
+            color: var(--color-white);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* PAGE HERO */
+        .page-hero {
+            background: linear-gradient(135deg, rgba(10, 25, 49, 0.95), rgba(26, 61, 99, 0.9)), url('https://i.postimg.cc/mgCFQYnr/AM1.jpg') center/cover no-repeat;
+            color: var(--color-white);
+            padding: 4.5rem 2rem;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+        }
+
+        .page-hero p {
+            font-size: 1.1rem;
+            color: var(--color-soft-blue);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* SECTION STYLING */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-subtitle {
+            color: var(--color-mid-blue);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--color-dark-navy);
+            margin-top: 0.5rem;
+        }
+
+        /* ABOUT CONTENT GRID */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3.5rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.6rem;
+            color: var(--color-deep-blue);
+            margin-bottom: 1.2rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.2rem;
+            color: #444;
+            font-size: 1.02rem;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: var(--color-dark-navy);
+            font-size: 0.95rem;
+        }
+
+        .feature-item i {
+            color: var(--color-mid-blue);
+            font-size: 1.2rem;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: var(--box-shadow);
+            object-fit: cover;
+            height: 420px;
+        }
+
+        /* FLEET CAROUSEL */
+        .fleet-container {
+            position: relative;
+            max-width: 1050px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(10, 25, 49, 0.25);
+            background-color: var(--color-dark-navy);
+            border: 1px solid rgba(179, 207, 229, 0.2);
+        }
+
+        .carousel-progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-mid-blue), var(--color-soft-blue));
+            width: 0%;
+            z-index: 20;
+            transition: width 0.1s linear;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            width: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            flex: 0 0 100%;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.96);
+            transition: filter 0.3s ease;
+        }
+
+        .carousel-slide:hover img {
+            filter: brightness(1);
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(10, 25, 49, 0.65);
+            backdrop-filter: blur(8px);
+            color: var(--color-white);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: var(--transition);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .carousel-arrow:hover {
+            background: var(--color-mid-blue);
+            transform: translateY(-50%) scale(1.08);
+            border-color: var(--color-soft-blue);
+        }
+
+        .carousel-prev { left: 20px; }
+        .carousel-next { right: 20px; }
+
+        .carousel-counter {
+            position: absolute;
+            bottom: 20px;
+            right: 25px;
+            background: rgba(10, 25, 49, 0.85);
+            backdrop-filter: blur(8px);
+            color: var(--color-white);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(179, 207, 229, 0.3);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* WHATSAPP FLOATING BUTTON */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 32px;
+            box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--color-dark-navy);
+            color: var(--color-white);
+            padding: 4rem 2rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            color: var(--color-soft-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-col p, .footer-col li {
+            font-size: 0.9rem;
+            color: #CCC;
+            margin-bottom: 0.6rem;
+            list-style: none;
+        }
+
+        .footer-col a {
+            color: #CCC;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--color-soft-blue);
+        }
+
+        .footer-bottom {
+            max-width: 1300px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 900px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--color-dark-navy);
+                flex-direction: column;
+                padding: 2rem;
+                transition: var(--transition);
+            }
+            .nav-menu.active { left: 0; }
+            .page-hero h1 { font-size: 2rem; }
+            .carousel-slide img { height: 340px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER / NAVIGATION -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="brand-logo">
+                <img src="https://i.postimg.cc/gJdFBW42/Whats-App-Image-2026-11-05-at-11-18-28-AM-removebg-preview.png" alt="H.G.Travel & Tours Logo">
+                <div class="brand-title">
+                    H.G.Travel & Tours
+                    <span>Panamá Private VIP Services</span>
+                </div>
+            </a>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link" data-i18n="nav_home">Inicio</a></li>
+                <li><a href="somos.html" class="nav-link active" data-i18n="nav_about">Quiénes Somos</a></li>
+                <li><a href="contacto.html" class="nav-link" data-i18n="nav_contact">Contacto y Cotización</a></li>
+                <li><a href="contacto.html" class="btn-nav-quote" data-i18n="nav_reserve">Reservar Servicio</a></li>
+                <li>
+                    <select id="langSwitch" class="lang-selector" aria-label="Cambiar Idioma">
+                        <option value="es">🇪🇸 ES</option>
+                        <option value="en">🇺🇸 EN</option>
+                    </select>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- PAGE HERO -->
+        <section class="page-hero">
+            <h1 data-i18n="about_hero_title">Quiénes Somos</h1>
+            <p data-i18n="about_hero_desc">Excelencia, profesionalismo y confort garantizados en cada traslado ejecutivo y experiencia turística en Panamá.</p>
+        </section>
+
+        <!-- SOBRE NOSOTROS -->
+        <section class="section">
+            <div class="about-grid">
+                <div class="about-text">
+                    <span class="section-subtitle" data-i18n="about_sub">Nuestra Trayectoria</span>
+                    <h3 data-i18n="about_heading">Liderazgo en Transporte Privado y Turismo en Panamá</h3>
+                    <p data-i18n="about_p1">En <strong>H.G.Travel & Tours Panamá</strong> nos especializamos en brindar soluciones de movilidad ejecutiva y servicios turísticos de alto nivel. Nuestro compromiso es garantizar traslados seguros, puntuales y confortables para ejecutivos, familias y grupos corporativos que visitan o residen en Panamá.</p>
+                    <p data-i18n="about_p2">Contamos con una amplia flota de vehículos modernos, equipados para ofrecer la máxima comodidad, junto con conductores profesionales altamente capacitados para atender cualquier requerimiento de traslado nacional.</p>
+                    
+                    <div class="features-list">
+                        <div class="feature-item"><i class="fas fa-check-circle"></i> <span data-i18n="feat_1">Puntualidad Garantizada</span></div>
+                        <div class="feature-item"><i class="fas fa-check-circle"></i> <span data-i18n="feat_2">Conductores Bilingües</span></div>
+                        <div class="feature-item"><i class="fas fa-check-circle"></i> <span data-i18n="feat_3">Flota Moderna VIP</span></div>
+                        <div class="feature-item"><i class="fas fa-check-circle"></i> <span data-i18n="feat_4">Atención 24/7</span></div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://i.postimg.cc/vmvgKQM7/AM2.jpg" alt="Unidad de Transporte H.G.Travel & Tours">
+                </div>
+            </div>
+        </section>
+
+        <!-- CARRUSEL DE LAS 39 UNIDADES -->
+        <section class="section" style="background-color: var(--color-white);">
+            <div class="section-header">
+                <span class="section-subtitle" data-i18n="fleet_subtitle">Nuestra Flota</span>
+                <h2 class="section-title" data-i18n="fleet_title">Conoce Nuestras Unidades</h2>
+            </div>
+            <div class="fleet-container" id="fleetContainer">
+                <div class="carousel-progress-bar" id="progressBar"></div>
+                <button class="carousel-arrow carousel-prev" id="prevBtn" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-track" id="carouselTrack">
+                    <!-- Las 39 imágenes exactas de la flota -->
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/7hh27pvr/AM.jpg" alt="Unidad 1"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/mgCFQYnr/AM1.jpg" alt="Unidad 2"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/vmvgKQM7/AM2.jpg" alt="Unidad 3"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/Hs7Jg0dt/AM3.jpg" alt="Unidad 4"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/ZqJ0p13q/AM4.jpg" alt="Unidad 5"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/k5wGcfFx/AM5.jpg" alt="Unidad 6"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/tJng9y0v/AM6.jpg" alt="Unidad 7"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/9XDPD7cD/AM7.jpg" alt="Unidad 8"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/L6fzTFYM/AM8.jpg" alt="Unidad 9"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/JhTJn1gD/AM9.jpg" alt="Unidad 10"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/8596RZNK/AM10.jpg" alt="Unidad 11"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/QxL7VY6K/AM11.jpg" alt="Unidad 12"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/fT4dkqHg/AM12.jpg" alt="Unidad 13"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/W1TJwFct/AM13.jpg" alt="Unidad 14"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/k556L051/AM14.jpg" alt="Unidad 15"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/43F7GW71/AM15.jpg" alt="Unidad 16"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/FsQfhdRP/AM16.jpg" alt="Unidad 17"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/fRzJ0GYz/AM17.jpg" alt="Unidad 18"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/Gp9tXv7d/AM18.jpg" alt="Unidad 19"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/YSV9ZjZs/AM19.jpg" alt="Unidad 20"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/SRbKQ3ys/AM20.jpg" alt="Unidad 21"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/X78v3stW/21.jpg" alt="Unidad 22"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/cLLLJQNR/AM22.jpg" alt="Unidad 23"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/GpB3FdtY/AM23.jpg" alt="Unidad 24"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/0QD84npN/AM24.jpg" alt="Unidad 25"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/0jv81Sfn/AM25.jpg" alt="Unidad 26"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/2jdkFHkH/AM26.jpg" alt="Unidad 27"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/tC298YVb/AM27.jpg" alt="Unidad 28"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/y8x7KsFm/AM28.jpg" alt="Unidad 29"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/P57Tr947/AM29.jpg" alt="Unidad 30"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/s2ZyBmH7/AM30.jpg" alt="Unidad 31"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/TwV60w6y/AM31.jpg" alt="Unidad 32"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/x8gSr48s/AM32.jpg" alt="Unidad 33"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/brLjXBdr/AM33.jpg" alt="Unidad 34"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/MKP8dNhb/AM34.jpg" alt="Unidad 35"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/MGR2ZTX0/AM35.jpg" alt="Unidad 36"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/tJqLzNkD/AM36.jpg" alt="Unidad 37"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/285sbTV4/AM37.jpg" alt="Unidad 38"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/T3LBQwjP/AM38.jpg" alt="Unidad 39"></div>
+                </div>
+                <button class="carousel-arrow carousel-next" id="nextBtn" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+                <div class="carousel-counter" id="carouselCounter">1 / 39</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/50768938639?text=Hola,%20deseo%20consultar%20sobre%20las%20unidades%20disponibles" class="whatsapp-float" target="_blank" id="whatsappFloatingBtn" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4 data-i18n="footer_title">H.G.Travel & Tours Panamá</h4>
+                <p data-i18n="footer_desc">Empresa líder en servicios de transporte privado, traslados corporativos y tours personalizados en toda la República de Panamá.</p>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footer_contact">Contacto Oficial</h4>
+                <p><i class="fas fa-phone"></i> +507 6893-8639</p>
+                <p><i class="fas fa-envelope"></i> henrygonz27@hotmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> <span data-i18n="footer_city">Ciudad de Panamá, Panamá</span></p>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footer_nav">Navegación</h4>
+                <ul>
+                    <li><a href="index.html" data-i18n="nav_home">Inicio</a></li>
+                    <li><a href="somos.html" data-i18n="nav_about">Quiénes Somos</a></li>
+                    <li><a href="contacto.html" data-i18n="nav_contact">Contacto y Reservas</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footer_rights">&copy; 2026 H.G.Travel & Tours Panamá. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT DE TRADUCCIÓN SINCRONIZADA Y CARRUSEL -->
+    <script>
+        const translations = {
+            es: {
+                nav_home: "Inicio",
+                nav_about: "Quiénes Somos",
+                nav_contact: "Contacto y Cotización",
+                nav_reserve: "Reservar Servicio",
+                about_hero_title: "Quiénes Somos",
+                about_hero_desc: "Excelencia, profesionalismo y confort garantizados en cada traslado ejecutivo y experiencia turística en Panamá.",
+                about_sub: "Nuestra Trayectoria",
+                about_heading: "Liderazgo en Transporte Privado y Turismo en Panamá",
+                about_p1: "En <strong>H.G.Travel & Tours Panamá</strong> nos especializamos en brindar soluciones de movilidad ejecutiva y servicios turísticos de alto nivel. Nuestro compromiso es garantizar traslados seguros, puntuales y confortables para ejecutivos, familias y grupos corporativos que visitan o residen en Panamá.",
+                about_p2: "Contamos con una amplia flota de vehículos modernos, equipados para ofrecer la máxima comodidad, junto con conductores profesionales altamente capacitados para atender cualquier requerimiento de traslado nacional.",
+                feat_1: "Puntualidad Garantizada",
+                feat_2: "Conductores Bilingües",
+                feat_3: "Flota Moderna VIP",
+                feat_4: "Atención 24/7",
+                fleet_subtitle: "Nuestra Flota",
+                fleet_title: "Conoce Nuestras Unidades",
+                footer_title: "H.G.Travel & Tours Panamá",
+                footer_desc: "Empresa líder en servicios de transporte privado, traslados corporativos y tours personalizados en toda la República de Panamá.",
+                footer_contact: "Contacto Oficial",
+                footer_city: "Ciudad de Panamá, Panamá",
+                footer_nav: "Navegación",
+                footer_rights: "&copy; 2026 H.G.Travel & Tours Panamá. Todos los derechos reservados."
+            },
+            en: {
+                nav_home: "Home",
+                nav_about: "About Us",
+                nav_contact: "Contact & Quote",
+                nav_reserve: "Book Service",
+                about_hero_title: "About Us",
+                about_hero_desc: "Excellence, professionalism, and guaranteed comfort in every executive transfer and tourist experience in Panama.",
+                about_sub: "Our Track Record",
+                about_heading: "Leadership in Private Transportation and Tourism in Panama",
+                about_p1: "At <strong>H.G.Travel & Tours Panama</strong> we specialize in providing high-level executive mobility solutions and top-tier tourist services. Our commitment is to guarantee safe, punctual, and comfortable transfers for executives, families, and corporate groups visiting or residing in Panama.",
+                about_p2: "We have an extensive fleet of modern vehicles, equipped to offer maximum comfort, along with highly trained professional drivers to handle any national transfer requirement.",
+                feat_1: "Guaranteed Punctuality",
+                feat_2: "Bilingual Drivers",
+                feat_3: "Modern VIP Fleet",
+                feat_4: "24/7 Support",
+                fleet_subtitle: "Our Fleet",
+                fleet_title: "Meet Our Units",
+                footer_title: "H.G.Travel & Tours Panama",
+                footer_desc: "Leading company in private transportation services, corporate transfers, and personalized tours throughout the Republic of Panama.",
+                footer_contact: "Official Contact",
+                footer_city: "Panama City, Panama",
+                footer_nav: "Navigation",
+                footer_rights: "&copy; 2026 H.G.Travel & Tours Panama. All rights reserved."
+            }
+        };
+
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            localStorage.setItem('preferred_lang', lang);
+        }
+
+        document.getElementById('langSwitch').addEventListener('change', (e) => {
+            changeLanguage(e.target.value);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferred_lang') || 'es';
+            document.getElementById('langSwitch').value = savedLang;
+            changeLanguage(savedLang);
+        });
+
+        // Carrusel
+        const track = document.getElementById('carouselTrack');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const counter = document.getElementById('carouselCounter');
+        const progressBar = document.getElementById('progressBar');
+        const totalSlides = slides.length;
+        let currentIndex = 0;
+        let slideInterval;
+        let progressInterval;
+        const intervalTime = 5000;
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            counter.textContent = `${currentIndex + 1} / ${totalSlides}`;
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+            resetProgressBar();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+            resetProgressBar();
+        }
+
+        function startAutoSlide() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, intervalTime);
+            startProgressBar();
+        }
+
+        function resetAutoSlide() {
+            clearInterval(slideInterval);
+            startAutoSlide();
+        }
+
+        function startProgressBar() {
+            clearInterval(progressInterval);
+            progressBar.style.transition = 'none';
+            progressBar.style.width = '0%';
+            
+            setTimeout(() => {
+                progressBar.style.transition = `width ${intervalTime}ms linear`;
+                progressBar.style.width = '100%';
+            }, 50);
+        }
+
+        function resetProgressBar() {
+            startProgressBar();
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            nextSlide();
+            resetAutoSlide();
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            prevSlide();
+            resetAutoSlide();
+        });
+
+        const container = document.getElementById('fleetContainer');
+        container.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+            clearInterval(progressInterval);
+            progressBar.style.transition = 'none';
+        });
+        
+        container.addEventListener('mouseleave', () => {
+            startAutoSlide();
+        });
+
+        document.getElementById('mobile-menu').addEventListener('click', () => {
+            document.getElementById('nav-menu').classList.toggle('active');
+        });
+
+        updateCarousel();
+        startAutoSlide();
+    </script>
+</body>
+</html>

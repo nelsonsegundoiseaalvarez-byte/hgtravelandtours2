@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrativo | H.G.Travel & Tours Panamá</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/gJdFBW42/Whats-App-Image-2026-11-05-at-11-18-28-AM-removebg-preview.png">
+    
+    <!-- Google Fonts, Font Awesome & Chart.js -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- CSS UI/UX Dashboard Bento Style & Dark/Light Theme -->
+    <style>
+        :root {
+            --color-dark-navy: #0A1931;
+            --color-deep-blue: #1A3D63;
+            --color-mid-blue: #4A7FA7;
+            --color-soft-blue: #B3CFE5;
+            --color-light-bg: #F4F8FB;
+            --color-white: #FFFFFF;
+            --text-main: #0A1931;
+            --card-bg: #FFFFFF;
+            --border-color: #E2ECF5;
+            --font-main: 'Montserrat', sans-serif;
+            --transition: all 0.3s ease;
+            --box-shadow: 0 10px 30px rgba(10, 25, 49, 0.05);
+            --card-shadow: 0 15px 35px rgba(10, 25, 49, 0.08);
+        }
+
+        body.dark-theme {
+            --color-dark-navy: #0B132B;
+            --color-deep-blue: #1C2541;
+            --color-mid-blue: #475569;
+            --color-soft-blue: #334155;
+            --color-light-bg: #070A13;
+            --color-white: #111827;
+            --text-main: #F8FAFC;
+            --card-bg: #111827;
+            --border-color: #1F2937;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); }
+
+        body {
+            background-color: var(--color-light-bg);
+            color: var(--text-main);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* LOGIN OVERLAY */
+        #loginOverlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 25, 49, 0.95);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 2000; padding: 1rem;
+        }
+
+        .login-card {
+            background: var(--card-bg);
+            padding: 3.5rem 3rem;
+            border-radius: 20px;
+            width: 100%; max-width: 450px;
+            box-shadow: var(--box-shadow);
+            border-top: 6px solid var(--color-mid-blue);
+            text-align: center;
+        }
+
+        .login-card h2 { color: var(--text-main); margin-bottom: 1.8rem; font-size: 2rem; }
+
+        /* SIDEBAR BENTO */
+        sidebar {
+            width: 300px;
+            background-color: var(--color-dark-navy);
+            color: #FFFFFF;
+            display: flex; flex-direction: column; justify-content: space-between;
+            padding: 2.5rem 1.8rem;
+            box-shadow: 4px 0 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .sidebar-brand { display: flex; align-items: center; gap: 15px; margin-bottom: 3rem; }
+        .sidebar-brand img { height: 50px; }
+        .sidebar-brand h3 { font-size: 1.1rem; color: #FFFFFF; }
+        .sidebar-brand span { color: var(--color-soft-blue); font-size: 0.75rem; display: block; }
+
+        .sidebar-menu { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; flex-grow: 1; overflow-y: auto; }
+        .sidebar-item a {
+            display: flex; align-items: center; gap: 15px;
+            color: var(--color-soft-blue); text-decoration: none;
+            padding: 1rem 1.2rem; border-radius: 12px; font-weight: 600; font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .sidebar-item a:hover, .sidebar-item a.active { background-color: var(--color-deep-blue); color: #FFFFFF; }
+
+        .btn-logout {
+            background: rgba(231, 76, 60, 0.2); color: #e74c3c; border: none; padding: 1rem;
+            border-radius: 12px; cursor: pointer; font-weight: 600; display: flex; align-items: center;
+            justify-content: center; gap: 10px; font-size: 1rem; transition: var(--transition);
+        }
+        .btn-logout:hover { background: #e74c3c; color: #FFFFFF; }
+
+        /* MAIN CONTENT */
+        .main-content { flex-grow: 1; display: flex; flex-direction: column; overflow-y: auto; }
+
+        .top-navbar {
+            background-color: var(--card-bg); padding: 1.5rem 3rem;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: var(--box-shadow); flex-wrap: wrap; gap: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .top-navbar h2 { color: var(--text-main); font-size: 1.7rem; font-weight: 700; }
+        .top-nav-actions { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+
+        .btn-refresh {
+            background-color: #27ae60; color: #FFFFFF; border: none;
+            padding: 0.7rem 1.2rem; border-radius: 10px; font-size: 0.95rem; font-weight: 600;
+            cursor: pointer; display: flex; align-items: center; gap: 8px; transition: var(--transition);
+        }
+
+        .btn-test-bell {
+            background-color: var(--color-mid-blue); color: #FFFFFF; border: none;
+            padding: 0.7rem 1.2rem; border-radius: 10px; font-size: 0.95rem; font-weight: 600;
+            cursor: pointer; display: flex; align-items: center; gap: 8px; transition: var(--transition);
+        }
+
+        .btn-theme-toggle {
+            background-color: var(--color-deep-blue); color: #FFFFFF; border: none;
+            padding: 0.7rem 1.2rem; border-radius: 10px; font-size: 0.95rem; font-weight: 600;
+            cursor: pointer; display: flex; align-items: center; gap: 8px; transition: var(--transition);
+        }
+
+        .user-info { font-weight: 600; color: var(--text-main); font-size: 1rem; }
+        .content-body { padding: 3rem; flex-grow: 1; }
+        .tab-section { display: none; }
+        .tab-section.active { display: block; }
+
+        /* BENTO STATS & GRID LAYOUT */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat-card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .stat-card h4 { color: var(--color-mid-blue); font-size: 0.95rem; margin-bottom: 0.8rem; text-transform: uppercase; font-weight: 700; }
+        .stat-card .number { font-size: 2.5rem; font-weight: 800; color: var(--text-main); }
+
+        .dashboard-chart-bento {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            max-width: 650px;
+            margin: 0 auto 2.5rem auto;
+            text-align: center;
+        }
+
+        /* TARJETAS FLOTANTES DE SOLICITUDES BENTO */
+        .cards-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2rem; margin-top: 1rem;
+        }
+
+        .floating-card {
+            background-color: var(--card-bg); border-radius: 20px; padding: 2rem;
+            box-shadow: var(--card-shadow); border: 1px solid var(--border-color);
+            transition: var(--transition); display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .floating-card:hover { transform: translateY(-5px); box-shadow: 0 20px 45px rgba(10, 25, 49, 0.15); }
+
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; }
+        .card-client-name { font-size: 1.3rem; font-weight: 700; color: var(--text-main); }
+        .card-client-email { font-size: 0.9rem; color: var(--color-mid-blue); display: block; margin-top: 2px; }
+
+        .card-body { font-size: 0.95rem; color: var(--text-main); margin-bottom: 1.5rem; }
+        .card-info-item { margin-bottom: 0.7rem; line-height: 1.5; }
+        .card-info-item strong { color: var(--color-mid-blue); }
+
+        .card-reply-box { margin-top: 1.2rem; border-top: 1px dashed var(--color-soft-blue); padding-top: 1.2rem; }
+        .reply-textarea {
+            width: 100%; height: 95px; padding: 0.9rem; border: 2px solid var(--border-color);
+            border-radius: 12px; font-size: 0.95rem; resize: vertical; outline: none; margin-bottom: 0.8rem;
+            background-color: var(--color-light-bg); color: var(--text-main);
+        }
+
+        .file-attachment-box {
+            margin-bottom: 1rem; font-size: 0.9rem; background: var(--color-light-bg);
+            padding: 12px; border-radius: 10px; border: 1px dashed var(--color-mid-blue);
+        }
+        .file-attachment-box label { font-weight: 600; color: var(--color-mid-blue); display: block; margin-bottom: 6px; }
+
+        .action-buttons-row { display: flex; gap: 12px; margin-top: 10px; }
+
+        .btn-send-whatsapp {
+            background-color: #25D366; color: #FFFFFF; border: none; flex: 1;
+            padding: 0.8rem; border-radius: 12px; font-size: 0.95rem; font-weight: 700;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+
+        .btn-reject-card {
+            background-color: #e74c3c; color: #FFFFFF; border: none;
+            padding: 0.8rem; border-radius: 12px; font-size: 0.95rem; font-weight: 700;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+
+        /* TABLAS HISTORIAL BENTO */
+        .data-table-container { background-color: var(--card-bg); border-radius: 20px; box-shadow: var(--card-shadow); border: 1px solid var(--border-color); overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; text-align: left; min-width: 750px; }
+        th, td { padding: 1.3rem 1.5rem; border-bottom: 1px solid var(--border-color); font-size: 0.98rem; color: var(--text-main); }
+        th { background-color: var(--color-deep-blue); color: #FFFFFF; font-weight: 600; }
+        tr:hover { background-color: var(--color-light-bg); }
+
+        /* GESTORES Y FORMULARIOS */
+        .form-control {
+            width: 100%; padding: 0.9rem 1.1rem; border: 2px solid var(--border-color);
+            border-radius: 12px; margin-bottom: 1.2rem; outline: none; background-color: var(--color-light-bg); color: var(--text-main); font-size: 1rem;
+        }
+        .btn-action { background-color: var(--color-mid-blue); color: #FFFFFF; border: none; padding: 0.8rem 1.5rem; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 1rem; transition: var(--transition); }
+        .btn-action:hover { opacity: 0.9; }
+        .badge { padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
+        .badge-es { background: #e8f4fd; color: #1a73e8; }
+        .badge-en { background: #e6f4ea; color: #137333; }
+
+        .employee-list-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; border-bottom: 1px solid var(--border-color); font-size: 0.95rem; }
+
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--text-main); font-size: 1.8rem; cursor: pointer; }
+
+        @media (max-width: 900px) {
+            body { flex-direction: column; height: auto; overflow: auto; }
+            sidebar { width: 100%; padding: 1rem; display: none; }
+            sidebar.active { display: flex; }
+            .main-content { height: auto; overflow: visible; }
+            .mobile-menu-btn { display: block; }
+            .top-navbar { padding: 1rem; }
+            .content-body { padding: 1.5rem; }
+            .bento-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MODAL LOGIN -->
+    <div id="loginOverlay">
+        <div class="login-card">
+            <h2>Acceso Administrativo</h2>
+            <form id="loginForm">
+                <input type="email" id="loginEmail" class="form-control" placeholder="Correo electrónico" required>
+                <input type="password" id="loginPassword" class="form-control" placeholder="Contraseña" required>
+                <button type="submit" class="btn-action" style="width: 100%; padding: 1rem; font-size: 1.1rem;">Iniciar Sesión</button>
+            </form>
+            <div id="loginError" style="color: #e74c3c; font-size: 0.9rem; margin-top: 12px;"></div>
+        </div>
+    </div>
+
+    <!-- SIDEBAR BENTO -->
+    <sidebar id="sidebarNav">
+        <div>
+            <div class="sidebar-brand">
+                <img src="https://i.postimg.cc/gJdFBW42/Whats-App-Image-2026-11-05-at-11-18-28-AM-removebg-preview.png" alt="Logo">
+                <div>
+                    <h3>H.G.Travel & Tours</h3>
+                    <span>Panel de Control</span>
+                </div>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="sidebar-item"><a href="#" onclick="switchTab('resumen', event)" class="active"><i class="fas fa-chart-pie"></i> Resumen</a></li>
+                <li class="sidebar-item"><a href="#" onclick="switchTab('solicitudes', event)"><i class="fas fa-inbox"></i> Solicitudes</a></li>
+                <li class="sidebar-item"><a href="#" onclick="switchTab('historial', event)"><i class="fas fa-history"></i> Historial</a></li>
+                <li class="sidebar-item" id="navItemUsuarios"><a href="#" onclick="switchTab('usuarios', event)"><i class="fas fa-users-cog"></i> Gestor de Usuarios</a></li>
+                <li class="sidebar-item" id="navItemAvanzadas"><a href="#" onclick="switchTab('avanzadas', event)"><i class="fas fa-sliders-h"></i> Opciones Avanzadas</a></li>
+                <li class="sidebar-item" id="navItemCambiarPass"><a href="#" onclick="switchTab('cambiarPassEmp', event)"><i class="fas fa-key"></i> Cambiar Contraseña</a></li>
+            </ul>
+        </div>
+        <button type="button" class="btn-logout" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+    </sidebar>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="top-navbar">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button type="button" class="mobile-menu-btn" id="menuToggleBtn"><i class="fas fa-bars"></i></button>
+                <h2 id="pageTitle">Resumen General</h2>
+            </div>
+            <div class="top-nav-actions">
+                <button type="button" class="btn-theme-toggle" id="themeToggleBtn"><i class="fas fa-moon" id="themeIcon"></i> Modo</button>
+                <button type="button" class="btn-refresh" id="refreshBtn"><i class="fas fa-sync-alt"></i> Actualizar</button>
+                <button type="button" class="btn-test-bell" id="testBellBtn"><i class="fas fa-bell"></i> Campana</button>
+                <div class="user-info" id="adminUserEmail">Cargando usuario...</div>
+            </div>
+        </div>
+
+        <div class="content-body">
+            
+            <!-- SECCIÓN: RESUMEN BENTO -->
+            <div id="tab-resumen" class="tab-section active">
+                <div class="bento-grid">
+                    <div class="stat-card">
+                        <h4>Total Solicitudes</h4>
+                        <div class="number" id="statTotal">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Respondidas</h4>
+                        <div class="number" id="statRespondidas" style="color: #27ae60;">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Pendientes</h4>
+                        <div class="number" id="statPendientes" style="color: #f39c12;">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Rechazadas</h4>
+                        <div class="number" id="statRechazadas" style="color: #e74c3c;">0</div>
+                    </div>
+                </div>
+
+                <!-- GRÁFICO DE BARRAS 3D -->
+                <div class="dashboard-chart-bento">
+                    <h4 style="color: var(--text-main); margin-bottom: 1.2rem; font-size: 1.1rem;">Distribución por Idioma (ES / EN)</h4>
+                    <canvas id="languageBarChart"></canvas>
+                </div>
+            </div>
+
+            <!-- SECCIÓN: SOLICITUDES -->
+            <div id="tab-solicitudes" class="tab-section">
+                <h3 style="margin-bottom: 1.8rem; color: var(--text-main);">Bandeja de Solicitudes Pendientes</h3>
+                <div class="cards-grid" id="solicitudesCardsGrid"></div>
+            </div>
+
+            <!-- SECCIÓN: HISTORIAL -->
+            <div id="tab-historial" class="tab-section">
+                <h3 style="margin-bottom: 1.8rem; color: var(--text-main);">Historial de Cotizaciones</h3>
+                <div class="data-table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Cliente</th>
+                                <th>Contacto</th>
+                                <th>Trayecto / Destinos</th>
+                                <th>Pasajeros / Vuelo</th>
+                                <th>Estado / Respuesta</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historialTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- SECCIÓN: GESTOR DE USUARIOS (SOLO ADMINISTRADOR) -->
+            <div id="tab-usuarios" class="tab-section">
+                <h3 style="margin-bottom: 1.8rem; color: var(--text-main);">Gestor de Personal y Seguridad (Administrador)</h3>
+                
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap:2.5rem;">
+                    <div style="background: var(--card-bg); padding: 2.5rem; border-radius: 20px; box-shadow: var(--card-shadow); border: 1px solid var(--border-color);">
+                        <h4 style="margin-bottom:1.2rem; color:var(--color-mid-blue); font-size: 1.2rem;"><i class="fas fa-user-plus"></i> Registrar Nuevo Empleado</h4>
+                        <form id="userCreateForm">
+                            <label style="font-weight: 600; font-size:0.95rem;">Nombre Completo</label>
+                            <input type="text" id="newUserName" class="form-control" placeholder="Ej. Ana Pérez" required>
+                            <label style="font-weight: 600; font-size:0.95rem;">Correo Electrónico</label>
+                            <input type="email" id="newUserEmail" class="form-control" placeholder="empleado@hgtravels.com" required>
+                            <label style="font-weight: 600; font-size:0.95rem;">Contraseña de Acceso</label>
+                            <input type="password" id="newUserPass" class="form-control" placeholder="Mínimo 6 caracteres" required minlength="6">
+                            <button type="submit" class="btn-action" style="width:100%;">Crear Empleado</button>
+                        </form>
+                    </div>
+
+                    <div style="background: var(--card-bg); padding: 2.5rem; border-radius: 20px; box-shadow: var(--card-shadow); border: 1px solid var(--border-color);">
+                        <h4 style="margin-bottom:1.2rem; color:var(--color-mid-blue); font-size: 1.2rem;"><i class="fas fa-users"></i> Empleados Registrados</h4>
+                        <div id="listaEmpleadosContainer" style="max-height: 250px; overflow-y: auto; margin-bottom: 1.5rem; border: 1px solid var(--border-color); border-radius: 12px;">
+                            <!-- Dinámico -->
+                        </div>
+                        <h4 style="margin-bottom:1.2rem; color:var(--color-mid-blue); font-size: 1.2rem;"><i class="fas fa-key"></i> Cambiar mi Contraseña de Administrador</h4>
+                        <form id="changePasswordAdminForm">
+                            <label style="font-weight: 600; font-size:0.95rem;">Contraseña Actual</label>
+                            <input type="password" id="currentPassAdmin" class="form-control" placeholder="Contraseña actual" required>
+                            <label style="font-weight: 600; font-size:0.95rem;">Nueva Contraseña</label>
+                            <input type="password" id="newPassAdmin" class="form-control" placeholder="Nueva contraseña" required minlength="6">
+                            <button type="submit" class="btn-action" style="width:100%; background:#27ae60;">Actualizar Contraseña</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN: CAMBIAR CONTRASEÑA EMPLEADO -->
+            <div id="tab-cambiarPassEmp" class="tab-section">
+                <h3 style="margin-bottom: 1.8rem; color: var(--text-main);">Seguridad de Cuenta</h3>
+                <div style="background: var(--card-bg); padding: 2.5rem; border-radius: 20px; max-width: 550px; box-shadow: var(--card-shadow); border: 1px solid var(--border-color);">
+                    <h4 style="margin-bottom:1.2rem; color:var(--color-mid-blue); font-size: 1.2rem;"><i class="fas fa-key"></i> Cambiar mi Contraseña</h4>
+                    <form id="changePasswordEmpForm">
+                        <label style="font-weight: 600; font-size:0.95rem;">Contraseña Actual</label>
+                        <input type="password" id="currentPassEmp" class="form-control" placeholder="Ingrese contraseña actual" required>
+                        <label style="font-weight: 600; font-size:0.95rem;">Nueva Contraseña</label>
+                        <input type="password" id="newPassEmp" class="form-control" placeholder="Nueva contraseña" required minlength="6">
+                        <label style="font-weight: 600; font-size:0.95rem;">Confirmar Nueva Contraseña</label>
+                        <input type="password" id="confirmNewPassEmp" class="form-control" placeholder="Repita nueva contraseña" required minlength="6">
+                        <button type="submit" class="btn-action" style="width:100%; background:#27ae60;">Actualizar Contraseña</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- SECCIÓN: OPCIONES AVANZADAS (SOLO ADMINISTRADOR) -->
+            <div id="tab-avanzadas" class="tab-section">
+                <h3 style="margin-bottom: 1.8rem; color: var(--text-main);">Opciones de Sistema (Administrador)</h3>
+                <div style="background: var(--card-bg); padding: 2.5rem; border-radius: 20px; max-width: 650px; box-shadow: var(--card-shadow); border: 1px solid var(--border-color); border-left: 6px solid #e74c3c;">
+                    <h4 style="color: #e74c3c; margin-bottom: 1rem; font-size: 1.3rem;">Limpieza Total de Solicitudes (Traspaso de Propiedad)</h4>
+                    <p style="font-size: 1rem; color: var(--text-main); opacity: 0.85; margin-bottom: 1.8rem; line-height: 1.5;">Esta opción eliminará permanentemente todas las cotizaciones de la base de datos de Firebase y almacenamiento local para dejar el sitio completamente limpio.</p>
+                    <button type="button" id="resetSystemBtn" class="btn-action" style="background-color: #e74c3c; padding: 1rem 1.8rem; font-size: 1.1rem;"><i class="fas fa-trash-alt"></i> Limpiar Todo el Sistema</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SCRIPT PRINCIPAL DE LÓGICA Y ESTABILIDAD DE ESCRITURA -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, createUserWithEmailAndPassword, EmailAuthProvider, reauthenticateWithCredential, updatePassword } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
+        import { getFirestore, collection, getDocs, onSnapshot, deleteDoc, doc, updateDoc, setDoc } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAmi32aTtpWepUPT2mi5hSVnBUVmTnRI9w",
+            authDomain: "hgtravels-67a47.firebaseapp.com",
+            projectId: "hgtravels-67a47",
+            storageBucket: "hgtravels-67a47.firebasestorage.app",
+            messagingSenderId: "562650018774",
+            appId: "1:562650018774:web:424b2bc31b0a6fee14aa77",
+            measurementId: "G-ETPNC319V0"
+        };
+
+        let db = null;
+        let auth = null;
+        let currentUser = null;
+
+        try {
+            const app = initializeApp(firebaseConfig);
+            auth = getAuth(app);
+            db = getFirestore(app);
+        } catch (e) {}
+
+        // MODO OSCURO / CLARO
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const themeIcon = document.getElementById('themeIcon');
+        
+        function setTheme(isDark) {
+            if (isDark) {
+                document.body.classList.add('dark-theme');
+                themeIcon.className = 'fas fa-sun';
+                localStorage.setItem('hg_theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-theme');
+                themeIcon.className = 'fas fa-moon';
+                localStorage.setItem('hg_theme', 'light');
+            }
+            if (languageChart) updateBarChart(lastEsCount, lastEnCount);
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            setTheme(!document.body.classList.contains('dark-theme'));
+        });
+
+        if (localStorage.getItem('hg_theme') === 'dark') {
+            setTheme(true);
+        }
+
+        document.getElementById('menuToggleBtn').addEventListener('click', () => {
+            document.getElementById('sidebarNav').classList.toggle('active');
+        });
+
+        // AUDIO CAMPANA MESA
+        function playTableBellSound() {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const frequencies = [830.61, 1046.50, 1318.51, 1661.22]; 
+                frequencies.forEach((freq, index) => {
+                    const osc = audioCtx.createOscillator();
+                    const gainNode = audioCtx.createGain();
+                    osc.type = index === 0 ? 'sine' : 'triangle';
+                    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                    gainNode.gain.setValueAtTime(0.4 / (index + 1), audioCtx.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.8);
+                    osc.connect(gainNode);
+                    gainNode.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 1.8);
+                });
+            } catch (e) {}
+        }
+
+        document.getElementById('testBellBtn').addEventListener('click', playTableBellSound);
+
+        // CONTROL DE ROLES
+        function aplicarPermisosRol(email) {
+            const emailLower = email ? email.toLowerCase().trim() : '';
+            let empleados = JSON.parse(localStorage.getItem('hg_empleados_registrados') || '[]');
+            const esEmpleadoRegistrado = empleados.some(e => e.email.toLowerCase().trim() === emailLower);
+            const esAdmin = emailLower.includes('admin') || !esEmpleadoRegistrado;
+
+            const navUsuarios = document.getElementById('navItemUsuarios');
+            const navAvanzadas = document.getElementById('navItemAvanzadas');
+            const navCambiarPass = document.getElementById('navItemCambiarPass');
+
+            if (esAdmin) {
+                if(navUsuarios) navUsuarios.style.display = 'block';
+                if(navAvanzadas) navAvanzadas.style.display = 'block';
+                if(navCambiarPass) navCambiarPass.style.display = 'none';
+                cargarListaEmpleados();
+            } else {
+                if(navUsuarios) navUsuarios.style.display = 'none';
+                if(navAvanzadas) navAvanzadas.style.display = 'none';
+                if(navCambiarPass) navCambiarPass.style.display = 'block';
+            }
+        }
+
+        // LOGIN Y AUTENTICACIÓN
+        const loginOverlay = document.getElementById('loginOverlay');
+        const loginForm = document.getElementById('loginForm');
+        const loginError = document.getElementById('loginError');
+
+        if (auth) {
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    currentUser = user;
+                    loginOverlay.style.display = 'none';
+                    document.getElementById('adminUserEmail').textContent = user.email;
+                    aplicarPermisosRol(user.email);
+                    cargarDatosCombinados(true);
+                    initRealtimeListener();
+                } else {
+                    currentUser = null;
+                    loginOverlay.style.display = 'flex';
+                }
+            });
+
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                try {
+                    await signInWithEmailAndPassword(auth, document.getElementById('loginEmail').value, document.getElementById('loginPassword').value);
+                    loginError.textContent = "";
+                } catch (error) {
+                    loginError.textContent = "Error: Credenciales incorrectas.";
+                }
+            });
+
+            document.getElementById('logoutBtn').addEventListener('click', () => signOut(auth));
+        } else {
+            loginOverlay.style.display = 'none';
+            aplicarPermisosRol("admin@hgtravels.com");
+            cargarDatosCombinados(true);
+        }
+
+        window.switchTab = function(tabId, event) {
+            if (event) event.preventDefault();
+            document.querySelectorAll('.tab-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.sidebar-item a').forEach(a => a.classList.remove('active'));
+            document.getElementById('tab-' + tabId).classList.add('active');
+            if (event && event.currentTarget) event.currentTarget.classList.add('active');
+            if(window.innerWidth <= 900) document.getElementById('sidebarNav').classList.remove('active');
+        };
+
+        // CHART.JS BARRAS 3D
+        let languageChart = null;
+        let lastEsCount = 0, lastEnCount = 0;
+
+        function updateBarChart(esCount, enCount) {
+            lastEsCount = esCount;
+            lastEnCount = enCount;
+            const ctx = document.getElementById('languageBarChart').getContext('2d');
+            const isDark = document.body.classList.contains('dark-theme');
+            const textColor = isDark ? '#F8FAFC' : '#0A1931';
+
+            if (languageChart) languageChart.destroy();
+            languageChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Español 🇪🇸', 'Inglés 🇺🇸'],
+                    datasets: [{
+                        label: 'Solicitudes',
+                        data: [esCount, enCount],
+                        backgroundColor: ['rgba(26, 115, 232, 0.9)', 'rgba(19, 115, 51, 0.9)'],
+                        borderColor: ['#1a73e8', '#137333'],
+                        borderWidth: 2,
+                        borderRadius: 10,
+                        barThickness: 55
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { precision: 0, color: textColor, font: { size: 13 } },
+                            grid: { color: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)' }
+                        },
+                        x: {
+                            ticks: { color: textColor, font: { weight: 'bold', size: 14 } },
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        }
+
+        let cantidadPendientesAnterior = -1;
+
+        // CARGAR SOLICITUDES (BLOQUEA EL REINICIO SI EL USUARIO ESTÁ ESCRIBIENDO)
+        window.cargarDatosCombinados = async function(isInitial = false) {
+            // Si el usuario tiene activo un cuadro de texto (está escribiendo), NO redibujamos para evitar que se borre su texto
+            const activeElement = document.activeElement;
+            if (activeElement && activeElement.classList.contains('reply-textarea')) {
+                return;
+            }
+
+            let cotizacionesLocal = JSON.parse(localStorage.getItem('hg_local_cotizaciones') || '[]');
+            let cotizacionesFirebase = [];
+
+            if (db) {
+                try {
+                    const snap = await getDocs(collection(db, "cotizaciones"));
+                    snap.forEach(docSnap => {
+                        const d = docSnap.data();
+                        d.firestoreId = docSnap.id;
+                        cotizacionesFirebase.push(d);
+                    });
+                } catch (e) {}
+            }
+
+            const mapUnico = new Map();
+            [...cotizacionesLocal, ...cotizacionesFirebase].forEach(item => {
+                const key = item.firestoreId || item.id || (item.nombre + item.fecha);
+                mapUnico.set(key, item);
+            });
+
+            const todas = Array.from(mapUnico.values());
+            let total = todas.length, esCount = 0, enCount = 0;
+            let respondidasCount = 0, pendientesCount = 0, rechazadasCount = 0;
+            let cardsHTML = "", historialHTML = "";
+
+            todas.forEach((data, index) => {
+                const idioma = data.idioma || 'es';
+                if (idioma === 'en') enCount++; else esCount++;
+                const keyId = data.firestoreId || data.id;
+
+                if (data.estado === 'Respondido') {
+                    respondidasCount++;
+                    historialHTML += `
+                        <tr>
+                            <td><strong>${data.nombre || 'Cliente'}</strong></td>
+                            <td>${data.correo}<br>${data.telefono}</td>
+                            <td><strong>Hotel:</strong> ${data.hotel || 'N/A'}<br><strong>Atractivo:</strong> ${data.atractivo || 'N/A'}<br><strong>Nacional:</strong> ${data.nacional || 'N/A'}</td>
+                            <td><strong>Pasajeros:</strong> ${data.pasajeros || 'N/A'}<br><strong>Vuelo:</strong> ${data.vuelo || 'N/A'}</td>
+                            <td><span style="color: #27ae60; font-weight:700;">Respondido:</span> ${data.respuestaAdmin || ''}</td>
+                            <td>${data.fecha ? new Date(data.fecha).toLocaleDateString() : 'N/A'}</td>
+                        </tr>
+                    `;
+                } else if (data.estado === 'Rechazado') {
+                    rechazadasCount++;
+                    historialHTML += `
+                        <tr>
+                            <td><strong>${data.nombre || 'Cliente'}</strong></td>
+                            <td>${data.correo}<br>${data.telefono}</td>
+                            <td><strong>Hotel:</strong> ${data.hotel || 'N/A'}<br><strong>Nacional:</strong> ${data.nacional || 'N/A'}</td>
+                            <td><strong>Pasajeros:</strong> ${data.pasajeros || 'N/A'}</td>
+                            <td><span style="color: #e74c3c; font-weight:700;">Rechazado</span></td>
+                            <td>${data.fecha ? new Date(data.fecha).toLocaleDateString() : 'N/A'}</td>
+                        </tr>
+                    `;
+                } else {
+                    pendientesCount++;
+                    cardsHTML += `
+                        <div class="floating-card">
+                            <div>
+                                <div class="card-header">
+                                    <div>
+                                        <div class="card-client-name">${data.nombre || 'Cliente VIP'}</div>
+                                        <span class="card-client-email">${data.correo || 'Sin correo'}</span>
+                                    </div>
+                                    <span class="badge badge-${idioma}">${idioma.toUpperCase()}</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-info-item"><i class="fas fa-phone-alt"></i> <strong>Teléfono:</strong> ${data.telefono || 'N/A'}</div>
+                                    <div class="card-info-item"><i class="far fa-calendar-alt"></i> <strong>Fecha / Hora:</strong> ${data.fechaViaje || 'N/A'} a las ${data.horaViaje || 'N/A'}</div>
+                                    <div class="card-info-item"><i class="fas fa-users"></i> <strong>Tripulantes:</strong> ${data.pasajeros || 'N/A'}</div>
+                                    <div class="card-info-item"><i class="fas fa-suitcase-rolling"></i> <strong>Equipaje:</strong> ${data.equipaje || 'N/A'}</div>
+                                    <div class="card-info-item"><i class="fas fa-plane-arrival"></i> <strong>Vuelo:</strong> ${data.vuelo || 'N/A'}</div>
+                                    <div class="card-info-item"><i class="fas fa-plane"></i> <strong>Aeropuerto:</strong> ${data.aeropuerto || 'N/A'}</div>
+                                    <div class="card-info-item"><i class="fas fa-hotel"></i> <strong>Hotel:</strong> ${data.hotel || 'N/A'}</div>
+                                    <div class="card-info-item"><i class="fas fa-camera-retro"></i> <strong>Atractivo:</strong> ${data.atractivo || 'N/A'}</div>
+                                    <div class="card-info-item"><i class="fas fa-map-marked-alt"></i> <strong>Destino Nacional:</strong> ${data.nacional || 'N/A'}</div>
+                                    <div class="card-info-item"><i class="fas fa-map-pin"></i> <strong>Otra Ubicación:</strong> ${data.otraUbicacion || 'N/A'}</div>
+                                    <div class="card-info-item" style="background:var(--color-light-bg); padding:10px; border-radius:10px; margin-top:10px;"><strong>Detalles:</strong> ${data.detalles || 'Sin observaciones'}</div>
+                                </div>
+                            </div>
+                            <div class="card-reply-box">
+                                <div class="file-attachment-box">
+                                    <label><i class="fas fa-paperclip"></i> Adjuntar archivo opcional:</label>
+                                    <input type="file" id="fileAttach_${index}" style="font-size: 0.85rem; width:100%;">
+                                </div>
+                                <textarea id="replyText_${index}" class="reply-textarea" placeholder="Escriba aquí la cotización..."></textarea>
+                                <div class="action-buttons-row">
+                                    <button type="button" class="btn-send-whatsapp" onclick="enviarWhatsappYResponder('${keyId}', 'replyText_${index}', 'fileAttach_${index}', '${data.telefono || ''}', '${data.nombre || 'Cliente'}')">
+                                        <i class="fab fa-whatsapp"></i> Responder
+                                    </button>
+                                    <button type="button" class="btn-reject-card" onclick="rechazarSolicitud('${keyId}')">
+                                        <i class="fas fa-times-circle"></i> Rechazar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+
+            if (!isInitial && cantidadPendientesAnterior !== -1 && pendientesCount > cantidadPendientesAnterior) {
+                playTableBellSound();
+            }
+            cantidadPendientesAnterior = pendientesCount;
+
+            document.getElementById('statTotal').textContent = total;
+            document.getElementById('statRespondidas').textContent = respondidasCount;
+            document.getElementById('statPendientes').textContent = pendientesCount;
+            document.getElementById('statRechazadas').textContent = rechazadasCount;
+
+            updateBarChart(esCount, enCount);
+
+            document.getElementById('solicitudesCardsGrid').innerHTML = cardsHTML || '<div style="grid-column: 1/-1; text-align:center; padding:3.5rem; background:var(--card-bg); border-radius:20px; font-weight:600; color:var(--color-mid-blue); font-size: 1.1rem;">No hay solicitudes pendientes.</div>';
+            document.getElementById('historialTableBody').innerHTML = historialHTML || '<tr><td colspan="6" style="text-align:center; padding: 2.5rem;">No hay historial registrado.</td></tr>';
+        };
+
+        function initRealtimeListener() {
+            if (db) onSnapshot(collection(db, "cotizaciones"), () => cargarDatosCombinados(false));
+            setInterval(() => cargarDatosCombinados(false), 5000);
+        }
+
+        document.getElementById('refreshBtn').addEventListener('click', () => cargarDatosCombinados(false));
+
+        // RESPONDER WHATSAPP Y ACTUALIZAR FIRESTORE
+        window.enviarWhatsappYResponder = async function(keyId, textId, fileId, telefono, nombre) {
+            const respuestaEl = document.getElementById(textId);
+            const respuesta = respuestaEl ? respuestaEl.value.trim() : '';
+            const fileInput = document.getElementById(fileId);
+            let archivoInfo = (fileInput && fileInput.files && fileInput.files[0]) ? ` [Archivo adjunto: ${fileInput.files[0].name}]` : "";
+
+            if (!respuesta && !archivoInfo) {
+                alert("Por favor, ingrese un mensaje de cotización antes de enviar.");
+                return;
+            }
+
+            const respuestaFinal = respuesta + archivoInfo;
+
+            let cotizacionesLocal = JSON.parse(localStorage.getItem('hg_local_cotizaciones') || '[]');
+            let indexLocal = cotizacionesLocal.findIndex(item => (item.id === keyId || item.firestoreId === keyId));
+            if (indexLocal !== -1) {
+                cotizacionesLocal[indexLocal].estado = 'Respondido';
+                cotizacionesLocal[indexLocal].respuestaAdmin = respuestaFinal;
+                localStorage.setItem('hg_local_cotizaciones', JSON.stringify(cotizacionesLocal));
+            }
+
+            if (db && keyId) {
+                try {
+                    await updateDoc(doc(db, "cotizaciones", keyId), { 
+                        estado: 'Respondido', 
+                        respuestaAdmin: respuestaFinal 
+                    });
+                } catch (e) {
+                    console.error("Error al actualizar en Firebase:", e);
+                }
+            }
+
+            const cleanPhone = telefono.replace(/[^0-9]/g, '');
+            window.open(`https://wa.me/${cleanPhone}?text=${encodeURIComponent(`Hola ${nombre}, gracias por contactar a H.G.Travel & Tours Panamá. Cotización: ${respuestaFinal}`)}`, '_blank');
+
+            cargarDatosCombinados(false);
+        };
+
+        // RECHAZAR SOLICITUD
+        window.rechazarSolicitud = async function(keyId) {
+            if (confirm("¿Desea rechazar esta solicitud?")) {
+                let cotizacionesLocal = JSON.parse(localStorage.getItem('hg_local_cotizaciones') || '[]');
+                let indexLocal = cotizacionesLocal.findIndex(item => (item.id === keyId || item.firestoreId === keyId));
+                if (indexLocal !== -1) {
+                    cotizacionesLocal[indexLocal].estado = 'Rechazado';
+                    localStorage.setItem('hg_local_cotizaciones', JSON.stringify(cotizacionesLocal));
+                }
+
+                if (db && keyId) {
+                    try {
+                        await updateDoc(doc(db, "cotizaciones", keyId), { estado: 'Rechazado' });
+                    } catch (e) {
+                        console.error("Error al rechazar en Firebase:", e);
+                    }
+                }
+                cargarDatosCombinados(false);
+            }
+        };
+
+        // GESTIÓN DE EMPLEADOS
+        async function cargarListaEmpleados() {
+            let empleadosContainer = document.getElementById('listaEmpleadosContainer');
+            if (!empleadosContainer) return;
+            
+            let empleados = JSON.parse(localStorage.getItem('hg_empleados_registrados') || '[]');
+            let html = "";
+            
+            if (empleados.length === 0) {
+                html = `<div style="padding: 15px; text-align: center; color: var(--color-mid-blue); font-size: 0.9rem;">No hay empleados registrados.</div>`;
+            } else {
+                empleados.forEach((emp, i) => {
+                    html += `
+                        <div class="employee-list-item">
+                            <div><strong>${emp.nombre}</strong><br><span style="font-size:0.82rem; opacity:0.8;">${emp.email}</span></div>
+                            <button type="button" class="btn-action" style="background:#e74c3c; padding:5px 10px; font-size:0.85rem;" onclick="eliminarEmpleado(${i})"><i class="fas fa-user-minus"></i> Despedir</button>
+                        </div>
+                    `;
+                });
+            }
+            empleadosContainer.innerHTML = html;
+        }
+
+        window.eliminarEmpleado = function(i) {
+            if (confirm("¿Está seguro de eliminar a este empleado del registro local?")) {
+                let empleados = JSON.parse(localStorage.getItem('hg_empleados_registrados') || '[]');
+                empleados.splice(i, 1);
+                localStorage.setItem('hg_empleados_registrados', JSON.stringify(empleados));
+                cargarListaEmpleados();
+                alert("Empleado retirado.");
+            }
+        };
+
+        // REGISTRAR NUEVO EMPLEADO EN FIREBASE AUTH
+        document.getElementById('userCreateForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const nom = document.getElementById('newUserName').value.trim();
+            const email = document.getElementById('newUserEmail').value.trim();
+            const pass = document.getElementById('newUserPass').value.trim();
+
+            if (auth) {
+                try {
+                    await createUserWithEmailAndPassword(auth, email, pass);
+                    let empleados = JSON.parse(localStorage.getItem('hg_empleados_registrados') || '[]');
+                    empleados.push({ nombre: nom, email: email });
+                    localStorage.setItem('hg_empleados_registrados', JSON.stringify(empleados));
+                    
+                    alert(`Empleado ${nom} (${email}) creado exitosamente.`);
+                    document.getElementById('userCreateForm').reset();
+                    cargarListaEmpleados();
+                } catch (err) {
+                    alert("Error creando empleado: " + err.message);
+                }
+            }
+        });
+
+        // CAMBIAR CONTRASEÑA ADMINISTRADOR
+        document.getElementById('changePasswordAdminForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const currentPass = document.getElementById('currentPassAdmin').value.trim();
+            const newPass = document.getElementById('newPassAdmin').value.trim();
+
+            if (auth && currentUser) {
+                try {
+                    const cred = EmailAuthProvider.credential(currentUser.email, currentPass);
+                    await reauthenticateWithCredential(currentUser, cred);
+                    await updatePassword(currentUser, newPass);
+                    alert("Contraseña actualizada exitosamente.");
+                    document.getElementById('changePasswordAdminForm').reset();
+                } catch (err) {
+                    alert("Error al cambiar contraseña: Verifique la clave actual. (" + err.message + ")");
+                }
+            }
+        });
+
+        // CAMBIAR CONTRASEÑA EMPLEADO
+        document.getElementById('changePasswordEmpForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const currentPass = document.getElementById('currentPassEmp').value.trim();
+            const newPass = document.getElementById('newPassEmp').value.trim();
+            const confirmNewPass = document.getElementById('confirmNewPassEmp').value.trim();
+
+            if (newPass !== confirmNewPass) {
+                alert("La contraseña nueva no coincide con la confirmación.");
+                return;
+            }
+
+            if (auth && currentUser) {
+                try {
+                    const cred = EmailAuthProvider.credential(currentUser.email, currentPass);
+                    await reauthenticateWithCredential(currentUser, cred);
+                    await updatePassword(currentUser, newPass);
+                    alert("Contraseña actualizada exitosamente.");
+                    document.getElementById('changePasswordEmpForm').reset();
+                } catch (err) {
+                    alert("Error al cambiar contraseña: Verifique la clave actual.");
+                }
+            }
+        });
+
+        // LIMPIAR SISTEMA COMPLETO (SOLO ADMINISTRADOR)
+        document.getElementById('resetSystemBtn').addEventListener('click', async () => {
+            if (confirm("¿Confirmar limpieza completa del sistema para entrega/traspaso?")) {
+                localStorage.removeItem('hg_local_cotizaciones');
+                if (db) {
+                    try {
+                        const snap = await getDocs(collection(db, "cotizaciones"));
+                        for (const d of snap.docs) { await deleteDoc(doc(db, "cotizaciones", d.id)); }
+                    } catch (error) {}
+                }
+                cargarDatosCombinados(false);
+                alert("Sistema reiniciado a cero.");
+            }
+        });
+    </script>
+</body>
+</html>

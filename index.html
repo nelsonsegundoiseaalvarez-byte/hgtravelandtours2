@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H.G.Travel & Tours Panamá | Transporte Privado y Servicios Turísticos Executive</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/gJdFBW42/Whats-App-Image-2026-11-05-at-11-18-28-AM-removebg-preview.png">
+    
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Bento Grid UI/UX Profesional -->
+    <style>
+        :root {
+            --color-dark-navy: #0A1931;
+            --color-deep-blue: #1A3D63;
+            --color-mid-blue: #4A7FA7;
+            --color-soft-blue: #B3CFE5;
+            --color-light-bg: #F8FAFC;
+            --color-white: #FFFFFF;
+            --font-main: 'Montserrat', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --bento-shadow: 0 10px 30px -5px rgba(10, 25, 49, 0.08), 0 20px 25px -5px rgba(10, 25, 49, 0.04);
+            --bento-hover-shadow: 0 25px 45px -10px rgba(10, 25, 49, 0.18);
+            --radius-bento: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-main);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--color-light-bg);
+            color: var(--color-dark-navy);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* HEADER & NAVIGATION */
+        header {
+            background-color: rgba(10, 25, 49, 0.95);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            border-bottom: 1px solid rgba(179, 207, 229, 0.15);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1350px;
+            margin: 0 auto;
+            padding: 0.8rem 2rem;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .brand-title {
+            color: var(--color-white);
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-title span {
+            color: var(--color-soft-blue);
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 400;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.8rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--color-white);
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active { color: var(--color-soft-blue); }
+
+        .lang-selector {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(179, 207, 229, 0.3);
+            color: var(--color-white);
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .lang-selector option { background-color: var(--color-dark-navy); color: var(--color-white); }
+
+        .btn-nav-quote {
+            background-color: var(--color-mid-blue);
+            color: var(--color-white);
+            padding: 0.6rem 1.4rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .btn-nav-quote:hover { background-color: var(--color-deep-blue); }
+        .menu-toggle { display: none; color: var(--color-white); font-size: 1.8rem; cursor: pointer; }
+
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, rgba(10, 25, 49, 0.92), rgba(26, 61, 99, 0.85)), url('https://i.postimg.cc/7hh27pvr/AM.jpg') center/cover no-repeat;
+            color: var(--color-white);
+            padding: 6.5rem 2rem;
+            text-align: center;
+        }
+
+        .hero-container { max-width: 900px; margin: 0 auto; }
+        .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 1.2rem; line-height: 1.2; }
+        .hero p { font-size: 1.15rem; color: var(--color-soft-blue); margin-bottom: 2.5rem; font-weight: 300; }
+        .hero-buttons { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
+
+        .btn-primary {
+            background-color: var(--color-mid-blue);
+            color: var(--color-white);
+            padding: 0.9rem 2.2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover { background-color: var(--color-deep-blue); transform: translateY(-3px); }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+            color: var(--color-white);
+            padding: 0.9rem 2.2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid var(--color-soft-blue);
+            transition: var(--transition);
+        }
+
+        .btn-secondary:hover { background-color: var(--color-white); color: var(--color-dark-navy); }
+
+        /* SECCIONES Y ENCABEZADOS BENTO UI */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1350px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--color-mid-blue);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            display: inline-block;
+            background: #EBF3FA;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--color-dark-navy);
+            font-weight: 800;
+        }
+
+        /* SERVICIOS BENTO UI GRID */
+        .services-bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-bento-card {
+            background-color: var(--color-white);
+            border-radius: var(--radius-bento);
+            padding: 2.5rem 2rem;
+            box-shadow: var(--bento-shadow);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-bento-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--bento-hover-shadow);
+            border-color: var(--color-soft-blue);
+        }
+
+        .service-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            background: #EBF3FA;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--color-deep-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-bento-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.8rem;
+            color: var(--color-dark-navy);
+            font-weight: 700;
+        }
+
+        .service-bento-card p { font-size: 0.92rem; color: #64748B; }
+
+        /* ESTRUCTURA BENTO UI PARA TARJETAS VISUALES */
+        .bento-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .bento-card {
+            background: var(--color-white);
+            border-radius: var(--radius-bento);
+            overflow: hidden;
+            box-shadow: var(--bento-shadow);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--bento-hover-shadow);
+        }
+
+        .bento-media {
+            width: 100%;
+            height: 230px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bento-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .bento-card:hover .bento-media img {
+            transform: scale(1.08);
+        }
+
+        .bento-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(10, 25, 49, 0.75);
+            backdrop-filter: blur(8px);
+            color: var(--color-white);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .bento-content {
+            padding: 1.8rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .bento-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--color-dark-navy);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .btn-bento-action {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--color-light-bg);
+            color: var(--color-deep-blue);
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            transition: var(--transition);
+            border: 1px solid #E2E8F0;
+        }
+
+        .bento-card:hover .btn-bento-action {
+            background-color: var(--color-deep-blue);
+            color: var(--color-white);
+            border-color: var(--color-deep-blue);
+        }
+
+        /* SEPARADORES DE CATEGORÍA DE HOTELES */
+        .category-bento-header {
+            font-size: 1.3rem;
+            color: var(--color-dark-navy);
+            margin: 3rem 0 1.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+        }
+
+        .category-bento-header i { color: #F59E0B; }
+
+        .bento-more-card {
+            background: linear-gradient(135deg, var(--color-dark-navy), var(--color-deep-blue));
+            color: white;
+            border-radius: var(--radius-bento);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: var(--bento-shadow);
+        }
+
+        .bento-more-card i {
+            font-size: 3rem;
+            color: var(--color-soft-blue);
+            margin-bottom: 1rem;
+        }
+
+        .bento-more-card h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+        .bento-more-card p { font-size: 0.88rem; color: var(--color-soft-blue); margin-bottom: 1.5rem; }
+
+        /* FLEET CAROUSEL */
+        .fleet-container {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: var(--radius-bento);
+            box-shadow: var(--bento-hover-shadow);
+            background-color: var(--color-dark-navy);
+            border: 1px solid rgba(179, 207, 229, 0.2);
+        }
+
+        .carousel-progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-mid-blue), var(--color-soft-blue));
+            width: 0%;
+            z-index: 20;
+            transition: width 0.1s linear;
+        }
+
+        .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); width: 100%; }
+        .carousel-slide { min-width: 100%; flex: 0 0 100%; position: relative; }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 540px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(10, 25, 49, 0.7);
+            backdrop-filter: blur(8px);
+            color: var(--color-white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .carousel-arrow:hover { background: var(--color-mid-blue); transform: translateY(-50%) scale(1.1); }
+        .carousel-prev { left: 20px; }
+        .carousel-next { right: 20px; }
+
+        .carousel-counter {
+            position: absolute;
+            bottom: 20px;
+            right: 25px;
+            background: rgba(10, 25, 49, 0.85);
+            backdrop-filter: blur(8px);
+            color: var(--color-white);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(179, 207, 229, 0.3);
+        }
+
+        /* WHATSAPP FLOATING BUTTON */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 32px;
+            box-shadow: 2px 8px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--color-dark-navy);
+            color: var(--color-white);
+            padding: 4.5rem 2rem 2rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .footer-grid {
+            max-width: 1350px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 { color: var(--color-soft-blue); font-size: 1.1rem; margin-bottom: 1.2rem; font-weight: 700; }
+        .footer-col p, .footer-col li { font-size: 0.9rem; color: #94A3B8; margin-bottom: 0.6rem; list-style: none; }
+        .footer-col a { color: #94A3B8; text-decoration: none; transition: var(--transition); }
+        .footer-col a:hover { color: var(--color-soft-blue); }
+
+        .footer-bottom {
+            max-width: 1350px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 1.8rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748B;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--color-dark-navy);
+                flex-direction: column;
+                padding: 2.5rem;
+                transition: var(--transition);
+            }
+            .nav-menu.active { left: 0; }
+            .hero h1 { font-size: 2.1rem; }
+            .carousel-slide img { height: 350px; }
+            .bento-grid-3 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER / NAVIGATION -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="brand-logo">
+                <img src="https://i.postimg.cc/gJdFBW42/Whats-App-Image-2026-11-05-at-11-18-28-AM-removebg-preview.png" alt="H.G.Travel & Tours Logo">
+                <div class="brand-title">
+                    H.G.Travel & Tours
+                    <span>Panamá Private VIP Services</span>
+                </div>
+            </a>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link active" data-i18n="nav_home">Inicio</a></li>
+                <li><a href="somos.html" class="nav-link" data-i18n="nav_about">Quiénes Somos</a></li>
+                <li><a href="contacto.html" class="nav-link" data-i18n="nav_contact">Contacto y Cotización</a></li>
+                <li><a href="contacto.html" class="btn-nav-quote" data-i18n="nav_reserve">Reservar Servicio</a></li>
+                <li>
+                    <select id="langSwitch" class="lang-selector" aria-label="Cambiar Idioma">
+                        <option value="es">🇪🇸 ES</option>
+                        <option value="en">🇺🇸 EN</option>
+                    </select>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-container">
+                <h1 data-i18n="hero_title">Transporte Privado & Tours VIP en Panamá</h1>
+                <p data-i18n="hero_desc">Traslados ejecutivos aeroportuarios, circuitos corporativos, viajes interprovinciales y experiencias turísticas personalizadas con flota de estándar internacional.</p>
+                <div class="hero-buttons">
+                    <a href="contacto.html" class="btn-primary"><i class="fas fa-calculator"></i> <span data-i18n="btn_quote">Cotizar Traslado</span></a>
+                    <a href="https://wa.me/50768938639?text=Hola,%20deseo%20consultar%20disponibilidad%20y%20tarifas%20de%20transporte" target="_blank" class="btn-secondary"><i class="fab fa-whatsapp"></i> <span data-i18n="btn_whatsapp">Chat Directo</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICIOS PRINCIPALES BENTO GRID -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-subtitle" data-i18n="serv_subtitle">Servicios Especializados</span>
+                <h2 class="section-title" data-i18n="serv_title">Soluciones Integrales de Movilidad</h2>
+            </div>
+            <div class="services-bento-grid">
+                <article class="service-bento-card">
+                    <div class="service-icon-wrapper"><i class="fas fa-plane-arrival"></i></div>
+                    <div>
+                        <h3 data-i18n="s1_title">Traslados Aeroportuarios</h3>
+                        <p data-i18n="s1_desc">Recepciones en Aeropuerto Internacional de Tocumen (PTY), Marcos A. Gelabert (Albrook) y Panamá Pacífico hacia cualquier punto de la ciudad o del interior.</p>
+                    </div>
+                </article>
+                <article class="service-bento-card">
+                    <div class="service-icon-wrapper"><i class="fas fa-user-tie"></i></div>
+                    <div>
+                        <h3 data-i18n="s2_title">Transporte Ejecutivo VIP</h3>
+                        <p data-i18n="s2_desc">Vehículos acondicionados para corporativos, delegaciones diplomáticas y eventos de alto nivel con chóferes bilingües profesionales.</p>
+                    </div>
+                </article>
+                <article class="service-bento-card">
+                    <div class="service-icon-wrapper"><i class="fas fa-ship"></i></div>
+                    <div>
+                        <h3 data-i18n="s3_title">Terminales de Cruceros</h3>
+                        <p data-i18n="s3_desc">Conexiones eficientes con el Puerto de Cruceros de Amador y la Terminal de Colón 2000 para pasajeros y equipajes de grupo.</p>
+                    </div>
+                </article>
+                <article class="service-bento-card">
+                    <div class="service-icon-wrapper"><i class="fas fa-route"></i></div>
+                    <div>
+                        <h3 data-i18n="s4_title">Tours & Circuitos Nacionales</h3>
+                        <p data-i18n="s4_desc">Recorridos por Casco Antiguo, Canal de Panamá, San Blas, El Valle de Antón, Boquete y principales playas del Pacífico y Caribe.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- BENTO SECCIÓN 1: RECOGIDAS EN AEROPUERTO -->
+        <section class="section" style="background-color: var(--color-white); border-radius: 30px;">
+            <div class="section-header">
+                <span class="section-subtitle">Puntos de Recepción</span>
+                <h2 class="section-title">Recogidas en Aeropuerto</h2>
+            </div>
+            <div class="bento-grid-3">
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://i.pinimg.com/1200x/77/34/fc/7734fc31bb5373fb490fb276a1458cc0.jpg" alt="Tocumen">
+                        <span class="bento-badge">Principal Hub (PTY)</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">Aeropuerto Internacional de Tocumen</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Reservar Traslado</span> <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN-2dMZcnRfBhQH39YfOKczrhVWjZstcheE0hKbS05en6dFt-IbAySDwDd&s=10" alt="Panamá Pacífico">
+                        <span class="bento-badge">Vuelos Charter / Low Cost</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">Aeropuerto Internacional Panamá Pacífico</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Reservar Traslado</span> <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://cloudfront-us-east-1.images.arcpublishing.com/corprensa/BJDHYXGAWBE3JELQEIZSZGQFBE.jpg" alt="Marcos A. Gelabert">
+                        <span class="bento-badge">Vuelos Locales (Albrook)</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">Aeropuerto Internacional Marcos A. Gelabert</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Reservar Traslado</span> <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BENTO SECCIÓN 2: DIRECTORIO DE HOTELES -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-subtitle">Viaja Seguro del Aeropuerto al Hotel</span>
+                <h2 class="section-title">Directorio de Hoteles – Ciudad de Panamá</h2>
+            </div>
+
+            <!-- HOTELES DE LUJO 5 ESTRELLAS -->
+            <div class="category-bento-header"><i class="fas fa-star"></i> HOTELES DE LUJO Y 5 ESTRELLAS ⭐⭐⭐⭐⭐</div>
+            <div class="bento-grid-3">
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp1NkjGN-03Du_W3OrV855fDIHdSRsHxgGXf1xe5QoSw&s=10" alt="Hotel Riu Plaza">
+                        <span class="bento-badge">5 Estrellas</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">1. Hotel Riu Plaza Panamá</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Panama_08_2013_Trump_Ocean_Tower_7085.JPG?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original" alt="JW Marriott">
+                        <span class="bento-badge">5 Estrellas Luxury</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">2. JW Marriott Panamá</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/34/fc/fa/4c/exterior.jpg?w=900&h=500&s=1" alt="The Westin">
+                        <span class="bento-badge">5 Estrellas</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">3. The Westin Panamá</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7rBQ8gOGLJ0pI8F9V-vbkoLkMMhKT2GIDhTqT9-GGCp_b12QCxXVKjKk&s=10" alt="The Santa María">
+                        <span class="bento-badge">Luxury Resort</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">4. The Santa María, a Luxury Collection Hotel</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe237LH8T4De3ncrt7XAzETvTv-ej4EzqgF-ruAXcVBw&s" alt="W Panama">
+                        <span class="bento-badge">5 Estrellas Lifestyle</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">5. W Panamá</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HOTELES DE 4 ESTRELLAS Y EJECUTIVOS -->
+            <div class="category-bento-header"><i class="fas fa-star"></i> HOTELES DE 4 ESTRELLAS Y EJECUTIVOS ⭐⭐⭐⭐</div>
+            <div class="bento-grid-3">
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/900575649.jpg?k=a1d7e00ede23ff82bb64815d7b23b612a3c1f5b06e78bc0c6d770685da174571&o=" alt="AC Hotel">
+                        <span class="bento-badge">4 Estrellas</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">AC Hotel Panamá City</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfXAHpHXdxc8CqtOhRffd60MJ56YiOvh2mS8q_zVsXrw&s" alt="Courtyard Multiplaza">
+                        <span class="bento-badge">4 Estrellas Executive</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">Courtyard by Marriott Multiplaza</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY2HAOYpvKTpqQXmF5xeikYakq7ck89LTyNLKBYDee51oBiudkkgMBbhio&s=10" alt="Courtyard Metromall">
+                        <span class="bento-badge">4 Estrellas</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">Courtyard by Marriott Metromall</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGfeiVldvqUG4u8qAcdgAlXEtBK2uaVEevL1dzUZwZVi-jubPwZWf_uPXw&s=10" alt="Finisterre">
+                        <span class="bento-badge">Apartments VIP</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">Marriott Executive Apartments Finisterre</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd84BOma_mkUWDHInGjZPBEVI-IPzqpAxkqg4aOtA6Ow&s" alt="Residence Inn">
+                        <span class="bento-badge">4 Estrellas</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">Residence Inn by Marriott</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HOTELES DE 3 ESTRELLAS Y ECONÓMICOS -->
+            <div class="category-bento-header"><i class="fas fa-star"></i> HOTELES DE 3 ESTRELLAS Y ECONÓMICOS ⭐⭐⭐</div>
+            <div class="bento-grid-3">
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqB2Q2m2iKsdhQMczefPU0TCXJU_MSoDZ1cMQunVkJpaXuFui4aJStOB0&s=10" alt="Grand International">
+                        <span class="bento-badge">3 Estrellas</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">Grand International Hotel</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/43866549.jpg?k=d446455f5a4b644bb0e9e8b23bf7112d56bd5f859211a7e56d9ce896e3e85ca7&o=" alt="Cresta Inn">
+                        <span class="bento-badge">3 Estrellas</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">Cresta Inn</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/557640763.jpg?k=7786b5d80b1bc2e5a9c2e459115c11562e8f05b5157afcf0d7daad654815f07d&o=" alt="Eurohotel">
+                        <span class="bento-badge">Económico</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">Eurohotel</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/54700914.jpg?k=eec48d85c25f5b073619302daa0d55cc323defc2a488e20e6f067fcab11c6243&o=" alt="Hotel Terranova">
+                        <span class="bento-badge">3 Estrellas</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">Hotel Terranova</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/709742235.jpg?k=2a74383a43ef4b704c0830a86f7881daa696bff3449f5409235723064c971493&o=" alt="Toscana Inn">
+                        <span class="bento-badge">3 Estrellas</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">Toscana Inn Hotel</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- CARD MÁS ALOJAMIENTOS -->
+                <div class="bento-more-card">
+                    <i class="fas fa-hotel"></i>
+                    <h3>¡Y Muchos Más!</h3>
+                    <p>Cubrimos todos los hoteles, residencias, Airbnb, puertos y hospitales de Ciudad de Panamá.</p>
+                    <a href="contacto.html" class="btn-primary" style="padding: 0.7rem 1.4rem; font-size:0.85rem;">Ver Directorio Completo</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- BENTO SECCIÓN 3: ATRACTIVOS TURÍSTICOS -->
+        <section class="section" style="background-color: var(--color-white); border-radius: 30px;">
+            <div class="section-header">
+                <span class="section-subtitle">Conoce nuestros</span>
+                <h2 class="section-title">Atractivos Turísticos – Ciudad de Panamá</h2>
+            </div>
+            <div class="bento-grid-3">
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,h_1200,q_75,w_1200/v1/clients/panama/large_Plaza_de_la_Catedral_Independence_Square_Casco_Antiguo_Panama_city_b1e7e18e-91a8-48ea-8c65-503d48fb6313.jpg" alt="Casco Antiguo">
+                        <span class="bento-badge">Patrimonio Cultural</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">CASCO ANTIGUO Y CENTRO HISTÓRICO</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar City Tour</span> <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://i.pinimg.com/1200x/07/82/a5/0782a5978eeda007c0c0b04a1948280a.jpg" alt="Canal de Panamá">
+                        <span class="bento-badge">Maravilla Mundial</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">CANAL DE PANAMÁ Y ESCLUSAS</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar City Tour</span> <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,f_jpg,g_xy_center,h_325,q_65,w_640,x_2773,y_1312/v1/clients/panama/Amador_Dron_1_82cca744-0525-4015-ab6f-c7d485270340.jpg" alt="Calzada de Amador">
+                        <span class="bento-badge">Panorámico & Mar</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">AMADOR, CALZADA Y ZONA DE ISLAS</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar City Tour</span> <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Catedral_Panam%C3%A1_Viejo.jpg?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original" alt="Panamá Viejo">
+                        <span class="bento-badge">Sitio Arqueológico</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">PANAMÁ VIEJO Y PATRIMONIO HISTÓRICO</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar City Tour</span> <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://res.cloudinary.com/simpleview/image/upload/v1719597705/clients/panama-update/Viewpoint_at_Metropolitan_Natural_Park_Panama_City_Panama_Province_Panam__5f5ba5c1-ff2a-4683-9ad5-820e579146a1.jpg" alt="Parques Naturales">
+                        <span class="bento-badge">Ecoturismo</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">PARQUES, NATURALEZA Y MIRADORES</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar City Tour</span> <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BENTO SECCIÓN 4: DESTINOS TURÍSTICOS NACIONALES -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-subtitle">Explora el País</span>
+                <h2 class="section-title">Visita DESTINOS TURÍSTICOS DE PANAMÁ</h2>
+            </div>
+            <div class="bento-grid-3">
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://gruporesidencial.com/wp-content/uploads/2024/05/camilo-pinaud-HNFU3E1E4do-unsplash-scaled-1.jpg" alt="Panamá Oeste Playas">
+                        <span class="bento-badge">Pacífico Costa</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">PANAMÁ OESTE: Playas y destinos costeros</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Explorar Destino</span> <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfODuO4Iviy-MJa4KyeV3oCKJidLD2vFQay2GVIxHncjh7wNj07gdBAJ8&s=10" alt="Montañas y Naturaleza">
+                        <span class="bento-badge">Ecoturismo</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">Montañas, pueblos y naturaleza</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Explorar Destino</span> <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,f_jpg,g_xy_center,h_325,q_65,w_640,x_2520,y_724/v1/clients/panama/Portobelo_603f21aa-4673-456e-8255-41a298dbd51a.jpg" alt="Provincia de Colón">
+                        <span class="bento-badge">Caribe Histórico</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">PROVINCIA DE COLÓN: Caribe e Historia</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Explorar Destino</span> <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://vetevolutionpanama.com/wp-content/uploads/2025/09/Turismo-Panama-Vet-Evolution-2026-900x800-3.webp" alt="Historia y Turismo">
+                        <span class="bento-badge">Cultura & Aventura</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">Historia y turismo de aventura</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Explorar Destino</span> <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/2e/0a/89/hotel-playa-blanca-beach.jpg?w=1200&h=-1&s=1" alt="Provincia de Coclé">
+                        <span class="bento-badge">Resorts & Playas</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">PROVINCIA DE COCLÉ: Playas y resorts</div>
+                        <a href="contacto.html" class="btn-bento-action"><span>Explorar Destino</span> <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CARRUSEL PROFESIONAL DE LAS 39 UNIDADES -->
+        <section class="section" style="background-color: var(--color-white); border-radius: 30px;">
+            <div class="section-header">
+                <span class="section-subtitle" data-i18n="fleet_subtitle">Nuestra Flota</span>
+                <h2 class="section-title" data-i18n="fleet_title">Conoce Nuestras Unidades</h2>
+            </div>
+            <div class="fleet-container" id="fleetContainer">
+                <div class="carousel-progress-bar" id="progressBar"></div>
+                <button class="carousel-arrow carousel-prev" id="prevBtn" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-track" id="carouselTrack">
+                    <!-- Las 39 imágenes exactas de la flota -->
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/7hh27pvr/AM.jpg" alt="Unidad 1"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/mgCFQYnr/AM1.jpg" alt="Unidad 2"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/vmvgKQM7/AM2.jpg" alt="Unidad 3"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/Hs7Jg0dt/AM3.jpg" alt="Unidad 4"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/ZqJ0p13q/AM4.jpg" alt="Unidad 5"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/k5wGcfFx/AM5.jpg" alt="Unidad 6"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/tJng9y0v/AM6.jpg" alt="Unidad 7"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/9XDPD7cD/AM7.jpg" alt="Unidad 8"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/L6fzTFYM/AM8.jpg" alt="Unidad 9"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/JhTJn1gD/AM9.jpg" alt="Unidad 10"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/8596RZNK/AM10.jpg" alt="Unidad 11"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/QxL7VY6K/AM11.jpg" alt="Unidad 12"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/fT4dkqHg/AM12.jpg" alt="Unidad 13"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/W1TJwFct/AM13.jpg" alt="Unidad 14"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/k556L051/AM14.jpg" alt="Unidad 15"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/43F7GW71/AM15.jpg" alt="Unidad 16"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/FsQfhdRP/AM16.jpg" alt="Unidad 17"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/fRzJ0GYz/AM17.jpg" alt="Unidad 18"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/Gp9tXv7d/AM18.jpg" alt="Unidad 19"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/YSV9ZjZs/AM19.jpg" alt="Unidad 20"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/SRbKQ3ys/AM20.jpg" alt="Unidad 21"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/X78v3stW/21.jpg" alt="Unidad 22"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/cLLLJQNR/AM22.jpg" alt="Unidad 23"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/GpB3FdtY/AM23.jpg" alt="Unidad 24"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/0QD84npN/AM24.jpg" alt="Unidad 25"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/0jv81Sfn/AM25.jpg" alt="Unidad 26"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/2jdkFHkH/AM27.jpg" alt="Unidad 27"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/tC298YVb/AM27.jpg" alt="Unidad 28"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/y8x7KsFm/AM28.jpg" alt="Unidad 29"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/P57Tr947/AM29.jpg" alt="Unidad 30"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/s2ZyBmH7/AM30.jpg" alt="Unidad 31"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/TwV60w6y/AM31.jpg" alt="Unidad 32"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/x8gSr48s/AM32.jpg" alt="Unidad 33"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/brLjXBdr/AM33.jpg" alt="Unidad 34"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/MKP8dNhb/AM34.jpg" alt="Unidad 35"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/MGR2ZTX0/AM35.jpg" alt="Unidad 36"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/tJqLzNkD/AM36.jpg" alt="Unidad 37"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/285sbTV4/AM37.jpg" alt="Unidad 38"></div>
+                    <div class="carousel-slide"><img src="https://i.postimg.cc/T3LBQwjP/AM38.jpg" alt="Unidad 39"></div>
+                </div>
+                <button class="carousel-arrow carousel-next" id="nextBtn" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+                <div class="carousel-counter" id="carouselCounter">1 / 39</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/50768938639?text=Hola,%20deseo%20consultar%20sobre%20las%20unidades%20disponibles" class="whatsapp-float" target="_blank" id="whatsappFloatingBtn" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4 data-i18n="footer_title">H.G.Travel & Tours Panamá</h4>
+                <p data-i18n="footer_desc">Empresa líder en servicios de transporte privado, traslados corporativos y tours personalizados en toda la República de Panamá.</p>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footer_contact">Contacto Oficial</h4>
+                <p><i class="fas fa-phone"></i> +507 6893-8639</p>
+                <p><i class="fas fa-envelope"></i> henrygonz27@hotmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> <span data-i18n="footer_city">Ciudad de Panamá, Panamá</span></p>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footer_nav">Navegación</h4>
+                <ul>
+                    <li><a href="index.html" data-i18n="nav_home">Inicio</a></li>
+                    <li><a href="somos.html" data-i18n="nav_about">Quiénes Somos</a></li>
+                    <li><a href="contacto.html" data-i18n="nav_contact">Contacto y Reservas</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footer_rights">&copy; 2026 H.G.Travel & Tours Panamá. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT DE TRADUCCIÓN Y CARRUSEL -->
+    <script>
+        const translations = {
+            es: {
+                nav_home: "Inicio",
+                nav_about: "Quiénes Somos",
+                nav_contact: "Contacto y Cotización",
+                nav_reserve: "Reservar Servicio",
+                hero_title: "Transporte Privado & Tours VIP en Panamá",
+                hero_desc: "Traslados ejecutivos aeroportuarios, circuitos corporativos, viajes interprovinciales y experiencias turísticas personalizadas con flota de estándar internacional.",
+                btn_quote: "Cotizar Traslado",
+                btn_whatsapp: "Chat Directo",
+                serv_subtitle: "Servicios Especializados",
+                serv_title: "Soluciones Integrales de Movilidad",
+                s1_title: "Traslados Aeroportuarios",
+                s1_desc: "Recepciones en Aeropuerto Internacional de Tocumen (PTY), Marcos A. Gelabert (Albrook) y Panamá Pacífico hacia cualquier punto de la ciudad o del interior.",
+                s2_title: "Transporte Ejecutivo VIP",
+                s2_desc: "Vehículos acondicionados para corporativos, delegaciones diplomáticas y eventos de alto nivel con chóferes bilingües profesionales.",
+                s3_title: "Terminales de Cruceros",
+                s3_desc: "Conexiones eficientes con el Puerto de Cruceros de Amador y la Terminal de Colón 2000 para pasajeros y equipajes de grupo.",
+                s4_title: "Tours & Circuitos Nacionales",
+                s4_desc: "Recorridos por Casco Antiguo, Canal de Panamá, San Blas, El Valle de Antón, Boquete y principales playas del Pacífico y Caribe.",
+                fleet_subtitle: "Nuestra Flota",
+                fleet_title: "Conoce Nuestras Unidades",
+                footer_title: "H.G.Travel & Tours Panamá",
+                footer_desc: "Empresa líder en servicios de transporte privado, traslados corporativos y tours personalizados en toda la República de Panamá.",
+                footer_contact: "Contacto Oficial",
+                footer_city: "Ciudad de Panamá, Panamá",
+                footer_nav: "Navegación",
+                footer_rights: "&copy; 2026 H.G.Travel & Tours Panamá. Todos los derechos reservados."
+            },
+            en: {
+                nav_home: "Home",
+                nav_about: "About Us",
+                nav_contact: "Contact & Quote",
+                nav_reserve: "Book Service",
+                hero_title: "Private Transportation & VIP Tours in Panama",
+                hero_desc: "Airport executive transfers, corporate circuits, interprovincial trips, and personalized tourist experiences with an international standard fleet.",
+                btn_quote: "Quote Transfer",
+                btn_whatsapp: "Direct Chat",
+                serv_subtitle: "Specialized Services",
+                serv_title: "Comprehensive Mobility Solutions",
+                s1_title: "Airport Transfers",
+                s1_desc: "Receptions at Tocumen International Airport (PTY), Marcos A. Gelabert (Albrook), and Panamá Pacífico to any point in the city or the interior.",
+                s2_title: "VIP Executive Transport",
+                s2_desc: "Vehicles conditioned for corporations, diplomatic delegations, and high-level events with professional bilingual drivers.",
+                s3_title: "Cruise Terminals",
+                s3_desc: "Efficient connections with the Amador Cruise Port and the Colón 2000 Terminal for passengers and group luggage.",
+                s4_title: "Tours & National Circuits",
+                s4_desc: "Tours of Casco Antiguo, Panama Canal, San Blas, El Valle de Antón, Boquete, and main Pacific and Caribbean beaches.",
+                fleet_subtitle: "Our Fleet",
+                fleet_title: "Meet Our Units",
+                footer_title: "H.G.Travel & Tours Panama",
+                footer_desc: "Leading company in private transportation services, corporate transfers, and personalized tours throughout the Republic of Panama.",
+                footer_contact: "Official Contact",
+                footer_city: "Panama City, Panama",
+                footer_nav: "Navigation",
+                footer_rights: "&copy; 2026 H.G.Travel & Tours Panama. All rights reserved."
+            }
+        };
+
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            localStorage.setItem('preferred_lang', lang);
+        }
+
+        document.getElementById('langSwitch').addEventListener('change', (e) => {
+            changeLanguage(e.target.value);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferred_lang') || 'es';
+            document.getElementById('langSwitch').value = savedLang;
+            changeLanguage(savedLang);
+        });
+
+        // Lógica del Carrusel
+        const track = document.getElementById('carouselTrack');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const counter = document.getElementById('carouselCounter');
+        const progressBar = document.getElementById('progressBar');
+        const totalSlides = slides.length;
+        let currentIndex = 0;
+        let slideInterval;
+        let progressInterval;
+        const intervalTime = 5000;
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            counter.textContent = `${currentIndex + 1} / ${totalSlides}`;
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+            resetProgressBar();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+            resetProgressBar();
+        }
+
+        function startAutoSlide() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, intervalTime);
+            startProgressBar();
+        }
+
+        function resetAutoSlide() {
+            clearInterval(slideInterval);
+            startAutoSlide();
+        }
+
+        function startProgressBar() {
+            clearInterval(progressInterval);
+            progressBar.style.transition = 'none';
+            progressBar.style.width = '0%';
+            
+            setTimeout(() => {
+                progressBar.style.transition = `width ${intervalTime}ms linear`;
+                progressBar.style.width = '100%';
+            }, 50);
+        }
+
+        function resetProgressBar() {
+            startProgressBar();
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            nextSlide();
+            resetAutoSlide();
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            prevSlide();
+            resetAutoSlide();
+        });
+
+        const container = document.getElementById('fleetContainer');
+        container.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+            clearInterval(progressInterval);
+            progressBar.style.transition = 'none';
+        });
+        
+        container.addEventListener('mouseleave', () => {
+            startAutoSlide();
+        });
+
+        document.getElementById('mobile-menu').addEventListener('click', () => {
+            document.getElementById('nav-menu').classList.toggle('active');
+        });
+
+        updateCarousel();
+        startAutoSlide();
+    </script>
+</body>
+</html>
