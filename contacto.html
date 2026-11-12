@@ -3,445 +3,1481 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel Administrativo | H.G.Travel & Tours Panamá</title>
+    <title>Contacto y Cotización | H.G.Travel & Tours Panamá</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://i.postimg.cc/gJdFBW42/Whats-App-Image-2026-11-05-at-11-18-28-AM-removebg-preview.png">
     
-    <!-- Google Fonts, Font Awesome & Chart.js -->
+    <!-- Google Fonts & Font Awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- CSS UI/UX Dashboard Bento Style & Dark/Light Theme -->
+    <!-- CSS Consolidado HTML5 & Diseño Profesional -->
     <style>
         :root {
             --color-dark-navy: #0A1931;
             --color-deep-blue: #1A3D63;
             --color-mid-blue: #4A7FA7;
             --color-soft-blue: #B3CFE5;
-            --color-light-bg: #F4F8FB;
+            --color-light-bg: #F6FAFD;
             --color-white: #FFFFFF;
-            --text-main: #0A1931;
-            --card-bg: #FFFFFF;
-            --border-color: #E2ECF5;
             --font-main: 'Montserrat', sans-serif;
-            --transition: all 0.3s ease;
-            --box-shadow: 0 10px 30px rgba(10, 25, 49, 0.05);
-            --card-shadow: 0 15px 35px rgba(10, 25, 49, 0.08);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --box-shadow: 0 20px 40px rgba(10, 25, 49, 0.12);
         }
 
-        body.dark-theme {
-            --color-dark-navy: #0B132B;
-            --color-deep-blue: #1C2541;
-            --color-mid-blue: #475569;
-            --color-soft-blue: #334155;
-            --color-light-bg: #070A13;
-            --color-white: #111827;
-            --text-main: #F8FAFC;
-            --card-bg: #111827;
-            --border-color: #1F2937;
-            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-main);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); }
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             background-color: var(--color-light-bg);
-            color: var(--text-main);
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            color: var(--color-dark-navy);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* LOGIN OVERLAY */
-        #loginOverlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(10, 25, 49, 0.95);
-            display: flex; align-items: center; justify-content: center;
-            z-index: 2000; padding: 1rem;
-        }
-
-        .login-card {
-            background: var(--card-bg);
-            padding: 3.5rem 3rem;
-            border-radius: 20px;
-            width: 100%; max-width: 450px;
-            box-shadow: var(--box-shadow);
-            border-top: 6px solid var(--color-mid-blue);
-            text-align: center;
-        }
-
-        .login-card h2 { color: var(--text-main); margin-bottom: 1.8rem; font-size: 2rem; }
-
-        /* SIDEBAR BENTO */
-        sidebar {
-            width: 300px;
+        /* HEADER & NAVIGATION */
+        header {
             background-color: var(--color-dark-navy);
-            color: #FFFFFF;
-            display: flex; flex-direction: column; justify-content: space-between;
-            padding: 2.5rem 1.8rem;
-            box-shadow: 4px 0 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
 
-        .sidebar-brand { display: flex; align-items: center; gap: 15px; margin-bottom: 3rem; }
-        .sidebar-brand img { height: 50px; }
-        .sidebar-brand h3 { font-size: 1.1rem; color: #FFFFFF; }
-        .sidebar-brand span { color: var(--color-soft-blue); font-size: 0.75rem; display: block; }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0.8rem 2rem;
+        }
 
-        .sidebar-menu { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; flex-grow: 1; overflow-y: auto; }
-        .sidebar-item a {
-            display: flex; align-items: center; gap: 15px;
-            color: var(--color-soft-blue); text-decoration: none;
-            padding: 1rem 1.2rem; border-radius: 12px; font-weight: 600; font-size: 1rem;
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-logo img {
+            height: 55px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .brand-title {
+            color: var(--color-white);
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-title span {
+            color: var(--color-soft-blue);
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 400;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.8rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--color-white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--color-soft-blue);
+        }
+
+        .lang-selector {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--color-soft-blue);
+            color: var(--color-white);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
             transition: var(--transition);
         }
 
-        .sidebar-item a:hover, .sidebar-item a.active { background-color: var(--color-deep-blue); color: #FFFFFF; }
-
-        .btn-logout {
-            background: rgba(231, 76, 60, 0.2); color: #e74c3c; border: none; padding: 1rem;
-            border-radius: 12px; cursor: pointer; font-weight: 600; display: flex; align-items: center;
-            justify-content: center; gap: 10px; font-size: 1rem; transition: var(--transition);
-        }
-        .btn-logout:hover { background: #e74c3c; color: #FFFFFF; }
-
-        /* MAIN CONTENT */
-        .main-content { flex-grow: 1; display: flex; flex-direction: column; overflow-y: auto; }
-
-        .top-navbar {
-            background-color: var(--card-bg); padding: 1.5rem 3rem;
-            display: flex; justify-content: space-between; align-items: center;
-            box-shadow: var(--box-shadow); flex-wrap: wrap; gap: 15px;
-            border-bottom: 1px solid var(--border-color);
+        .lang-selector option {
+            background-color: var(--color-dark-navy);
+            color: var(--color-white);
         }
 
-        .top-navbar h2 { color: var(--text-main); font-size: 1.7rem; font-weight: 700; }
-        .top-nav-actions { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
-
-        .btn-refresh {
-            background-color: #27ae60; color: #FFFFFF; border: none;
-            padding: 0.7rem 1.2rem; border-radius: 10px; font-size: 0.95rem; font-weight: 600;
-            cursor: pointer; display: flex; align-items: center; gap: 8px; transition: var(--transition);
+        .lang-selector:hover {
+            background: var(--color-mid-blue);
         }
 
-        .btn-test-bell {
-            background-color: var(--color-mid-blue); color: #FFFFFF; border: none;
-            padding: 0.7rem 1.2rem; border-radius: 10px; font-size: 0.95rem; font-weight: 600;
-            cursor: pointer; display: flex; align-items: center; gap: 8px; transition: var(--transition);
+        .btn-nav-quote {
+            background-color: var(--color-mid-blue);
+            color: var(--color-white);
+            padding: 0.6rem 1.4rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
         }
 
-        .btn-theme-toggle {
-            background-color: var(--color-deep-blue); color: #FFFFFF; border: none;
-            padding: 0.7rem 1.2rem; border-radius: 10px; font-size: 0.95rem; font-weight: 600;
-            cursor: pointer; display: flex; align-items: center; gap: 8px; transition: var(--transition);
+        .btn-nav-quote:hover {
+            background-color: var(--color-deep-blue);
         }
 
-        .user-info { font-weight: 600; color: var(--text-main); font-size: 1rem; }
-        .content-body { padding: 3rem; flex-grow: 1; }
-        .tab-section { display: none; }
-        .tab-section.active { display: block; }
-
-        /* BENTO STATS & GRID LAYOUT */
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.8rem;
-            margin-bottom: 2.5rem;
+        .menu-toggle {
+            display: none;
+            color: var(--color-white);
+            font-size: 1.8rem;
+            cursor: pointer;
         }
 
-        .stat-card {
-            background-color: var(--card-bg);
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: var(--card-shadow);
-            border: 1px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .stat-card h4 { color: var(--color-mid-blue); font-size: 0.95rem; margin-bottom: 0.8rem; text-transform: uppercase; font-weight: 700; }
-        .stat-card .number { font-size: 2.5rem; font-weight: 800; color: var(--text-main); }
-
-        .dashboard-chart-bento {
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: var(--card-shadow);
-            border: 1px solid var(--border-color);
-            max-width: 650px;
-            margin: 0 auto 2.5rem auto;
+        /* PAGE HERO */
+        .page-hero {
+            background: linear-gradient(135deg, rgba(10, 25, 49, 0.95), rgba(26, 61, 99, 0.9)), url('https://i.postimg.cc/7hh27pvr/AM.jpg') center/cover no-repeat;
+            color: var(--color-white);
+            padding: 4.5rem 2rem;
             text-align: center;
         }
 
-        /* TARJETAS FLOTANTES DE SOLICITUDES BENTO */
-        .cards-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 2rem; margin-top: 1rem;
+        .page-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
         }
 
-        .floating-card {
-            background-color: var(--card-bg); border-radius: 20px; padding: 2rem;
-            box-shadow: var(--card-shadow); border: 1px solid var(--border-color);
-            transition: var(--transition); display: flex; flex-direction: column; justify-content: space-between;
-        }
-        .floating-card:hover { transform: translateY(-5px); box-shadow: 0 20px 45px rgba(10, 25, 49, 0.15); }
-
-        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; }
-        .card-client-name { font-size: 1.3rem; font-weight: 700; color: var(--text-main); }
-        .card-client-email { font-size: 0.9rem; color: var(--color-mid-blue); display: block; margin-top: 2px; }
-
-        .card-body { font-size: 0.95rem; color: var(--text-main); margin-bottom: 1.5rem; }
-        .card-info-item { margin-bottom: 0.7rem; line-height: 1.5; }
-        .card-info-item strong { color: var(--color-mid-blue); }
-
-        .card-reply-box { margin-top: 1.2rem; border-top: 1px dashed var(--color-soft-blue); padding-top: 1.2rem; }
-        .reply-textarea {
-            width: 100%; height: 95px; padding: 0.9rem; border: 2px solid var(--border-color);
-            border-radius: 12px; font-size: 0.95rem; resize: vertical; outline: none; margin-bottom: 0.8rem;
-            background-color: var(--color-light-bg); color: var(--text-main);
+        .page-hero p {
+            font-size: 1.1rem;
+            color: var(--color-soft-blue);
+            max-width: 700px;
+            margin: 0 auto;
         }
 
-        .file-attachment-box {
-            margin-bottom: 1rem; font-size: 0.9rem; background: var(--color-light-bg);
-            padding: 12px; border-radius: 10px; border: 1px dashed var(--color-mid-blue);
-        }
-        .file-attachment-box label { font-weight: 600; color: var(--color-mid-blue); display: block; margin-bottom: 6px; }
-
-        .action-buttons-row { display: flex; gap: 12px; margin-top: 10px; }
-
-        .btn-send-whatsapp {
-            background-color: #25D366; color: #FFFFFF; border: none; flex: 1;
-            padding: 0.8rem; border-radius: 12px; font-size: 0.95rem; font-weight: 700;
-            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+        /* SECTION STYLING */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
         }
 
-        .btn-reject-card {
-            background-color: #e74c3c; color: #FFFFFF; border: none;
-            padding: 0.8rem; border-radius: 12px; font-size: 0.95rem; font-weight: 700;
-            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 3.5rem;
+            align-items: start;
         }
 
-        /* TABLAS HISTORIAL BENTO */
-        .data-table-container { background-color: var(--card-bg); border-radius: 20px; box-shadow: var(--card-shadow); border: 1px solid var(--border-color); overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; text-align: left; min-width: 750px; }
-        th, td { padding: 1.3rem 1.5rem; border-bottom: 1px solid var(--border-color); font-size: 0.98rem; color: var(--text-main); }
-        th { background-color: var(--color-deep-blue); color: #FFFFFF; font-weight: 600; }
-        tr:hover { background-color: var(--color-light-bg); }
+        .contact-info-box {
+            background: var(--color-white);
+            padding: 3rem 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--box-shadow);
+            border-top: 5px solid var(--color-mid-blue);
+            margin-bottom: 2rem;
+        }
 
-        /* GESTORES Y FORMULARIOS */
+        .contact-info-box h3 {
+            font-size: 1.6rem;
+            color: var(--color-dark-navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 1.8rem;
+        }
+
+        .contact-info-item i {
+            font-size: 1.4rem;
+            color: var(--color-mid-blue);
+            margin-top: 3px;
+        }
+
+        .contact-info-item strong {
+            display: block;
+            color: var(--color-dark-navy);
+            font-size: 1.05rem;
+        }
+
+        .contact-info-item span {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        /* AVISO DE ZONA DE COBERTURA */
+        .coverage-box {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--box-shadow);
+            border-left: 5px solid #27ae60;
+        }
+
+        .coverage-box h4 {
+            color: var(--color-dark-navy);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+        }
+
+        .coverage-box p {
+            font-size: 0.92rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* FORMULARIO DE COTIZACIÓN */
+        .quote-form-box {
+            background: var(--color-white);
+            padding: 3rem 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--box-shadow);
+            border-top: 5px solid var(--color-deep-blue);
+        }
+
+        .quote-form-box h3 {
+            font-size: 1.6rem;
+            color: var(--color-dark-navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--color-dark-navy);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
         .form-control {
-            width: 100%; padding: 0.9rem 1.1rem; border: 2px solid var(--border-color);
-            border-radius: 12px; margin-bottom: 1.2rem; outline: none; background-color: var(--color-light-bg); color: var(--text-main); font-size: 1rem;
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 2px solid var(--color-soft-blue);
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+            background-color: var(--color-light-bg);
         }
-        .btn-action { background-color: var(--color-mid-blue); color: #FFFFFF; border: none; padding: 0.8rem 1.5rem; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 1rem; transition: var(--transition); }
-        .btn-action:hover { opacity: 0.9; }
-        .badge { padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
-        .badge-es { background: #e8f4fd; color: #1a73e8; }
-        .badge-en { background: #e6f4ea; color: #137333; }
 
-        .employee-list-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; border-bottom: 1px solid var(--border-color); font-size: 0.95rem; }
+        .form-control:focus {
+            border-color: var(--color-deep-blue);
+            background-color: var(--color-white);
+        }
 
-        .mobile-menu-btn { display: none; background: none; border: none; color: var(--text-main); font-size: 1.8rem; cursor: pointer; }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
 
+        /* INPUT GRUPO TELÉFONO CON CÓDIGO DE PAÍS */
+        .phone-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .country-select {
+            flex: 1 1 40%;
+            font-size: 0.9rem;
+        }
+
+        .custom-code-input {
+            flex: 1 1 25%;
+            display: none;
+        }
+
+        .phone-input {
+            flex: 1 1 30%;
+        }
+
+        /* GRID DE PASAJEROS (TRIPULANTES) */
+        .passengers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .passenger-item label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-deep-blue);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            height: 110px;
+        }
+
+        /* WAPPER PARA UBICACIÓN PERSONALIZADA CON BOTÓN "+" */
+        .custom-location-wrapper {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn-plus {
+            background-color: var(--color-mid-blue);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .btn-plus:hover {
+            background-color: var(--color-deep-blue);
+        }
+
+        .btn-submit {
+            background-color: var(--color-deep-blue);
+            color: var(--color-white);
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--color-mid-blue);
+            transform: translateY(-2px);
+        }
+
+        .btn-submit.success {
+            background-color: #137333 !important;
+            cursor: default;
+            transform: none !important;
+        }
+
+        /* WHATSAPP FLOATING BUTTON */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 32px;
+            box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--color-dark-navy);
+            color: var(--color-white);
+            padding: 4rem 2rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            color: var(--color-soft-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-col p, .footer-col li {
+            font-size: 0.9rem;
+            color: #CCC;
+            margin-bottom: 0.6rem;
+            list-style: none;
+        }
+
+        .footer-col a {
+            color: #CCC;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--color-soft-blue);
+        }
+
+        .footer-bottom {
+            max-width: 1300px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        /* RESPONSIVE DESIGN */
         @media (max-width: 900px) {
-            body { flex-direction: column; height: auto; overflow: auto; }
-            sidebar { width: 100%; padding: 1rem; display: none; }
-            sidebar.active { display: flex; }
-            .main-content { height: auto; overflow: visible; }
-            .mobile-menu-btn { display: block; }
-            .top-navbar { padding: 1rem; }
-            .content-body { padding: 1.5rem; }
-            .bento-grid { grid-template-columns: 1fr; }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--color-dark-navy);
+                flex-direction: column;
+                padding: 2rem;
+                transition: var(--transition);
+            }
+            .nav-menu.active { left: 0; }
+            .page-hero h1 { font-size: 2rem; }
+            .phone-group { flex-direction: column; }
+            .country-select, .custom-code-input, .phone-input { width: 100%; }
+            .passengers-grid { grid-template-columns: 1fr; }
+            .grid-2 { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- MODAL LOGIN -->
-    <div id="loginOverlay">
-        <div class="login-card">
-            <h2>Acceso Administrativo</h2>
-            <form id="loginForm">
-                <input type="email" id="loginEmail" class="form-control" placeholder="Correo electrónico" required>
-                <input type="password" id="loginPassword" class="form-control" placeholder="Contraseña" required>
-                <button type="submit" class="btn-action" style="width: 100%; padding: 1rem; font-size: 1.1rem;">Iniciar Sesión</button>
-            </form>
-            <div id="loginError" style="color: #e74c3c; font-size: 0.9rem; margin-top: 12px;"></div>
-        </div>
-    </div>
-
-    <!-- SIDEBAR BENTO -->
-    <sidebar id="sidebarNav">
-        <div>
-            <div class="sidebar-brand">
-                <img src="https://i.postimg.cc/gJdFBW42/Whats-App-Image-2026-11-05-at-11-18-28-AM-removebg-preview.png" alt="Logo">
-                <div>
-                    <h3>H.G.Travel & Tours</h3>
-                    <span>Panel de Control</span>
+    <!-- HEADER / NAVIGATION -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="brand-logo">
+                <img src="https://i.postimg.cc/gJdFBW42/Whats-App-Image-2026-11-05-at-11-18-28-AM-removebg-preview.png" alt="H.G.Travel & Tours Logo">
+                <div class="brand-title">
+                    H.G.Travel & Tours
+                    <span>Panamá Private VIP Services</span>
                 </div>
+            </a>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
             </div>
-            <ul class="sidebar-menu">
-                <li class="sidebar-item"><a href="#" onclick="switchTab('resumen', event)" class="active"><i class="fas fa-chart-pie"></i> Resumen</a></li>
-                <li class="sidebar-item"><a href="#" onclick="switchTab('solicitudes', event)"><i class="fas fa-inbox"></i> Solicitudes</a></li>
-                <li class="sidebar-item"><a href="#" onclick="switchTab('historial', event)"><i class="fas fa-history"></i> Historial</a></li>
-                <li class="sidebar-item" id="navItemUsuarios"><a href="#" onclick="switchTab('usuarios', event)"><i class="fas fa-users-cog"></i> Gestor de Usuarios</a></li>
-                <li class="sidebar-item" id="navItemAvanzadas"><a href="#" onclick="switchTab('avanzadas', event)"><i class="fas fa-sliders-h"></i> Opciones Avanzadas</a></li>
-                <li class="sidebar-item" id="navItemCambiarPass"><a href="#" onclick="switchTab('cambiarPassEmp', event)"><i class="fas fa-key"></i> Cambiar Contraseña</a></li>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link" data-i18n="nav_home">Inicio</a></li>
+                <li><a href="somos.html" class="nav-link" data-i18n="nav_about">Quiénes Somos</a></li>
+                <li><a href="contacto.html" class="nav-link active" data-i18n="nav_contact">Contacto y Cotización</a></li>
+                <li><a href="contacto.html" class="btn-nav-quote" data-i18n="nav_reserve">Reservar Servicio</a></li>
+                <li>
+                    <select id="langSwitch" class="lang-selector" aria-label="Cambiar Idioma">
+                        <option value="es">🇪🇸 ES</option>
+                        <option value="en">🇺🇸 EN</option>
+                    </select>
+                </li>
             </ul>
-        </div>
-        <button type="button" class="btn-logout" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
-    </sidebar>
+        </nav>
+    </header>
 
     <!-- MAIN CONTENT -->
-    <div class="main-content">
-        <div class="top-navbar">
-            <div style="display: flex; align-items: center; gap: 15px;">
-                <button type="button" class="mobile-menu-btn" id="menuToggleBtn"><i class="fas fa-bars"></i></button>
-                <h2 id="pageTitle">Resumen General</h2>
-            </div>
-            <div class="top-nav-actions">
-                <button type="button" class="btn-theme-toggle" id="themeToggleBtn"><i class="fas fa-moon" id="themeIcon"></i> Modo</button>
-                <button type="button" class="btn-refresh" id="refreshBtn"><i class="fas fa-sync-alt"></i> Actualizar</button>
-                <button type="button" class="btn-test-bell" id="testBellBtn"><i class="fas fa-bell"></i> Campana</button>
-                <div class="user-info" id="adminUserEmail">Cargando usuario...</div>
-            </div>
-        </div>
+    <main>
+        <!-- PAGE HERO -->
+        <section class="page-hero">
+            <h1 data-i18n="contact_hero_title">Contacto & Cotización de Traslados</h1>
+            <p data-i18n="contact_hero_desc">Complete el formulario para solicitar su cotización personalizada o contáctenos directamente a través de nuestros canales oficiales.</p>
+        </section>
 
-        <div class="content-body">
-            
-            <!-- SECCIÓN: RESUMEN BENTO -->
-            <div id="tab-resumen" class="tab-section active">
-                <div class="bento-grid">
-                    <div class="stat-card">
-                        <h4>Total Solicitudes</h4>
-                        <div class="number" id="statTotal">0</div>
-                    </div>
-                    <div class="stat-card">
-                        <h4>Respondidas</h4>
-                        <div class="number" id="statRespondidas" style="color: #27ae60;">0</div>
-                    </div>
-                    <div class="stat-card">
-                        <h4>Pendientes</h4>
-                        <div class="number" id="statPendientes" style="color: #f39c12;">0</div>
-                    </div>
-                    <div class="stat-card">
-                        <h4>Rechazadas</h4>
-                        <div class="number" id="statRechazadas" style="color: #e74c3c;">0</div>
-                    </div>
-                </div>
-
-                <!-- GRÁFICO DE BARRAS 3D -->
-                <div class="dashboard-chart-bento">
-                    <h4 style="color: var(--text-main); margin-bottom: 1.2rem; font-size: 1.1rem;">Distribución por Idioma (ES / EN)</h4>
-                    <canvas id="languageBarChart"></canvas>
-                </div>
-            </div>
-
-            <!-- SECCIÓN: SOLICITUDES -->
-            <div id="tab-solicitudes" class="tab-section">
-                <h3 style="margin-bottom: 1.8rem; color: var(--text-main);">Bandeja de Solicitudes Pendientes</h3>
-                <div class="cards-grid" id="solicitudesCardsGrid"></div>
-            </div>
-
-            <!-- SECCIÓN: HISTORIAL -->
-            <div id="tab-historial" class="tab-section">
-                <h3 style="margin-bottom: 1.8rem; color: var(--text-main);">Historial de Cotizaciones</h3>
-                <div class="data-table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Cliente</th>
-                                <th>Contacto</th>
-                                <th>Trayecto / Destinos</th>
-                                <th>Pasajeros / Vuelo</th>
-                                <th>Estado / Respuesta</th>
-                                <th>Fecha</th>
-                            </tr>
-                        </thead>
-                        <tbody id="historialTableBody"></tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- SECCIÓN: GESTOR DE USUARIOS (SOLO ADMINISTRADOR) -->
-            <div id="tab-usuarios" class="tab-section">
-                <h3 style="margin-bottom: 1.8rem; color: var(--text-main);">Gestor de Personal y Seguridad (Administrador)</h3>
-                
-                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap:2.5rem;">
-                    <div style="background: var(--card-bg); padding: 2.5rem; border-radius: 20px; box-shadow: var(--card-shadow); border: 1px solid var(--border-color);">
-                        <h4 style="margin-bottom:1.2rem; color:var(--color-mid-blue); font-size: 1.2rem;"><i class="fas fa-user-plus"></i> Registrar Nuevo Empleado</h4>
-                        <form id="userCreateForm">
-                            <label style="font-weight: 600; font-size:0.95rem;">Nombre Completo</label>
-                            <input type="text" id="newUserName" class="form-control" placeholder="Ej. Ana Pérez" required>
-                            <label style="font-weight: 600; font-size:0.95rem;">Correo Electrónico</label>
-                            <input type="email" id="newUserEmail" class="form-control" placeholder="empleado@hgtravels.com" required>
-                            <label style="font-weight: 600; font-size:0.95rem;">Contraseña de Acceso</label>
-                            <input type="password" id="newUserPass" class="form-control" placeholder="Mínimo 6 caracteres" required minlength="6">
-                            <button type="submit" class="btn-action" style="width:100%;">Crear Empleado</button>
-                        </form>
-                    </div>
-
-                    <div style="background: var(--card-bg); padding: 2.5rem; border-radius: 20px; box-shadow: var(--card-shadow); border: 1px solid var(--border-color);">
-                        <h4 style="margin-bottom:1.2rem; color:var(--color-mid-blue); font-size: 1.2rem;"><i class="fas fa-users"></i> Empleados Registrados</h4>
-                        <div id="listaEmpleadosContainer" style="max-height: 250px; overflow-y: auto; margin-bottom: 1.5rem; border: 1px solid var(--border-color); border-radius: 12px;">
-                            <!-- Dinámico -->
+        <!-- CONTACT SECTION -->
+        <section class="section">
+            <div class="contact-grid">
+                <!-- INFORMACIÓN DE CONTACTO Y ZONA DE COBERTURA -->
+                <div>
+                    <div class="contact-info-box">
+                        <h3 data-i18n="info_box_title">Información Oficial</h3>
+                        
+                        <div class="contact-info-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <strong data-i18n="info_phone">Teléfono / WhatsApp</strong>
+                                <span>+507 6893-8639</span>
+                            </div>
                         </div>
-                        <h4 style="margin-bottom:1.2rem; color:var(--color-mid-blue); font-size: 1.2rem;"><i class="fas fa-key"></i> Cambiar mi Contraseña de Administrador</h4>
-                        <form id="changePasswordAdminForm">
-                            <label style="font-weight: 600; font-size:0.95rem;">Contraseña Actual</label>
-                            <input type="password" id="currentPassAdmin" class="form-control" placeholder="Contraseña actual" required>
-                            <label style="font-weight: 600; font-size:0.95rem;">Nueva Contraseña</label>
-                            <input type="password" id="newPassAdmin" class="form-control" placeholder="Nueva contraseña" required minlength="6">
-                            <button type="submit" class="btn-action" style="width:100%; background:#27ae60;">Actualizar Contraseña</button>
-                        </form>
+
+                        <div class="contact-info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong data-i18n="info_email">Correo Electrónico</strong>
+                                <span>henrygonz27@hotmail.com</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong data-i18n="info_location">Ubicación Principal</strong>
+                                <span data-i18n="info_city">Ciudad de Panamá, República de Panamá</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong data-i18n="info_hours">Horario de Atención</strong>
+                                <span data-i18n="info_hours_val">Lunes a Domingo: 24 Horas (Atención Continuada)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AVISO DE ZONA DE COBERTURA -->
+                    <div class="coverage-box">
+                        <h4><i class="fas fa-map-marked-alt" style="color: #27ae60;"></i> Zonas de Cobertura Oficial</h4>
+                        <p>Bella Vista, Obarrio, El Cangrejo, Marbella, Avenida Balboa, Punta Pacífica, Punta Paitilla, San Francisco, Costa del Este, Casco Antiguo, Calidonia, Vía España, El Dorado, Albrook, Clayton, Amador, Ancón, Tocumen, Juan Díaz y Panamá Viejo.</p>
                     </div>
                 </div>
-            </div>
 
-            <!-- SECCIÓN: CAMBIAR CONTRASEÑA EMPLEADO -->
-            <div id="tab-cambiarPassEmp" class="tab-section">
-                <h3 style="margin-bottom: 1.8rem; color: var(--text-main);">Seguridad de Cuenta</h3>
-                <div style="background: var(--card-bg); padding: 2.5rem; border-radius: 20px; max-width: 550px; box-shadow: var(--card-shadow); border: 1px solid var(--border-color);">
-                    <h4 style="margin-bottom:1.2rem; color:var(--color-mid-blue); font-size: 1.2rem;"><i class="fas fa-key"></i> Cambiar mi Contraseña</h4>
-                    <form id="changePasswordEmpForm">
-                        <label style="font-weight: 600; font-size:0.95rem;">Contraseña Actual</label>
-                        <input type="password" id="currentPassEmp" class="form-control" placeholder="Ingrese contraseña actual" required>
-                        <label style="font-weight: 600; font-size:0.95rem;">Nueva Contraseña</label>
-                        <input type="password" id="newPassEmp" class="form-control" placeholder="Nueva contraseña" required minlength="6">
-                        <label style="font-weight: 600; font-size:0.95rem;">Confirmar Nueva Contraseña</label>
-                        <input type="password" id="confirmNewPassEmp" class="form-control" placeholder="Repita nueva contraseña" required minlength="6">
-                        <button type="submit" class="btn-action" style="width:100%; background:#27ae60;">Actualizar Contraseña</button>
+                <!-- FORMULARIO DE COTIZACIÓN -->
+                <div class="quote-form-box">
+                    <h3 data-i18n="form_title">Solicitar Cotización VIP</h3>
+                    <form id="quoteForm">
+                        <div class="form-group">
+                            <label for="clientName" data-i18n="form_name">Nombre Completo</label>
+                            <input type="text" id="clientName" class="form-control" required placeholder="Ej. Carlos Mendoza">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="clientEmail" data-i18n="form_email">Correo Electrónico</label>
+                            <input type="email" id="clientEmail" class="form-control" required placeholder="correo@ejemplo.com">
+                        </div>
+
+                        <!-- CAMPO DE TELÉFONO CON OPCIÓN MANUAL -->
+                        <div class="form-group">
+                            <label for="clientPhone" data-i18n="form_phone">Teléfono / WhatsApp</label>
+                            <div class="phone-group">
+                                <select id="countryCode" class="form-control country-select" required>
+                                    <option value="+507" selected>🇵🇦 Panamá (+507)</option>
+                                    <option value="+1">🇺🇸 Estados Unidos / Canadá (+1)</option>
+                                    <option value="+86">🇨🇳 China (+86)</option>
+                                    <option value="+41">🇨🇭 Suiza (+41)</option>
+                                    <option value="+31">🇳🇱 Países Bajos (+31)</option>
+                                    <option value="+44">🇬🇧 Reino Unido (+44)</option>
+                                    <option value="+81">🇯🇵 Japón (+81)</option>
+                                    <option value="+45">🇩🇰 Dinamarca (+45)</option>
+                                    <option value="+49">🇩🇪 Alemania (+49)</option>
+                                    <option value="+33">🇫🇷 Francia (+33)</option>
+                                    <option value="+34">🇪🇸 España (+34)</option>
+                                    <option value="+82">🇰🇷 Corea del Sur (+82)</option>
+                                    <option value="+57">🇨🇴 Colombia (+57)</option>
+                                    <option value="+52">🇲🇽 México (+52)</option>
+                                    <option value="+506">🇨🇷 Costa Rica (+506)</option>
+                                    <option value="+55">🇧🇷 Brasil (+55)</option>
+                                    <option value="+56">🇨🇱 Chile (+56)</option>
+                                    <option value="+51">🇵🇪 Perú (+51)</option>
+                                    <option value="+54">🇦🇷 Argentina (+54)</option>
+                                    <option value="+39">🇮🇹 Italia (+39)</option>
+                                    <option value="+32">🇧🇪 Bélgica (+32)</option>
+                                    <option value="+46">🇸🇪 Suecia (+46)</option>
+                                    <option value="+47">🇳🇴 Noruega (+47)</option>
+                                    <option value="+358">🇫🇮 Finlandia (+358)</option>
+                                    <option value="+353">🇮🇪 Irlanda (+353)</option>
+                                    <option value="+351">🇵🇹 Portugal (+351)</option>
+                                    <option value="+43">🇦🇹 Austria (+43)</option>
+                                    <option value="+352">🇱🇺 Luxemburgo (+352)</option>
+                                    <option value="+65">🇸🇬 Singapur (+65)</option>
+                                    <option value="+61">🇦🇺 Australia (+61)</option>
+                                    <option value="+64">🇳🇿 Nueva Zelanda (+64)</option>
+                                    <option value="+91">🇮🇳 India (+91)</option>
+                                    <option value="+972">🇮🇱 Israel (+972)</option>
+                                    <option value="+971">🇦🇪 Emiratos Árabes Unidos (+971)</option>
+                                    <option value="+90">🇹🇷 Turquía (+90)</option>
+                                    <option value="+27">🇿🇦 Sudáfrica (+27)</option>
+                                    <option value="+886">🇹🇼 Taiwán (+886)</option>
+                                    <option value="+852">🇭🇰 Hong Kong (+852)</option>
+                                    <option value="+598">🇺🇾 Uruguay (+598)</option>
+                                    <option value="+503">🇸🇻 El Salvador (+503)</option>
+                                    <option value="+502">🇬🇹 Guatemala (+502)</option>
+                                    <option value="+504">🇭🇳 Honduras (+504)</option>
+                                    <option value="+505">🇳🇮 Nicaragua (+505)</option>
+                                    <option value="+1-809">🇩🇴 Rep. Dominicana (+1-809)</option>
+                                    <option value="+1-868">🇹🇹 Trinidad y Tobago (+1-868)</option>
+                                    <option value="+1-340">🇻🇮 Islas Vírgenes (+1-340)</option>
+                                    <option value="+231">🇱🇷 Liberia (+231)</option>
+                                    <option value="custom">🌐 OTRO (+ Manual)</option>
+                                </select>
+                                <input type="text" id="customCountryCode" class="form-control custom-code-input" placeholder="+000">
+                                <input type="tel" id="clientPhoneInput" class="form-control phone-input" required placeholder="6000-0000">
+                            </div>
+                        </div>
+
+                        <!-- FECHA Y HORA DEL SERVICIO -->
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label for="tripDate"><i class="far fa-calendar-alt"></i> Fecha del Servicio</label>
+                                <input type="date" id="tripDate" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="tripTime"><i class="far fa-clock"></i> Hora del Servicio</label>
+                                <input type="time" id="tripTime" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <!-- EQUIPAJE Y NÚMERO DE VUELO -->
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label for="luggageCount"><i class="fas fa-suitcase-rolling"></i> Cantidad de Equipaje</label>
+                                <select id="luggageCount" class="form-control">
+                                    <option value="1-2 Maletas (Liviano)">1-2 Maletas (Liviano)</option>
+                                    <option value="3-4 Maletas (Estándar)">3-4 Maletas (Estándar)</option>
+                                    <option value="5+ Maletas (Familiar / Extra)">5+ Maletas (Familiar / Extra)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="flightNumber"><i class="fas fa-plane-arrival"></i> Número de Vuelo (Opcional)</label>
+                                <input type="text" id="flightNumber" class="form-control" placeholder="Ej. CM452 o PTY">
+                            </div>
+                        </div>
+
+                        <!-- DESGROSE DE TRIPULANTES Y PASAJEROS -->
+                        <div class="form-group">
+                            <label data-i18n="form_passengers_title">Cantidad de Tripulantes / Pasajeros</label>
+                            <div class="passengers-grid">
+                                <div class="passenger-item">
+                                    <label for="adultsCount" data-i18n="lbl_adults">Adultos (+12 años)</label>
+                                    <select id="adultsCount" class="form-control">
+                                        <option value="1">1</option>
+                                        <option value="2" selected>2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10+">10+</option>
+                                    </select>
+                                </div>
+                                <div class="passenger-item">
+                                    <label for="childrenCount" data-i18n="lbl_children">Niños (2 a 11 años)</label>
+                                    <select id="childrenCount" class="form-control">
+                                        <option value="0" selected>0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5+">5+</option>
+                                    </select>
+                                </div>
+                                <div class="passenger-item">
+                                    <label for="infantsCount" data-i18n="lbl_infants">Bebés (0 a 23 meses)</label>
+                                    <select id="infantsCount" class="form-control">
+                                        <option value="0" selected>0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3+">3+</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3 AEROPUERTOS PRINCIPALES -->
+                        <div class="form-group">
+                            <label for="airportSelect"><i class="fas fa-plane"></i> Aeropuerto Principal (Recogida / Destino)</label>
+                            <select id="airportSelect" class="form-control">
+                                <option value="">-- Seleccionar Aeropuerto (Si aplica) --</option>
+                                <option value="Aeropuerto Internacional de Tocumen">Aeropuerto Internacional de Tocumen</option>
+                                <option value="Aeropuerto Internacional Panamá Pacífico">Aeropuerto Internacional Panamá Pacífico</option>
+                                <option value="Aeropuerto Internacional Marcos A. Gelabert">Aeropuerto Internacional Marcos A. Gelabert (Albrook)</option>
+                            </select>
+                        </div>
+
+                        <!-- 1. DIRECTORIO DE HOTELES (CIUDAD DE PANAMÁ) - 155 HOTELES COMPLETOS -->
+                        <div class="form-group">
+                            <label for="hotelDestination"><i class="fas fa-hotel"></i> Directorio de Hoteles (Ciudad de Panamá)</label>
+                            <select id="hotelDestination" class="form-control">
+                                <option value="">-- Seleccionar Hotel del Directorio (155 Opciones) --</option>
+                                <optgroup label="HOTELES DE LUJO Y 5 ESTRELLAS">
+                                    <option value="1. Hotel Riu Plaza Panamá">1. Hotel Riu Plaza Panamá</option>
+                                    <option value="2. JW Marriott Panamá">2. JW Marriott Panamá</option>
+                                    <option value="3. The Westin Panamá">3. The Westin Panamá</option>
+                                    <option value="4. The Santa María, a Luxury Collection Hotel">4. The Santa María, a Luxury Collection Hotel</option>
+                                    <option value="5. W Panamá">5. W Panamá</option>
+                                    <option value="6. Waldorf Astoria Panamá">6. Waldorf Astoria Panamá</option>
+                                    <option value="7. Bristol Panamá">7. Bristol Panamá</option>
+                                    <option value="8. Sofitel Legend Casco Viejo">8. Sofitel Legend Casco Viejo</option>
+                                    <option value="9. Central Hotel Panamá">9. Central Hotel Panamá</option>
+                                    <option value="10. Hotel La Compañía">10. Hotel La Compañía</option>
+                                    <option value="11. American Trade Hotel">11. American Trade Hotel</option>
+                                    <option value="12. Global Hotel Panamá">12. Global Hotel Panamá</option>
+                                    <option value="13. Sortis Hotel Spa & Casino">13. Sortis Hotel Spa & Casino</option>
+                                    <option value="14. Megapolis Hotel Panamá">14. Megapolis Hotel Panamá</option>
+                                    <option value="15. Sheraton Grand Panamá">15. Sheraton Grand Panamá</option>
+                                    <option value="16. InterContinental Miramar Panamá">16. InterContinental Miramar Panamá</option>
+                                    <option value="17. Le Méridien Panamá">17. Le Méridien Panamá</option>
+                                    <option value="18. Hotel El Panamá by Faranda Grand">18. Hotel El Panamá by Faranda Grand</option>
+                                    <option value="19. Aloft Panamá">19. Aloft Panamá</option>
+                                    <option value="20. Eurostars Panamá City">20. Eurostars Panamá City</option>
+                                    <option value="21. Gran Evenia Panamá">21. Gran Evenia Panamá</option>
+                                    <option value="22. Hyatt Regency Panamá">22. Hyatt Regency Panamá</option>
+                                    <option value="23. Waymore Hotel Spa & Casino">23. Waymore Hotel Spa & Casino</option>
+                                    <option value="24. Renaissance Panama City Hotel">24. Renaissance Panama City Hotel</option>
+                                    <option value="25. Radisson Hotel Panamá Canal">25. Radisson Hotel Panamá Canal</option>
+                                    <option value="26. Las Américas Golden Tower">26. Las Américas Golden Tower</option>
+                                    <option value="27. Decapolis Hotel">27. Decapolis Hotel</option>
+                                    <option value="28. Marinn Place Financial District">28. Marinn Place Financial District</option>
+                                </optgroup>
+                                <optgroup label="HOTELES DE 4 ESTRELLAS Y EJECUTIVOS">
+                                    <option value="29. AC Hotel Panamá City">29. AC Hotel Panamá City</option>
+                                    <option value="30. Courtyard by Marriott Multiplaza">30. Courtyard by Marriott Multiplaza</option>
+                                    <option value="31. Courtyard by Marriott Metromall">31. Courtyard by Marriott Metromall</option>
+                                    <option value="32. Marriott Executive Apartments Finisterre">32. Marriott Executive Apartments Finisterre</option>
+                                    <option value="33. Residence Inn by Marriott">33. Residence Inn by Marriott</option>
+                                    <option value="34. Novotel Panamá City">34. Novotel Panamá City</option>
+                                    <option value="35. Best Western Plus Panamá Zen">35. Best Western Plus Panamá Zen</option>
+                                    <option value="36. Best Western El Dorado">36. Best Western El Dorado</option>
+                                    <option value="37. Holiday Inn Panamá Distrito Financiero">37. Holiday Inn Panamá Distrito Financiero</option>
+                                    <option value="38. Holiday Inn Panamá Canal">38. Holiday Inn Panamá Canal</option>
+                                    <option value="39. Plaza Paitilla Inn">39. Plaza Paitilla Inn</option>
+                                    <option value="40. Ramada Plaza by Wyndham Panamá Punta Pacífica">40. Ramada Plaza by Wyndham Panamá Punta Pacífica</option>
+                                    <option value="41. Wyndham Garden Panamá">41. Wyndham Garden Panamá</option>
+                                    <option value="42. The Executive Hotel">42. The Executive Hotel</option>
+                                    <option value="43. Riande Urban Hotel">43. Riande Urban Hotel</option>
+                                    <option value="44. Riande Granada Urban Hotel">44. Riande Granada Urban Hotel</option>
+                                    <option value="45. Torres de Alba Hotel & Suites">45. Torres de Alba Hotel & Suites</option>
+                                    <option value="46. Victoria Hotel & Suites">46. Victoria Hotel & Suites</option>
+                                    <option value="47. Tryp by Wyndham Panamá Centro">47. Tryp by Wyndham Panamá Centro</option>
+                                    <option value="48. Hilton Garden Inn Panamá">48. Hilton Garden Inn Panamá</option>
+                                    <option value="49. Hampton by Hilton Panamá">49. Hampton by Hilton Panamá</option>
+                                    <option value="50. Crowne Plaza Panamá">50. Crowne Plaza Panamá</option>
+                                    <option value="51. Hotel Mio Panamá">51. Hotel Mio Panamá</option>
+                                    <option value="52. Veneto Hotel & Casino">52. Veneto Hotel & Casino</option>
+                                    <option value="53. Plaza Herrera">53. Plaza Herrera</option>
+                                    <option value="54. La Concordia Boutique Hotel">54. La Concordia Boutique Hotel</option>
+                                    <option value="55. La Isabela Suites">55. La Isabela Suites</option>
+                                    <option value="56. Tantalo Hotel">56. Tantalo Hotel</option>
+                                    <option value="57. Hotel Magnolia Boutique">57. Hotel Magnolia Boutique</option>
+                                    <option value="58. Hotel Casa Miller">58. Hotel Casa Miller</option>
+                                    <option value="59. Hotel Coral Suites">59. Hotel Coral Suites</option>
+                                    <option value="60. Hotel Bahía Suites">60. Hotel Bahía Suites</option>
+                                    <option value="61. Hotel Roma Plaza">61. Hotel Roma Plaza</option>
+                                    <option value="62. Faranda Express Soloy">62. Faranda Express Soloy</option>
+                                    <option value="63. Summit Rainforest Golf Resort">63. Summit Rainforest Golf Resort</option>
+                                    <option value="64. Albrook Inn">64. Albrook Inn</option>
+                                    <option value="65. Central Park Hotel & Casino">65. Central Park Hotel & Casino</option>
+                                    <option value="66. Hotel Príncipe">66. Hotel Príncipe</option>
+                                    <option value="67. Ramada Vía Argentina">67. Ramada Vía Argentina</option>
+                                    <option value="68. Hotel Ojos del Río">68. Hotel Ojos del Río</option>
+                                    <option value="69. Nitro City Action Sports Resort">69. Nitro City Action Sports Resort</option>
+                                    <option value="70. Hotel Sevilla Suites">70. Hotel Sevilla Suites</option>
+                                    <option value="71. Hotel HSR">71. Hotel HSR</option>
+                                    <option value="72. Hotel San Remo">72. Hotel San Remo</option>
+                                    <option value="73. Hotel Oriental Panamá">73. Hotel Oriental Panamá</option>
+                                    <option value="74. Paitilla Panamá Apartments">74. Paitilla Panamá Apartments</option>
+                                </optgroup>
+                                <optgroup label="HOTELES DE 3 ESTRELLAS Y ECONÓMICOS">
+                                    <option value="75. Grand International Hotel">75. Grand International Hotel</option>
+                                    <option value="76. Cresta Inn">76. Cresta Inn</option>
+                                    <option value="77. Eurohotel">77. Eurohotel</option>
+                                    <option value="78. Hotel Terranova">78. Hotel Terranova</option>
+                                    <option value="79. Toscana Inn Hotel">79. Toscana Inn Hotel</option>
+                                    <option value="80. Hotel Marbella">80. Hotel Marbella</option>
+                                    <option value="81. Hotel California">81. Hotel California</option>
+                                    <option value="82. Hotel Ávila">82. Hotel Ávila</option>
+                                    <option value="83. Hotel Benidorm">83. Hotel Benidorm</option>
+                                    <option value="84. Hotel Caribe">84. Hotel Caribe</option>
+                                    <option value="85. Hotel Latino">85. Hotel Latino</option>
+                                    <option value="86. Hotel Milan">86. Hotel Milan</option>
+                                    <option value="87. Hotel Parador">87. Hotel Parador</option>
+                                    <option value="88. Hotel Centroamericano">88. Hotel Centroamericano</option>
+                                    <option value="89. Hotel Costa Azul">89. Hotel Costa Azul</option>
+                                    <option value="90. Hotel Costa Inn">90. Hotel Costa Inn</option>
+                                    <option value="91. Hotel Andino">91. Hotel Andino</option>
+                                    <option value="92. Hotel 2 Mares">92. Hotel 2 Mares</option>
+                                    <option value="93. Hotel Vía España">93. Hotel Vía España</option>
+                                    <option value="94. Tower House Suites">94. Tower House Suites</option>
+                                    <option value="95. Suites Ambassador">95. Suites Ambassador</option>
+                                    <option value="96. Hotel Casa Panamá">96. Hotel Casa Panamá</option>
+                                    <option value="97. Metro Hotel Panamá">97. Metro Hotel Panamá</option>
+                                    <option value="98. Innfiniti Hotel & Suites">98. Innfiniti Hotel & Suites</option>
+                                    <option value="99. Marinn Tropical Vibes">99. Marinn Tropical Vibes</option>
+                                    <option value="100. Canova Hotel">100. Canova Hotel</option>
+                                    <option value="101. Bay View Hotel">101. Bay View Hotel</option>
+                                    <option value="102. San Thomas Inn">102. San Thomas Inn</option>
+                                    <option value="103. Residencial México">103. Residencial México</option>
+                                    <option value="104. Residencial El Amanecer">104. Residencial El Amanecer</option>
+                                    <option value="105. Hotel Pensión Corona">105. Hotel Pensión Corona</option>
+                                    <option value="106. Pensión Anduriña">106. Pensión Anduriña</option>
+                                    <option value="107. Posada Casa Real">107. Posada Casa Real</option>
+                                    <option value="108. Residencial & Hotel Palazzo">108. Residencial & Hotel Palazzo</option>
+                                    <option value="109. Hotel Avicar">109. Hotel Avicar</option>
+                                    <option value="110. Hotel Riazor">110. Hotel Riazor</option>
+                                    <option value="111. Hotel Bella Vista">111. Hotel Bella Vista</option>
+                                    <option value="112. Hotel Oasis Casco Antiguo">112. Hotel Oasis Casco Antiguo</option>
+                                    <option value="113. Hotel San Felipe">113. Hotel San Felipe</option>
+                                    <option value="114. Art Casco The Hotel">114. Art Casco The Hotel</option>
+                                    <option value="115. AmazINN Panamá Casa Marroquí">115. AmazINN Panamá Casa Marroquí</option>
+                                    <option value="116. Casa Antigua Hotel">116. Casa Antigua Hotel</option>
+                                    <option value="117. Hotel Villa Palma">117. Hotel Villa Palma</option>
+                                    <option value="118. Amarla Boutique Hotel">118. Amarla Boutique Hotel</option>
+                                    <option value="119. Nomada Republic Hotel">119. Nomada Republic Hotel</option>
+                                    <option value="120. Corcho Rooms">120. Corcho Rooms</option>
+                                    <option value="121. Hostal Yoha">121. Hostal Yoha</option>
+                                </optgroup>
+                                <optgroup label="HOSTALES Y OTROS ALOJAMIENTOS">
+                                    <option value="122. Hotel Doral">122. Hotel Doral</option>
+                                    <option value="123. Hotel Lisboa">123. Hotel Lisboa</option>
+                                    <option value="124. Hotel Montreal">124. Hotel Montreal</option>
+                                    <option value="125. Hotel República">125. Hotel República</option>
+                                    <option value="126. Residencial Alameda">126. Residencial Alameda</option>
+                                    <option value="127. Residencial La Malvarrosa">127. Residencial La Malvarrosa</option>
+                                    <option value="128. Panama House Bed & Breakfast">128. Panama House Bed & Breakfast</option>
+                                    <option value="129. Hostal Gemar">129. Hostal Gemar</option>
+                                    <option value="130. Hostal Cigarra">130. Hostal Cigarra</option>
+                                    <option value="131. Hostel Casa Areka">131. Hostel Casa Areka</option>
+                                    <option value="132. Hostal Villa Grande">132. Hostal Villa Grande</option>
+                                    <option value="133. Hostal Mamallena">133. Hostal Mamallena</option>
+                                    <option value="134. Blu Hostel">134. Blu Hostel</option>
+                                    <option value="135. Zebulo Hostel">135. Zebulo Hostel</option>
+                                    <option value="136. Viajero Casco Viejo Hostel">136. Viajero Casco Viejo Hostel</option>
+                                    <option value="137. Bodhi Panamá">137. Bodhi Panamá</option>
+                                    <option value="138. Hostal Amador Familiar">138. Hostal Amador Familiar</option>
+                                    <option value="139. Hostal Armonía">139. Hostal Armonía</option>
+                                    <option value="140. Hostal El Prado">140. Hostal El Prado</option>
+                                    <option value="141. Hostal Posada 1914">141. Hostal Posada 1914</option>
+                                    <option value="142. Totumas Lodge">142. Totumas Lodge</option>
+                                    <option value="143. Hotel Caracas">143. Hotel Caracas</option>
+                                    <option value="144. Hotel Discovery">144. Hotel Discovery</option>
+                                    <option value="145. Hotel Villa del Mar">145. Hotel Villa del Mar</option>
+                                    <option value="146. Studio Coliving Hotel">146. Studio Coliving Hotel</option>
+                                    <option value="147. Hotel Acapulco">147. Hotel Acapulco</option>
+                                    <option value="148. Hotel Mar & Oro">148. Hotel Mar & Oro</option>
+                                    <option value="149. Hotel Hija del Conde">149. Hotel Hija del Conde</option>
+                                </optgroup>
+                                <optgroup label="HOTELES Y RESORTS FUERA DEL CENTRO DE LA CIUDAD">
+                                    <option value="150. Dreams Playa Bonita Panamá">150. Dreams Playa Bonita Panamá</option>
+                                    <option value="151. The Westin Playa Bonita">151. The Westin Playa Bonita</option>
+                                    <option value="152. Summit Rainforest Golf Resort">152. Summit Rainforest Golf Resort</option>
+                                    <option value="153. Radisson Hotel Panamá Canal">153. Radisson Hotel Panamá Canal</option>
+                                    <option value="154. Nitro City Action Sports Resort">154. Nitro City Action Sports Resort</option>
+                                    <option value="155. Taboga Palace Spa Hotel">155. Taboga Palace Spa Hotel</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <!-- 2. ATRACTIVOS Y CITY TOURS - 127 OPCIONES COMPLETAS -->
+                        <div class="form-group">
+                            <label for="attractionDestination"><i class="fas fa-camera-retro"></i> Atractivos y City Tours</label>
+                            <select id="attractionDestination" class="form-control">
+                                <option value="">-- Seleccionar Atractivo o City Tour (127 Opciones) --</option>
+                                <optgroup label="1. CASCO ANTIGUO Y CENTRO HISTÓRICO">
+                                    <option value="1. Casco Antiguo de Panamá">1. Casco Antiguo de Panamá</option>
+                                    <option value="2. Plaza de la Independencia">2. Plaza de la Independencia</option>
+                                    <option value="3. Catedral Basílica Santa María la Antigua">3. Catedral Basílica Santa María la Antigua</option>
+                                    <option value="4. Plaza Bolívar">4. Plaza Bolívar</option>
+                                    <option value="5. Plaza Herrera">5. Plaza Herrera</option>
+                                    <option value="6. Plaza Francia">6. Plaza Francia</option>
+                                    <option value="7. Plaza de Francia y Las Bóvedas">7. Plaza de Francia y Las Bóvedas</option>
+                                    <option value="8. Paseo Esteban Huertas">8. Paseo Esteban Huertas</option>
+                                    <option value="9. Arco Chato">9. Arco Chato</option>
+                                    <option value="10. Iglesia San José – Altar de Oro">10. Iglesia San José – Altar de Oro</option>
+                                    <option value="11. Iglesia de San Felipe Neri">11. Iglesia de San Felipe Neri</option>
+                                    <option value="12. Iglesia de La Merced">12. Iglesia de La Merced</option>
+                                    <option value="13. Teatro Nacional">13. Teatro Nacional</option>
+                                    <option value="14. Palacio de las Garzas">14. Palacio de las Garzas</option>
+                                    <option value="15. Museo del Canal Interoceánico">15. Museo del Canal Interoceánico</option>
+                                    <option value="16. Museo de la Mola (MUMO)">16. Museo de la Mola (MUMO)</option>
+                                    <option value="17. Museo de Arte Religioso Colonial">17. Museo de Arte Religioso Colonial</option>
+                                    <option value="18. Casa del Soldado">18. Casa del Soldado</option>
+                                    <option value="19. Convento de Santo Domingo">19. Convento de Santo Domingo</option>
+                                    <option value="20. Mercado de Mariscos">20. Mercado de Mariscos</option>
+                                </optgroup>
+                                <optgroup label="2. CANAL DE PANAMÁ Y ESCLUSAS">
+                                    <option value="21. Centro de Visitantes de Miraflores">21. Centro de Visitantes de Miraflores</option>
+                                    <option value="22. Esclusas de Miraflores">22. Esclusas de Miraflores</option>
+                                    <option value="23. Centro de Visitantes de Agua Clara">23. Centro de Visitantes de Agua Clara</option>
+                                    <option value="24. Esclusas de Pedro Miguel">24. Esclusas de Pedro Miguel</option>
+                                    <option value="25. Corte Culebra – Corte Gaillard">25. Corte Culebra – Corte Gaillard</option>
+                                    <option value="26. Mirador del Puente Centenario">26. Mirador del Puente Centenario</option>
+                                    <option value="27. Mirador del Canal de Panamá">27. Mirador del Canal de Panamá</option>
+                                    <option value="28. Museo del Canal de Panamá">28. Museo del Canal de Panamá</option>
+                                </optgroup>
+                                <optgroup label="3. AMADOR, CALZADA Y ZONA DE ISLAS">
+                                    <option value="29. Calzada de Amador">29. Calzada de Amador</option>
+                                    <option value="30. Biomuseo">30. Biomuseo</option>
+                                    <option value="31. Isla Flamenco">31. Isla Flamenco</option>
+                                    <option value="32. Isla Perico">32. Isla Perico</option>
+                                    <option value="33. Isla Naos">33. Isla Naos</option>
+                                    <option value="34. Isla Culebra">34. Isla Culebra</option>
+                                    <option value="35. Marina de Amador">35. Marina de Amador</option>
+                                    <option value="36. Centro de Convenciones de Amador">36. Centro de Convenciones de Amador</option>
+                                    <option value="37. Letras de Panamá – Amador">37. Letras de Panamá – Amador</option>
+                                    <option value="38. Mirador de Amador">38. Mirador de Amador</option>
+                                    <option value="39. Playa de Amador">39. Playa de Amador</option>
+                                    <option value="40. Puerto de Cruceros de Amador">40. Puerto de Cruceros de Amador</option>
+                                </optgroup>
+                                <optgroup label="4. PANAMÁ VIEJO Y PATRIMONIO HISTÓRICO">
+                                    <option value="41. Sitio Arqueológico de Panamá Viejo">41. Sitio Arqueológico de Panamá Viejo</option>
+                                    <option value="42. Torre de la Catedral de Panamá Viejo">42. Torre de la Catedral de Panamá Viejo</option>
+                                    <option value="43. Museo de Panamá Viejo">43. Museo de Panamá Viejo</option>
+                                    <option value="44. Conjunto Monumental Histórico de Panamá Viejo">44. Conjunto Monumental Histórico de Panamá Viejo</option>
+                                    <option value="45. Plaza Mayor de Panamá Viejo">45. Plaza Mayor de Panamá Viejo</option>
+                                    <option value="46. Puente del Rey">46. Puente del Rey</option>
+                                    <option value="47. Puente del Matadero">47. Puente del Matadero</option>
+                                    <option value="48. Convento de la Concepción">48. Convento de la Concepción</option>
+                                    <option value="49. Convento de Santo Domingo de Panamá Viejo">49. Convento de Santo Domingo de Panamá Viejo</option>
+                                </optgroup>
+                                <optgroup label="5. PARQUES, NATURALEZA Y MIRADORES">
+                                    <option value="50. Parque Natural Metropolitano">50. Parque Natural Metropolitano</option>
+                                    <option value="51. Parque Municipal Summit">51. Parque Municipal Summit</option>
+                                    <option value="52. Jardín Botánico Summit">52. Jardín Botánico Summit</option>
+                                    <option value="53. Parque Omar">53. Parque Omar</option>
+                                    <option value="54. Parque Recreativo Omar Torrijos">54. Parque Recreativo Omar Torrijos</option>
+                                    <option value="55. Parque Andrés Bello">55. Parque Andrés Bello</option>
+                                    <option value="56. Parque Urracá">56. Parque Urracá</option>
+                                    <option value="57. Parque Belisario Porras">57. Parque Belisario Porras</option>
+                                    <option value="58. Parque Mirador del Pacífico">58. Parque Mirador del Pacífico</option>
+                                    <option value="59. Cerro Ancón">59. Cerro Ancón</option>
+                                    <option value="60. Parque Nacional Camino de Cruces">60. Parque Nacional Camino de Cruces</option>
+                                    <option value="61. Parque Nacional Soberanía">61. Parque Nacional Soberanía</option>
+                                    <option value="62. Gamboa Rainforest Reserve">62. Gamboa Rainforest Reserve</option>
+                                    <option value="63. Sendero El Charco">63. Sendero El Charco</option>
+                                    <option value="64. Sendero Pipeline Road">64. Sendero Pipeline Road</option>
+                                    <option value="65. Sendero Los Caobos">65. Sendero Los Caobos</option>
+                                    <option value="66. Mirador de Cerro Ancón">66. Mirador de Cerro Ancón</option>
+                                    <option value="67. Mirador del Puente de las Américas">67. Mirador del Puente de las Américas</option>
+                                </optgroup>
+                                <optgroup label="6. ISLAS Y EXCURSIONES DESDE CIUDAD DE PANAMÁ">
+                                    <option value="68. Isla Taboga">68. Isla Taboga</option>
+                                    <option value="69. Isla Mamey">69. Isla Mamey</option>
+                                    <option value="70. Isla Grande">70. Isla Grande</option>
+                                    <option value="71. Isla Monos">71. Isla Monos</option>
+                                    <option value="72. Isla Barro Colorado">72. Isla Barro Colorado</option>
+                                    <option value="73. Lago Gatún">73. Lago Gatún</option>
+                                    <option value="74. Gamboa">74. Gamboa</option>
+                                    <option value="75. Monkey Island – Isla de los Monos">75. Monkey Island – Isla de los Monos</option>
+                                    <option value="76. Comunidad indígena Emberá">76. Comunidad indígena Emberá</option>
+                                    <option value="77. Río Chagres">77. Río Chagres</option>
+                                    <option value="78. Lago Alajuela">78. Lago Alajuela</option>
+                                </optgroup>
+                                <optgroup label="7. CENTROS COMERCIALES Y ENTRETENIMIENTO">
+                                    <option value="79. Multiplaza Panamá">79. Multiplaza Panamá</option>
+                                    <option value="80. Albrook Mall">80. Albrook Mall</option>
+                                    <option value="81. Soho Mall">81. Soho Mall</option>
+                                    <option value="82. Town Center Costa del Este">82. Town Center Costa del Este</option>
+                                    <option value="83. AltaPlaza Mall">83. AltaPlaza Mall</option>
+                                    <option value="84. Metromall">84. Metromall</option>
+                                    <option value="85. Los Andes Mall">85. Los Andes Mall</option>
+                                    <option value="86. El Dorado Mall">86. El Dorado Mall</option>
+                                    <option value="87. Balboa Boutiques Panamá">87. Balboa Boutiques Panamá</option>
+                                    <option value="88. Multicentro">88. Multicentro</option>
+                                    <option value="89. Megapolis Outlets">89. Megapolis Outlets</option>
+                                    <option value="90. Amador Convention Center">90. Amador Convention Center</option>
+                                </optgroup>
+                                <optgroup label="8. CULTURA, ARTE Y EXPERIENCIAS">
+                                    <option value="91. Teatro Nacional">91. Teatro Nacional</option>
+                                    <option value="92. Teatro Anita Villalaz">92. Teatro Anita Villalaz</option>
+                                    <option value="93. Museo de Arte Contemporáneo">93. Museo de Arte Contemporáneo</option>
+                                    <option value="94. Museo de la Libertad y los Derechos Humanos">94. Museo de la Libertad y los Derechos Humanos</option>
+                                    <option value="95. Museo de Ciencias Naturales">95. Museo de Ciencias Naturales</option>
+                                    <option value="96. Museo Afroantillano de Panamá">96. Museo Afroantillano de Panamá</option>
+                                    <option value="97. Mi Pueblito">97. Mi Pueblito</option>
+                                    <option value="98. Ciudad del Saber">98. Ciudad del Saber</option>
+                                    <option value="99. Centro de Visitantes de Panamá Viejo">99. Centro de Visitantes de Panamá Viejo</option>
+                                    <option value="100. Mercado Nacional de Artesanías">100. Mercado Nacional de Artesanías</option>
+                                </optgroup>
+                                <optgroup label="9. PLAYAS Y DESTINOS DE EXCURSIÓN">
+                                    <option value="101. Playa Veracruz">101. Playa Veracruz</option>
+                                    <option value="102. Playa Bonita">102. Playa Bonita</option>
+                                    <option value="103. Playa Farfán">103. Playa Farfán</option>
+                                    <option value="104. Playa Kobbe">104. Playa Kobbe</option>
+                                    <option value="105. Playa Teta">105. Playa Teta</option>
+                                    <option value="106. Playa Gorgona">106. Playa Gorgona</option>
+                                    <option value="107. Playa Coronado">107. Playa Coronado</option>
+                                    <option value="108. Playa Santa Clara">108. Playa Santa Clara</option>
+                                    <option value="109. Playa Río Mar">109. Playa Río Mar</option>
+                                    <option value="110. Playa Las Veraneras">110. Playa Las Veraneras</option>
+                                    <option value="111. Playa San Carlos">111. Playa San Carlos</option>
+                                    <option value="112. Playa Punta Chame">112. Playa Punta Chame</option>
+                                    <option value="113. Playa Blanca">113. Playa Blanca</option>
+                                    <option value="114. Playa Buenaventura">114. Playa Buenaventura</option>
+                                </optgroup>
+                                <optgroup label="10. EXPERIENCIAS TURÍSTICAS ADICIONALES">
+                                    <option value="115. Tour panorámico de Ciudad de Panamá">115. Tour panorámico de Ciudad de Panamá</option>
+                                    <option value="116. Tour nocturno por Ciudad de Panamá">116. Tour nocturno por Ciudad de Panamá</option>
+                                    <option value="117. Tour gastronómico por Casco Antiguo">117. Tour gastronómico por Casco Antiguo</option>
+                                    <option value="118. Tour de compras">118. Tour de compras</option>
+                                    <option value="119. Tour de fotografía">119. Tour de fotografía</option>
+                                    <option value="120. Tour de naturaleza y vida silvestre">120. Tour de naturaleza y vida silvestre</option>
+                                    <option value="121. Tour de avistamiento de barcos en el Canal">121. Tour de avistamiento de barcos en el Canal</option>
+                                    <option value="122. Tour de comunidades indígenas Emberá">122. Tour de comunidades indígenas Emberá</option>
+                                    <option value="123. Tour de navegación por el Lago Gatún">123. Tour de navegación por el Lago Gatún</option>
+                                    <option value="124. Tour privado a Isla Taboga">124. Tour privado a Isla Taboga</option>
+                                    <option value="125. Tour privado a Isla Mamey">125. Tour privado a Isla Mamey</option>
+                                    <option value="126. Tour privado a Isla Grande">126. Tour privado a Isla Grande</option>
+                                    <option value="127. Tour privado a Isla Monos">127. Tour privado a Isla Monos</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <!-- 3. DESTINO NACIONAL / PROVINCIAS / COMARCAS - 313 OPCIONES COMPLETAS -->
+                        <div class="form-group">
+                            <label for="nacionalDestination"><i class="fas fa-map-marked-alt"></i> Destino Nacional / Provincias / Comarcas</label>
+                            <select id="nacionalDestination" class="form-control">
+                                <option value="">-- Seleccionar Destino Nacional (313 Opciones) --</option>
+                                <optgroup label="1. PANAMÁ OESTE">
+                                    <option value="1. Playa Coronado">1. Playa Coronado</option>
+                                    <option value="2. Playa Gorgona">2. Playa Gorgona</option>
+                                    <option value="3. Playa Malibú">3. Playa Malibú</option>
+                                    <option value="4. Playa Serena">4. Playa Serena</option>
+                                    <option value="5. Playa Teta">5. Playa Teta</option>
+                                    <option value="6. Playa Punta Barco">6. Playa Punta Barco</option>
+                                    <option value="7. Playa San Carlos">7. Playa San Carlos</option>
+                                    <option value="8. Playa El Palmar">8. Playa El Palmar</option>
+                                    <option value="9. Playa Río Mar">9. Playa Río Mar</option>
+                                    <option value="10. Playa Santa Clara">10. Playa Santa Clara</option>
+                                    <option value="11. Playa Farallón">11. Playa Farallón</option>
+                                    <option value="12. Playa Blanca">12. Playa Blanca</option>
+                                    <option value="13. Playa Sea Cliff">13. Playa Sea Cliff</option>
+                                    <option value="14. Playa Bijao">14. Playa Bijao</option>
+                                    <option value="15. Playa Buenaventura">15. Playa Buenaventura</option>
+                                    <option value="16. Playa Veracruz">16. Playa Veracruz</option>
+                                    <option value="17. Playa Bonita">17. Playa Bonita</option>
+                                    <option value="18. Playa Farfán">18. Playa Farfán</option>
+                                    <option value="19. Playa Kobbe">19. Playa Kobbe</option>
+                                    <option value="20. Playa Punta Chame">20. Playa Punta Chame</option>
+                                    <option value="21. Playa Caracol">21. Playa Caracol</option>
+                                    <option value="22. Playa Las Veraneras">22. Playa Las Veraneras</option>
+                                    <option value="23. Playa Chicá">23. Playa Chicá</option>
+                                    <option value="24. El Valle de Antón">24. El Valle de Antón</option>
+                                    <option value="25. La India Dormida">25. La India Dormida</option>
+                                    <option value="26. Cerro Gaital">26. Cerro Gaital</option>
+                                    <option value="27. Chorro El Macho">27. Chorro El Macho</option>
+                                    <option value="28. Pozos Termales de El Valle">28. Pozos Termales de El Valle</option>
+                                    <option value="29. Cerro Cara Iguana">29. Cerro Cara Iguana</option>
+                                    <option value="30. Altos de Campana">30. Altos de Campana</option>
+                                    <option value="31. Parque Nacional Altos de Campana">31. Parque Nacional Altos de Campana</option>
+                                    <option value="32. Chicá de Capira">32. Chicá de Capira</option>
+                                    <option value="33. Capira">33. Capira</option>
+                                    <option value="34. Chame">34. Chame</option>
+                                    <option value="35. Punta Barco">35. Punta Barco</option>
+                                    <option value="36. Río Indio">36. Río Indio</option>
+                                </optgroup>
+                                <optgroup label="2. PROVINCIA DE COLÓN">
+                                    <option value="37. Isla Mamey">37. Isla Mamey</option>
+                                    <option value="38. Isla Grande">38. Isla Grande</option>
+                                    <option value="39. Isla Cabra">39. Isla Cabra</option>
+                                    <option value="40. Isla Drake">40. Isla Drake</option>
+                                    <option value="41. Playa La Angosta">41. Playa La Angosta</option>
+                                    <option value="42. Playa Huerta">42. Playa Huerta</option>
+                                    <option value="43. Playa Blanca de Colón">43. Playa Blanca de Colón</option>
+                                    <option value="44. Playa María Chiquita">44. Playa María Chiquita</option>
+                                    <option value="45. Playa Palenque">45. Playa Palenque</option>
+                                    <option value="46. Playa Langosta">46. Playa Langosta</option>
+                                    <option value="47. Playa Nombre de Dios">47. Playa Nombre de Dios</option>
+                                    <option value="48. Playa Viento Frío">48. Playa Viento Frío</option>
+                                    <option value="49. Playa Puerto Lindo">49. Playa Puerto Lindo</option>
+                                    <option value="50. Playa Cacique">50. Playa Cacique</option>
+                                    <option value="51. Portobelo">51. Portobelo</option>
+                                    <option value="52. Fuerte San Lorenzo">52. Fuerte San Lorenzo</option>
+                                    <option value="53. Fuerte Santiago de la Gloria">53. Fuerte Santiago de la Gloria</option>
+                                    <option value="54. Aduana de Portobelo">54. Aduana de Portobelo</option>
+                                    <option value="55. Iglesia de San Felipe">55. Iglesia de San Felipe</option>
+                                    <option value="56. Real Aduana de Portobelo">56. Real Aduana de Portobelo</option>
+                                    <option value="57. Comunidad de La Guaira">57. Comunidad de La Guaira</option>
+                                    <option value="58. Santa Isabel">58. Santa Isabel</option>
+                                    <option value="59. Nombre de Dios">59. Nombre de Dios</option>
+                                    <option value="60. Zona Libre de Colón">60. Zona Libre de Colón</option>
+                                    <option value="61. Gatún">61. Gatún</option>
+                                    <option value="62. Esclusas de Agua Clara">62. Esclusas de Agua Clara</option>
+                                    <option value="63. Lago Gatún">63. Lago Gatún</option>
+                                    <option value="64. Río Chagres">64. Río Chagres</option>
+                                    <option value="65. Comunidad de Achiote">65. Comunidad de Achiote</option>
+                                </optgroup>
+                                <optgroup label="3. PROVINCIA DE COCLÉ">
+                                    <option value="66. Playa Santa Clara">66. Playa Santa Clara</option>
+                                    <option value="67. Playa Farallón">67. Playa Farallón</option>
+                                    <option value="68. Playa Blanca">68. Playa Blanca</option>
+                                    <option value="69. Playa Río Hato">69. Playa Río Hato</option>
+                                    <option value="70. Playa Buenaventura">70. Playa Buenaventura</option>
+                                    <option value="71. Playa Sea Cliff">71. Playa Sea Cliff</option>
+                                    <option value="72. Playa Bijao">72. Playa Bijao</option>
+                                    <option value="73. Playa Juan Hombrón">73. Playa Juan Hombrón</option>
+                                    <option value="74. Playa La Ermita">74. Playa La Ermita</option>
+                                    <option value="75. Playa El Salado">75. Playa El Salado</option>
+                                    <option value="76. Playa Los Azules">76. Playa Los Azules</option>
+                                    <option value="77. El Valle de Antón">77. El Valle de Antón</option>
+                                    <option value="78. La India Dormida">78. La India Dormida</option>
+                                    <option value="79. Chorro El Macho">79. Chorro El Macho</option>
+                                    <option value="80. Cerro Gaital">80. Cerro Gaital</option>
+                                    <option value="81. Pozos Termales">81. Pozos Termales</option>
+                                    <option value="82. Penonomé">82. Penonomé</option>
+                                    <option value="83. La Pintada">83. La Pintada</option>
+                                    <option value="84. Cerro Guacamaya">84. Cerro Guacamaya</option>
+                                    <option value="85. Parque Nacional Omar Torrijos Herrera (El Copé)">85. Parque Nacional Omar Torrijos Herrera (El Copé)</option>
+                                    <option value="86. Cascada Las Yayas">86. Cascada Las Yayas</option>
+                                    <option value="87. Olá">87. Olá</option>
+                                    <option value="88. Natá de los Caballeros">88. Natá de los Caballeros</option>
+                                    <option value="89. Basílica Santiago Apóstol de Natá">89. Basílica Santiago Apóstol de Natá</option>
+                                    <option value="90. Aguadulce">90. Aguadulce</option>
+                                    <option value="91. Antón">91. Antón</option>
+                                    <option value="92. El Caño">92. El Caño</option>
+                                    <option value="93. Museo Arqueológico El Caño">93. Museo Arqueológico El Caño</option>
+                                    <option value="94. Valle de Antón y sus senderos">94. Valle de Antón y sus senderos</option>
+                                </optgroup>
+                                <optgroup label="4. PROVINCIA DE HERRERA">
+                                    <option value="95. Chitré">95. Chitré</option>
+                                    <option value="96. Parita">96. Parita</option>
+                                    <option value="97. La Arena">97. La Arena</option>
+                                    <option value="98. Monagrillo">98. Monagrillo</option>
+                                    <option value="99. Pesé">99. Pesé</option>
+                                    <option value="100. Ocú">100. Ocú</option>
+                                    <option value="101. Las Minas">101. Las Minas</option>
+                                    <option value="102. Santa María">102. Santa María</option>
+                                    <option value="103. Parque Nacional Sarigua">103. Parque Nacional Sarigua</option>
+                                    <option value="104. Museo de Herrera">104. Museo de Herrera</option>
+                                    <option value="105. Iglesia de Santo Domingo de Guzmán">105. Iglesia de Santo Domingo de Guzmán</option>
+                                    <option value="106. Iglesia de San Atanasio">106. Iglesia de San Atanasio</option>
+                                    <option value="107. Finca agroturística en Pesé">107. Finca agroturística en Pesé</option>
+                                    <option value="108. Reserva Forestal El Montuoso">108. Reserva Forestal El Montuoso</option>
+                                    <option value="109. Los Pozos">109. Los Pozos</option>
+                                    <option value="110. Río La Villa">110. Río La Villa</option>
+                                </optgroup>
+                                <optgroup label="5. PROVINCIA DE LOS SANTOS">
+                                    <option value="111. Playa Venao">111. Playa Venao</option>
+                                    <option value="112. Playa El Arenal">112. Playa El Arenal</option>
+                                    <option value="113. Playa El Toro">113. Playa El Toro</option>
+                                    <option value="114. Playa Los Destiladeros">114. Playa Los Destiladeros</option>
+                                    <option value="115. Playa Lagarto">115. Playa Lagarto</option>
+                                    <option value="116. Playa La Garita">116. Playa La Garita</option>
+                                    <option value="117. Playa Cambutal">117. Playa Cambutal</option>
+                                    <option value="118. Playa Guanico">118. Playa Guanico</option>
+                                    <option value="119. Playa Isla Iguana">119. Playa Isla Iguana</option>
+                                    <option value="120. Playa La Candelaria">120. Playa La Candelaria</option>
+                                    <option value="121. Playa Búcaro">121. Playa Búcaro</option>
+                                    <option value="122. Playa Puerto Escondido">122. Playa Puerto Escondido</option>
+                                    <option value="123. Playa Las Comadres">123. Playa Las Comadres</option>
+                                    <option value="124. Isla Iguana">124. Isla Iguana</option>
+                                    <option value="125. Isla Cañas">125. Isla Cañas</option>
+                                    <option value="126. Isla Frailes">126. Isla Frailes</option>
+                                    <option value="127. Isla de Pájaros">127. Isla de Pájaros</option>
+                                    <option value="128. Pedasí">128. Pedasí</option>
+                                    <option value="129. Tonosí">129. Tonosí</option>
+                                    <option value="130. Las Tablas">130. Las Tablas</option>
+                                    <option value="131. Guararé">131. Guararé</option>
+                                    <option value="132. La Villa de Los Santos">132. La Villa de Los Santos</option>
+                                    <option value="133. Santo Domingo">133. Santo Domingo</option>
+                                    <option value="134. El Cacao">134. El Cacao</option>
+                                    <option value="135. Cerro Canajagua">135. Cerro Canajagua</option>
+                                    <option value="136. Reserva Forestal La Tronosa">136. Reserva Forestal La Tronosa</option>
+                                    <option value="137. Museo de la Nacionalidad">137. Museo de la Nacionalidad</option>
+                                    <option value="138. Iglesia Santa Librada">138. Iglesia Santa Librada</option>
+                                    <option value="139. Parque Nacional Cerro Hoya">139. Parque Nacional Cerro Hoya</option>
+                                    <option value="140. Playa Destiladeros">140. Playa Destiladeros</option>
+                                </optgroup>
+                                <optgroup label="6. PROVINCIA DE VERAGUAS">
+                                    <option value="141. Santa Catalina">141. Santa Catalina</option>
+                                    <option value="142. Playa El Estero">142. Playa El Estero</option>
+                                    <option value="143. Playa Santa Catalina">143. Playa Santa Catalina</option>
+                                    <option value="144. Playa Arrimadero">144. Playa Arrimadero</option>
+                                    <option value="145. Playa Morrillo">145. Playa Morrillo</option>
+                                    <option value="146. Playa Torio">146. Playa Torio</option>
+                                    <option value="147. Playa Malena">147. Playa Malena</option>
+                                    <option value="148. Playa Reina">148. Playa Reina</option>
+                                    <option value="149. Playa Pixvae">149. Playa Pixvae</option>
+                                    <option value="150. Playa Las Veraneras">150. Playa Las Veraneras</option>
+                                    <option value="151. Isla Cébaco">151. Isla Cébaco</option>
+                                    <option value="152. Isla Gobernadora">152. Isla Gobernadora</option>
+                                    <option value="153. Isla Coiba">153. Isla Coiba</option>
+                                    <option value="154. Isla Ranchería">154. Isla Ranchería</option>
+                                    <option value="155. Isla Canales de Afuera">155. Isla Canales de Afuera</option>
+                                    <option value="156. Isla Jicarón">156. Isla Jicarón</option>
+                                    <option value="157. Isla Jicarita">157. Isla Jicarita</option>
+                                    <option value="158. Isla Leones">158. Isla Leones</option>
+                                    <option value="159. Golfo de Montijo">159. Golfo de Montijo</option>
+                                    <option value="160. Parque Nacional Coiba">160. Parque Nacional Coiba</option>
+                                    <option value="161. Parque Nacional Santa Fe">161. Parque Nacional Santa Fe</option>
+                                    <option value="162. Parque Nacional Cerro Hoya">162. Parque Nacional Cerro Hoya</option>
+                                    <option value="163. Santa Fe de Veraguas">163. Santa Fe de Veraguas</option>
+                                    <option value="164. Cascada Bermejo">164. Cascada Bermejo</option>
+                                    <option value="165. Cascada de San Francisco">165. Cascada de San Francisco</option>
+                                    <option value="166. Cascada Las Brujas">166. Cascada Las Brujas</option>
+                                    <option value="167. Calobre">167. Calobre</option>
+                                    <option value="168. Laguna La Yeguada">168. Laguna La Yeguada</option>
+                                    <option value="169. Reserva Forestal La Yeguada">169. Reserva Forestal La Yeguada</option>
+                                    <option value="170. Santiago de Veraguas">170. Santiago de Veraguas</option>
+                                    <option value="171. Mariato">171. Mariato</option>
+                                    <option value="172. Soná">172. Soná</option>
+                                    <option value="173. Río San Pablo">173. Río San Pablo</option>
+                                    <option value="174. Cerro Tute">174. Cerro Tute</option>
+                                    <option value="175. Playa Banco">175. Playa Banco</option>
+                                    <option value="176. Bahía Honda">176. Bahía Honda</option>
+                                    <option value="177. Mata Oscura">177. Mata Oscura</option>
+                                    <option value="178. Isla Leones y alrededores">178. Isla Leones y alrededores</option>
+                                </optgroup>
+                                <optgroup label="7. PROVINCIA DE CHIRIQUÍ">
+                                    <option value="179. Boquete">179. Boquete</option>
+                                    <option value="180. Volcán Barú">180. Volcán Barú</option>
+                                    <option value="181. Cerro Punta">181. Cerro Punta</option>
+                                    <option value="182. Guadalupe">182. Guadalupe</option>
+                                    <option value="183. Tierras Altas">183. Tierras Altas</option>
+                                    <option value="184. Bambito">184. Bambito</option>
+                                    <option value="185. Volcán">185. Volcán</option>
+                                    <option value="186. Cerro La India">186. Cerro La India</option>
+                                    <option value="187. Finca de café Geisha">187. Finca de café Geisha</option>
+                                    <option value="188. Sendero Los Quetzales">188. Sendero Los Quetzales</option>
+                                    <option value="189. Pipeline de Boquete">189. Pipeline de Boquete</option>
+                                    <option value="190. Jardín Botánico Finca Lérida">190. Jardín Botánico Finca Lérida</option>
+                                    <option value="191. Finca Drácula">191. Finca Drácula</option>
+                                    <option value="192. Cascada Macho de Monte">192. Cascada Macho de Monte</option>
+                                    <option value="193. Los Cangilones de Gualaca">193. Los Cangilones de Gualaca</option>
+                                    <option value="194. Caldera">194. Caldera</option>
+                                    <option value="195. Termales de Caldera">195. Termales de Caldera</option>
+                                    <option value="196. Río Chiriquí Viejo">196. Río Chiriquí Viejo</option>
+                                    <option value="197. Cerro Punta y sus cultivos">197. Cerro Punta y sus cultivos</option>
+                                    <option value="198. Playa Las Lajas">198. Playa Las Lajas</option>
+                                    <option value="199. Playa La Barqueta">199. Playa La Barqueta</option>
+                                    <option value="200. Playa Boca Chica">200. Playa Boca Chica</option>
+                                    <option value="201. Playa Hermosa">201. Playa Hermosa</option>
+                                    <option value="202. Playa Estero Rico">202. Playa Estero Rico</option>
+                                    <option value="203. Isla Boca Brava">203. Isla Boca Brava</option>
+                                    <option value="204. Isla Palenque">204. Isla Palenque</option>
+                                    <option value="205. Isla Parida">205. Isla Parida</option>
+                                    <option value="206. Isla Gámez">206. Isla Gámez</option>
+                                    <option value="207. Isla Bolaños">207. Isla Bolaños</option>
+                                    <option value="208. Isla Saino">208. Isla Saino</option>
+                                    <option value="209. Golfo de Chiriquí">209. Golfo de Chiriquí</option>
+                                    <option value="210. Parque Nacional Marino Golfo de Chiriquí">210. Parque Nacional Marino Golfo de Chiriquí</option>
+                                    <option value="211. Playa Las Mellizas">211. Playa Las Mellizas</option>
+                                </optgroup>
+                                <optgroup label="8. PROVINCIA DE BOCAS DEL TORO">
+                                    <option value="212. Isla Colón">212. Isla Colón</option>
+                                    <option value="213. Isla Carenero">213. Isla Carenero</option>
+                                    <option value="214. Isla Bastimentos">214. Isla Bastimentos</option>
+                                    <option value="215. Isla Solarte">215. Isla Solarte</option>
+                                    <option value="216. Isla Popa">216. Isla Popa</option>
+                                    <option value="217. Isla Cristóbal">217. Isla Cristóbal</option>
+                                    <option value="218. Cayo Zapatilla 1">218. Cayo Zapatilla 1</option>
+                                    <option value="219. Cayo Zapatilla 2">219. Cayo Zapatilla 2</option>
+                                    <option value="220. Playa Estrella">220. Playa Estrella</option>
+                                    <option value="221. Playa Bluff">221. Playa Bluff</option>
+                                    <option value="222. Playa Boca del Drago">222. Playa Boca del Drago</option>
+                                    <option value="223. Playa Red Frog">223. Playa Red Frog</option>
+                                    <option value="224. Playa Wizard">224. Playa Wizard</option>
+                                    <option value="225. Playa Polo">225. Playa Polo</option>
+                                    <option value="226. Playa Larga">226. Playa Larga</option>
+                                    <option value="227. Cayos Coral">227. Cayos Coral</option>
+                                    <option value="228. Bahía Honda">228. Bahía Honda</option>
+                                    <option value="229. Bahía de los Delfines">229. Bahía de los Delfines</option>
+                                    <option value="230. Cayo Agua">230. Cayo Agua</option>
+                                    <option value="231. Isla San Cristóbal">231. Isla San Cristóbal</option>
+                                    <option value="232. Parque Nacional Marino Isla Bastimentos">232. Parque Nacional Marino Isla Bastimentos</option>
+                                    <option value="233. Playa Rana Roja">233. Playa Rana Roja</option>
+                                    <option value="234. Sendero de Bastimentos">234. Sendero de Bastimentos</option>
+                                    <option value="235. Cuevas de la Lluvia">235. Cuevas de la Lluvia</option>
+                                    <option value="236. Nivida">236. Nivida</option>
+                                    <option value="237. Boca del Drago">237. Boca del Drago</option>
+                                    <option value="238. Bocas Town">238. Bocas Town</option>
+                                    <option value="239. Old Bank">239. Old Bank</option>
+                                    <option value="240. Comunidad Ngäbe-Buglé">240. Comunidad Ngäbe-Buglé</option>
+                                </optgroup>
+                                <optgroup label="9. PROVINCIA DE DARIÉN">
+                                    <option value="241. Yaviza">241. Yaviza</option>
+                                    <option value="242. La Palma">242. La Palma</option>
+                                    <option value="243. Santa Fe de Darién">243. Santa Fe de Darién</option>
+                                    <option value="244. Bahía de Piñas">244. Bahía de Piñas</option>
+                                    <option value="245. Puerto Quimba">245. Puerto Quimba</option>
+                                    <option value="246. Garachiné">246. Garachiné</option>
+                                    <option value="247. Jaqué">247. Jaqué</option>
+                                    <option value="248. Punta Piña">248. Punta Piña</option>
+                                    <option value="249. Parque Nacional Darién">249. Parque Nacional Darién</option>
+                                    <option value="250. Reserva Natural Punta Patiño">250. Reserva Natural Punta Patiño</option>
+                                    <option value="251. Río Tuira">251. Río Tuira</option>
+                                    <option value="252. Río Balsas">252. Río Balsas</option>
+                                    <option value="253. Río Sambú">253. Río Sambú</option>
+                                    <option value="254. Estación Pirre">254. Estación Pirre</option>
+                                    <option value="255. Cerro Pirre">255. Cerro Pirre</option>
+                                    <option value="256. Comunidad Emberá de Darién">256. Comunidad Emberá de Darién</option>
+                                </optgroup>
+                                <optgroup label="10. PROVINCIA DE PANAMÁ (FUERA DEL CENTRO URBANO)">
+                                    <option value="257. Cerro Azul">257. Cerro Azul</option>
+                                    <option value="258. Altos de Cerro Azul">258. Altos de Cerro Azul</option>
+                                    <option value="259. Lago Bayano">259. Lago Bayano</option>
+                                    <option value="260. Cuevas de Bayano">260. Cuevas de Bayano</option>
+                                    <option value="261. Cascada Mamoní">261. Cascada Mamoní</option>
+                                    <option value="262. Río Mamoní">262. Río Mamoní</option>
+                                    <option value="263. Chepo">263. Chepo</option>
+                                    <option value="264. Pacora">264. Pacora</option>
+                                    <option value="265. Isla Chepillo">265. Isla Chepillo</option>
+                                    <option value="266. Isla Otoque">266. Isla Otoque</option>
+                                    <option value="267. Isla Taboga">267. Isla Taboga</option>
+                                    <option value="268. Isla Contadora">268. Isla Contadora</option>
+                                    <option value="269. Isla Saboga">269. Isla Saboga</option>
+                                    <option value="270. Isla del Rey">270. Isla del Rey</option>
+                                    <option value="271. Isla Pedro González">271. Isla Pedro González</option>
+                                    <option value="272. Isla San José">272. Isla San José</option>
+                                    <option value="273. Archipiélago de Las Perlas">273. Archipiélago de Las Perlas</option>
+                                    <option value="274. Isla Chapera">274. Isla Chapera</option>
+                                    <option value="275. Isla Bartolomé">275. Isla Bartolomé</option>
+                                    <option value="276. Isla Bolaños">276. Isla Bolaños</option>
+                                    <option value="277. Isla Viveros">277. Isla Viveros</option>
+                                    <option value="278. Playa Ejecutiva">278. Playa Ejecutiva</option>
+                                    <option value="279. Playa Larga de Contadora">279. Playa Larga de Contadora</option>
+                                </optgroup>
+                                <optgroup label="11. COMARCA GUNA YALA – SAN BLAS">
+                                    <option value="280. Archipiélago de San Blas">280. Archipiélago de San Blas</option>
+                                    <option value="281. Isla Perro Grande">281. Isla Perro Grande</option>
+                                    <option value="282. Isla Perro Chico">282. Isla Perro Chico</option>
+                                    <option value="283. Isla Diablo">283. Isla Diablo</option>
+                                    <option value="284. Isla Chichime">284. Isla Chichime</option>
+                                    <option value="285. Isla Aguja">285. Isla Aguja</option>
+                                    <option value="286. Isla Pelícano">286. Isla Pelícano</option>
+                                    <option value="287. Isla Yansailadup">287. Isla Yansailadup</option>
+                                    <option value="288. Isla Franklin">288. Isla Franklin</option>
+                                    <option value="289. Isla Wailidup">289. Isla Wailidup</option>
+                                    <option value="290. Isla Anmardub">290. Isla Anmardub</option>
+                                    <option value="291. Isla Coco Blanco">291. Isla Coco Blanco</option>
+                                    <option value="292. Isla Banedup">292. Isla Banedup</option>
+                                    <option value="293. Isla Soledad">293. Isla Soledad</option>
+                                    <option value="294. Piscina Natural de San Blas">294. Piscina Natural de San Blas</option>
+                                    <option value="295. Cayos Holandeses">295. Cayos Holandeses</option>
+                                    <option value="296. Cayos Limones">296. Cayos Limones</option>
+                                    <option value="297. Cayos Coco Bandero">297. Cayos Coco Bandero</option>
+                                    <option value="298. Comunidad indígena Guna">298. Comunidad indígena Guna</option>
+                                </optgroup>
+                                <optgroup label="12. COMARCA NGÄBE-BUGLÉ">
+                                    <option value="299. Cerro Colorado">299. Cerro Colorado</option>
+                                    <option value="300. Kankintú">300. Kankintú</option>
+                                    <option value="301. Kusapín">301. Kusapín</option>
+                                    <option value="302. Río Cricamola">302. Río Cricamola</option>
+                                    <option value="303. Comunidad de Soloy">303. Comunidad de Soloy</option>
+                                    <option value="304. Cascadas y ríos de la región">304. Cascadas y ríos de la región</option>
+                                    <option value="305. Comunidades tradicionales Ngäbe-Buglé">305. Comunidades tradicionales Ngäbe-Buglé</option>
+                                </optgroup>
+                                <optgroup label="13. COMARCA EMBERÁ-WOUNAAN">
+                                    <option value="306. Comunidades Emberá de Sambú">306. Comunidades Emberá de Sambú</option>
+                                    <option value="307. Río Chucunaque">307. Río Chucunaque</option>
+                                    <option value="308. Río Tuira">308. Río Tuira</option>
+                                    <option value="309. Comunidades de la cuenca del río Chagres">309. Comunidades de la cuenca del río Chagres</option>
+                                    <option value="310. Comunidades de turismo cultural Emberá">310. Comunidades de turismo cultural Emberá</option>
+                                </optgroup>
+                                <optgroup label="14. COMARCA WARGANDÍ">
+                                    <option value="311. Comunidades indígenas Wargandí">311. Comunidades indígenas Wargandí</option>
+                                    <option value="312. Bosques y ríos de la comarca">312. Bosques y ríos de la comarca</option>
+                                    <option value="313. Experiencias de turismo comunitario, previa coordinación">313. Experiencias de turismo comunitario, previa coordinación</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <!-- BOTÓN "+" PARA OTRO / AIRBNB / HOSPITALES / PUERTOS -->
+                        <div class="form-group">
+                            <label for="customLocationText"><i class="fas fa-map-pin"></i> Otra Ubicación / Airbnb / Hospital / Puerto / Dirección</label>
+                            <div class="custom-location-wrapper">
+                                <input type="text" id="customLocationText" class="form-control" placeholder="Especifique dirección, Airbnb, hospital o puerto...">
+                                <button type="button" class="btn-plus" title="Agregar ubicación personalizada" onclick="alert('Puede escribir su dirección exacta, nombre de Airbnb, hospital o puerto en esta casilla.')">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="formDetails" data-i18n="form_details">Detalles Adicionales del Trayecto e Indicaciones</label>
+                            <textarea id="formDetails" class="form-control" required placeholder="Indique cualquier indicación especial..."></textarea>
+                        </div>
+
+                        <button type="submit" id="submitBtn" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i> <span data-i18n="form_btn">Enviar Solicitud de Cotización</span>
+                        </button>
                     </form>
                 </div>
             </div>
+        </section>
+    </main>
 
-            <!-- SECCIÓN: OPCIONES AVANZADAS (SOLO ADMINISTRADOR) -->
-            <div id="tab-avanzadas" class="tab-section">
-                <h3 style="margin-bottom: 1.8rem; color: var(--text-main);">Opciones de Sistema (Administrador)</h3>
-                <div style="background: var(--card-bg); padding: 2.5rem; border-radius: 20px; max-width: 650px; box-shadow: var(--card-shadow); border: 1px solid var(--border-color); border-left: 6px solid #e74c3c;">
-                    <h4 style="color: #e74c3c; margin-bottom: 1rem; font-size: 1.3rem;">Limpieza Total de Solicitudes (Traspaso de Propiedad)</h4>
-                    <p style="font-size: 1rem; color: var(--text-main); opacity: 0.85; margin-bottom: 1.8rem; line-height: 1.5;">Esta opción eliminará permanentemente todas las cotizaciones de la base de datos de Firebase y almacenamiento local para dejar el sitio completamente limpio.</p>
-                    <button type="button" id="resetSystemBtn" class="btn-action" style="background-color: #e74c3c; padding: 1rem 1.8rem; font-size: 1.1rem;"><i class="fas fa-trash-alt"></i> Limpiar Todo el Sistema</button>
-                </div>
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/50768938639?text=Hola,%20deseo%20solicitar%20una%20cotización%20personalizada" class="whatsapp-float" target="_blank" id="whatsappFloatingBtn" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4 data-i18n="footer_title">H.G.Travel & Tours Panamá</h4>
+                <p data-i18n="footer_desc">Empresa líder en servicios de transporte privado, traslados corporativos y tours personalizados en toda la República de Panamá.</p>
             </div>
-
+            <div class="footer-col">
+                <h4 data-i18n="footer_contact">Contacto Oficial</h4>
+                <p><i class="fas fa-phone"></i> +507 6893-8639</p>
+                <p><i class="fas fa-envelope"></i> henrygonz27@hotmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> <span data-i18n="footer_city">Ciudad de Panamá, Panamá</span></p>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footer_nav">Navegación</h4>
+                <ul>
+                    <li><a href="index.html" data-i18n="nav_home">Inicio</a></li>
+                    <li><a href="somos.html" data-i18n="nav_about">Quiénes Somos</a></li>
+                    <li><a href="contacto.html" data-i18n="nav_contact">Contacto y Reservas</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
+        <div class="footer-bottom">
+            <p data-i18n="footer_rights">&copy; 2026 H.G.Travel & Tours Panamá. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
-    <!-- SCRIPT PRINCIPAL CON SINCRONIZACIÓN FIRESTORE ROBUSTA -->
+    <!-- SCRIPT DE CARGA DINÁMICA Y FIREBASE -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, createUserWithEmailAndPassword, EmailAuthProvider, reauthenticateWithCredential, updatePassword } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
-        import { getFirestore, collection, getDocs, onSnapshot, deleteDoc, doc, updateDoc, setDoc } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-analytics.js";
+        import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAmi32aTtpWepUPT2mi5hSVnBUVmTnRI9w",
@@ -454,482 +1490,156 @@
         };
 
         let db = null;
-        let auth = null;
-        let currentUser = null;
-
         try {
             const app = initializeApp(firebaseConfig);
-            auth = getAuth(app);
+            getAnalytics(app);
             db = getFirestore(app);
-        } catch (e) {}
-
-        // MODO OSCURO / CLARO
-        const themeToggleBtn = document.getElementById('themeToggleBtn');
-        const themeIcon = document.getElementById('themeIcon');
-        
-        function setTheme(isDark) {
-            if (isDark) {
-                document.body.classList.add('dark-theme');
-                themeIcon.className = 'fas fa-sun';
-                localStorage.setItem('hg_theme', 'dark');
-            } else {
-                document.body.classList.remove('dark-theme');
-                themeIcon.className = 'fas fa-moon';
-                localStorage.setItem('hg_theme', 'light');
-            }
-            if (languageChart) updateBarChart(lastEsCount, lastEnCount);
+        } catch (e) {
+            console.warn("Modo local activado para asegurar entregas.");
         }
 
-        themeToggleBtn.addEventListener('click', () => {
-            setTheme(!document.body.classList.contains('dark-theme'));
+        const countrySelect = document.getElementById('countryCode');
+        const customCodeInput = document.getElementById('customCountryCode');
+
+        countrySelect.addEventListener('change', () => {
+            if (countrySelect.value === 'custom') {
+                customCodeInput.style.display = 'block';
+                customCodeInput.required = true;
+            } else {
+                customCodeInput.style.display = 'none';
+                customCodeInput.required = false;
+            }
         });
 
-        if (localStorage.getItem('hg_theme') === 'dark') {
-            setTheme(true);
-        }
-
-        document.getElementById('menuToggleBtn').addEventListener('click', () => {
-            document.getElementById('sidebarNav').classList.toggle('active');
-        });
-
-        // AUDIO CAMPANA MESA
-        function playTableBellSound() {
-            try {
-                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                const frequencies = [830.61, 1046.50, 1318.51, 1661.22]; 
-                frequencies.forEach((freq, index) => {
-                    const osc = audioCtx.createOscillator();
-                    const gainNode = audioCtx.createGain();
-                    osc.type = index === 0 ? 'sine' : 'triangle';
-                    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-                    gainNode.gain.setValueAtTime(0.4 / (index + 1), audioCtx.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.8);
-                    osc.connect(gainNode);
-                    gainNode.connect(audioCtx.destination);
-                    osc.start();
-                    osc.stop(audioCtx.currentTime + 1.8);
-                });
-            } catch (e) {}
-        }
-
-        document.getElementById('testBellBtn').addEventListener('click', playTableBellSound);
-
-        // CONTROL DE ROLES
-        function aplicarPermisosRol(email) {
-            const emailLower = email ? email.toLowerCase().trim() : '';
-            let empleados = JSON.parse(localStorage.getItem('hg_empleados_registrados') || '[]');
-            const esEmpleadoRegistrado = empleados.some(e => e.email.toLowerCase().trim() === emailLower);
-            const esAdmin = emailLower.includes('admin') || !esEmpleadoRegistrado;
-
-            const navUsuarios = document.getElementById('navItemUsuarios');
-            const navAvanzadas = document.getElementById('navItemAvanzadas');
-            const navCambiarPass = document.getElementById('navItemCambiarPass');
-
-            if (esAdmin) {
-                if(navUsuarios) navUsuarios.style.display = 'block';
-                if(navAvanzadas) navAvanzadas.style.display = 'block';
-                if(navCambiarPass) navCambiarPass.style.display = 'none';
-                cargarListaEmpleados();
-            } else {
-                if(navUsuarios) navUsuarios.style.display = 'none';
-                if(navAvanzadas) navAvanzadas.style.display = 'none';
-                if(navCambiarPass) navCambiarPass.style.display = 'block';
-            }
-        }
-
-        // LOGIN Y AUTENTICACIÓN
-        const loginOverlay = document.getElementById('loginOverlay');
-        const loginForm = document.getElementById('loginForm');
-        const loginError = document.getElementById('loginError');
-
-        if (auth) {
-            onAuthStateChanged(auth, (user) => {
-                if (user) {
-                    currentUser = user;
-                    loginOverlay.style.display = 'none';
-                    document.getElementById('adminUserEmail').textContent = user.email;
-                    aplicarPermisosRol(user.email);
-                    cargarDatosCombinados(true);
-                    initRealtimeListener();
-                } else {
-                    currentUser = null;
-                    loginOverlay.style.display = 'flex';
-                }
-            });
-
-            loginForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
+        // CARGAR DIRECTORIOS DINÁMICOS ADICIONALES DESDE EL PANEL SI EXISTEN
+        async function cargarDirectoriosDinamicos() {
+            const hotelSelect = document.getElementById('hotelDestination');
+            let hoteles = JSON.parse(localStorage.getItem('hg_hoteles') || '[]');
+            if(db) {
                 try {
-                    await signInWithEmailAndPassword(auth, document.getElementById('loginEmail').value, document.getElementById('loginPassword').value);
-                    loginError.textContent = "";
-                } catch (error) {
-                    loginError.textContent = "Error: Credenciales incorrectas.";
-                }
+                    const snap = await getDocs(collection(db, "hoteles"));
+                    snap.forEach(d => hoteles.push(d.data()));
+                } catch(e){}
+            }
+            hoteles.forEach(h => {
+                let opt = document.createElement('option');
+                opt.value = h.nombre;
+                opt.textContent = `${h.nombre} (${h.categoria || 'Hotel'})`;
+                hotelSelect.appendChild(opt);
             });
 
-            document.getElementById('logoutBtn').addEventListener('click', () => signOut(auth));
-        } else {
-            loginOverlay.style.display = 'none';
-            aplicarPermisosRol("admin@hgtravels.com");
-            cargarDatosCombinados(true);
-        }
+            const attrSelect = document.getElementById('attractionDestination');
+            let atractivos = JSON.parse(localStorage.getItem('hg_atractivos') || '[]');
+            if(db) {
+                try {
+                    const snap = await getDocs(collection(db, "atractivos"));
+                    snap.forEach(d => atractivos.push(d.data()));
+                } catch(e){}
+            }
+            atractivos.forEach(a => {
+                let opt = document.createElement('option');
+                opt.value = a.nombre;
+                opt.textContent = `${a.nombre} - [${a.categoria || 'Tour'}]`;
+                attrSelect.appendChild(opt);
+            });
 
-        window.switchTab = function(tabId, event) {
-            if (event) event.preventDefault();
-            document.querySelectorAll('.tab-section').forEach(sec => sec.classList.remove('active'));
-            document.querySelectorAll('.sidebar-item a').forEach(a => a.classList.remove('active'));
-            document.getElementById('tab-' + tabId).classList.add('active');
-            if (event && event.currentTarget) event.currentTarget.classList.add('active');
-            if(window.innerWidth <= 900) document.getElementById('sidebarNav').classList.remove('active');
-        };
-
-        // CHART.JS BARRAS 3D
-        let languageChart = null;
-        let lastEsCount = 0, lastEnCount = 0;
-
-        function updateBarChart(esCount, enCount) {
-            lastEsCount = esCount;
-            lastEnCount = enCount;
-            const ctx = document.getElementById('languageBarChart').getContext('2d');
-            const isDark = document.body.classList.contains('dark-theme');
-            const textColor = isDark ? '#F8FAFC' : '#0A1931';
-
-            if (languageChart) languageChart.destroy();
-            languageChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Español 🇪🇸', 'Inglés 🇺🇸'],
-                    datasets: [{
-                        label: 'Solicitudes',
-                        data: [esCount, enCount],
-                        backgroundColor: ['rgba(26, 115, 232, 0.9)', 'rgba(19, 115, 51, 0.9)'],
-                        borderColor: ['#1a73e8', '#137333'],
-                        borderWidth: 2,
-                        borderRadius: 10,
-                        barThickness: 55
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: { precision: 0, color: textColor, font: { size: 13 } },
-                            grid: { color: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)' }
-                        },
-                        x: {
-                            ticks: { color: textColor, font: { weight: 'bold', size: 14 } },
-                            grid: { display: false }
-                        }
-                    }
-                }
+            const nacSelect = document.getElementById('nacionalDestination');
+            let nacionales = JSON.parse(localStorage.getItem('hg_nacionales') || '[]');
+            if(db) {
+                try {
+                    const snap = await getDocs(collection(db, "destinos_nacionales"));
+                    snap.forEach(d => nacionales.push(d.data()));
+                } catch(e){}
+            }
+            nacionales.forEach(n => {
+                let opt = document.createElement('option');
+                opt.value = n.nombre;
+                opt.textContent = `${n.nombre} (${n.provincia || 'Nacional'})`;
+                nacSelect.appendChild(opt);
             });
         }
 
-        let cantidadPendientesAnterior = -1;
+        cargarDirectoriosDinamicos();
 
-        // CARGAR SOLICITUDES SINCRONIZADAS CON FIRESTORE Y LOCALSTORAGE
-        window.cargarDatosCombinados = async function(isInitial = false) {
-            const activeElement = document.activeElement;
-            if (activeElement && activeElement.classList.contains('reply-textarea')) {
-                return;
+        document.getElementById('quoteForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+
+            let selectedCode = countrySelect.value;
+            if (selectedCode === 'custom') {
+                selectedCode = customCodeInput.value.trim();
+            }
+            const phoneNumber = document.getElementById('clientPhoneInput').value;
+            const fullPhone = `${selectedCode} ${phoneNumber}`;
+
+            const adults = document.getElementById('adultsCount').value;
+            const children = document.getElementById('childrenCount').value;
+            const infants = document.getElementById('infantsCount').value;
+            const tripulantesResumen = `${adults} Adultos, ${children} Niños, ${infants} Bebés`;
+
+            const currentLang = localStorage.getItem('preferred_lang') || 'es';
+            const nombre = document.getElementById('clientName').value;
+            const correo = document.getElementById('clientEmail').value;
+            const fechaViaje = document.getElementById('tripDate').value;
+            const horaViaje = document.getElementById('tripTime').value;
+            const equipaje = document.getElementById('luggageCount').value;
+            const vuelo = document.getElementById('flightNumber').value.trim() || 'No especificado';
+            const aeropuerto = document.getElementById('airportSelect').value || 'Ninguno';
+            const hotelSeleccionado = document.getElementById('hotelDestination').value || 'No especificado';
+            const atractivoSeleccionado = document.getElementById('attractionDestination').value || 'No especificado';
+            const nacionalSeleccionado = document.getElementById('nacionalDestination').value || 'No especificado';
+            const otraUbicacion = document.getElementById('customLocationText').value.trim() || 'N/A';
+            const detalles = document.getElementById('formDetails').value;
+
+            const quoteData = {
+                id: 'cot_' + Date.now(),
+                nombre: nombre.trim(),
+                correo: correo.trim(),
+                telefono: fullPhone.trim(),
+                fechaViaje: fechaViaje,
+                horaViaje: horaViaje,
+                equipaje: equipaje,
+                vuelo: vuelo,
+                pasajeros: tripulantesResumen,
+                aeropuerto: aeropuerto,
+                hotel: hotelSeleccionado,
+                atractivo: atractivoSeleccionado,
+                nacional: nacionalSeleccionado,
+                otraUbicacion: otraUbicacion,
+                detalles: detalles.trim(),
+                idioma: currentLang,
+                estado: 'Pendiente',
+                fecha: new Date().toISOString()
+            };
+
+            // 1. Guardar localmente
+            try {
+                let existingQuotes = JSON.parse(localStorage.getItem('hg_local_cotizaciones') || '[]');
+                existingQuotes.unshift(quoteData);
+                localStorage.setItem('hg_local_cotizaciones', JSON.stringify(existingQuotes));
+            } catch (err) {
+                console.error("Error guardando localmente:", err);
             }
 
-            let cotizacionesFirebase = [];
+            // 2. Respaldo en Firestore para que aparezca directamente en la bandeja del panel
             if (db) {
                 try {
-                    const snap = await getDocs(collection(db, "cotizaciones"));
-                    snap.forEach(docSnap => {
-                        const d = docSnap.data();
-                        d.firestoreId = docSnap.id;
-                        cotizacionesFirebase.push(d);
-                    });
-                } catch (e) {}
+                    addDoc(collection(db, "cotizaciones"), quoteData).catch(() => {});
+                } catch (err) {}
             }
 
-            let cotizacionesLocal = JSON.parse(localStorage.getItem('hg_local_cotizaciones') || '[]');
-
-            const mapUnico = new Map();
-            // Priorizamos la nube de Firebase para que todos los navegadores (Opera, Chrome, Móvil) vean lo mismo
-            [...cotizacionesLocal, ...cotizacionesFirebase].forEach(item => {
-                const key = item.firestoreId || item.id || (item.nombre + item.fecha);
-                mapUnico.set(key, item);
-            });
-
-            const todas = Array.from(mapUnico.values());
-            let total = todas.length, esCount = 0, enCount = 0;
-            let respondidasCount = 0, pendientesCount = 0, rechazadasCount = 0;
-            let cardsHTML = "", historialHTML = "";
-
-            todas.forEach((data, index) => {
-                const idioma = data.idioma || 'es';
-                if (idioma === 'en') enCount++; else esCount++;
-                const keyId = data.firestoreId || data.id;
-
-                if (data.estado === 'Respondido') {
-                    respondidasCount++;
-                    historialHTML += `
-                        <tr>
-                            <td><strong>${data.nombre || 'Cliente'}</strong></td>
-                            <td>${data.correo}<br>${data.telefono}</td>
-                            <td><strong>Hotel:</strong> ${data.hotel || 'N/A'}<br><strong>Atractivo:</strong> ${data.atractivo || 'N/A'}<br><strong>Nacional:</strong> ${data.nacional || 'N/A'}</td>
-                            <td><strong>Pasajeros:</strong> ${data.pasajeros || 'N/A'}<br><strong>Vuelo:</strong> ${data.vuelo || 'N/A'}</td>
-                            <td><span style="color: #27ae60; font-weight:700;">Respondido:</span> ${data.respuestaAdmin || ''}</td>
-                            <td>${data.fecha ? new Date(data.fecha).toLocaleDateString() : 'N/A'}</td>
-                        </tr>
-                    `;
-                } else if (data.estado === 'Rechazado') {
-                    rechazadasCount++;
-                    historialHTML += `
-                        <tr>
-                            <td><strong>${data.nombre || 'Cliente'}</strong></td>
-                            <td>${data.correo}<br>${data.telefono}</td>
-                            <td><strong>Hotel:</strong> ${data.hotel || 'N/A'}<br><strong>Nacional:</strong> ${data.nacional || 'N/A'}</td>
-                            <td><strong>Pasajeros:</strong> ${data.pasajeros || 'N/A'}</td>
-                            <td><span style="color: #e74c3c; font-weight:700;">Rechazado</span></td>
-                            <td>${data.fecha ? new Date(data.fecha).toLocaleDateString() : 'N/A'}</td>
-                        </tr>
-                    `;
-                } else {
-                    pendientesCount++;
-                    cardsHTML += `
-                        <div class="floating-card">
-                            <div>
-                                <div class="card-header">
-                                    <div>
-                                        <div class="card-client-name">${data.nombre || 'Cliente VIP'}</div>
-                                        <span class="card-client-email">${data.correo || 'Sin correo'}</span>
-                                    </div>
-                                    <span class="badge badge-${idioma}">${idioma.toUpperCase()}</span>
-                                </div>
-                                <div class="card-body">
-                                    <div class="card-info-item"><i class="fas fa-phone-alt"></i> <strong>Teléfono:</strong> ${data.telefono || 'N/A'}</div>
-                                    <div class="card-info-item"><i class="far fa-calendar-alt"></i> <strong>Fecha / Hora:</strong> ${data.fechaViaje || 'N/A'} a las ${data.horaViaje || 'N/A'}</div>
-                                    <div class="card-info-item"><i class="fas fa-users"></i> <strong>Tripulantes:</strong> ${data.pasajeros || 'N/A'}</div>
-                                    <div class="card-info-item"><i class="fas fa-suitcase-rolling"></i> <strong>Equipaje:</strong> ${data.equipaje || 'N/A'}</div>
-                                    <div class="card-info-item"><i class="fas fa-plane-arrival"></i> <strong>Vuelo:</strong> ${data.vuelo || 'N/A'}</div>
-                                    <div class="card-info-item"><i class="fas fa-plane"></i> <strong>Aeropuerto:</strong> ${data.aeropuerto || 'N/A'}</div>
-                                    <div class="card-info-item"><i class="fas fa-hotel"></i> <strong>Hotel:</strong> ${data.hotel || 'N/A'}</div>
-                                    <div class="card-info-item"><i class="fas fa-camera-retro"></i> <strong>Atractivo:</strong> ${data.atractivo || 'N/A'}</div>
-                                    <div class="card-info-item"><i class="fas fa-map-marked-alt"></i> <strong>Destino Nacional:</strong> ${data.nacional || 'N/A'}</div>
-                                    <div class="card-info-item"><i class="fas fa-map-pin"></i> <strong>Otra Ubicación:</strong> ${data.otraUbicacion || 'N/A'}</div>
-                                    <div class="card-info-item" style="background:var(--color-light-bg); padding:10px; border-radius:10px; margin-top:10px;"><strong>Detalles:</strong> ${data.detalles || 'Sin observaciones'}</div>
-                                </div>
-                            </div>
-                            <div class="card-reply-box">
-                                <div class="file-attachment-box">
-                                    <label><i class="fas fa-paperclip"></i> Adjuntar archivo opcional:</label>
-                                    <input type="file" id="fileAttach_${index}" style="font-size: 0.85rem; width:100%;">
-                                </div>
-                                <textarea id="replyText_${index}" class="reply-textarea" placeholder="Escriba aquí la cotización..."></textarea>
-                                <div class="action-buttons-row">
-                                    <button type="button" class="btn-send-whatsapp" onclick="enviarWhatsappYResponder('${keyId}', 'replyText_${index}', 'fileAttach_${index}', '${data.telefono || ''}', '${data.nombre || 'Cliente'}')">
-                                        <i class="fab fa-whatsapp"></i> Responder
-                                    </button>
-                                    <button type="button" class="btn-reject-card" onclick="rechazarSolicitud('${keyId}')">
-                                        <i class="fas fa-times-circle"></i> Rechazar
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                }
-            });
-
-            if (!isInitial && cantidadPendientesAnterior !== -1 && pendientesCount > cantidadPendientesAnterior) {
-                playTableBellSound();
-            }
-            cantidadPendientesAnterior = pendientesCount;
-
-            document.getElementById('statTotal').textContent = total;
-            document.getElementById('statRespondidas').textContent = respondidasCount;
-            document.getElementById('statPendientes').textContent = pendientesCount;
-            document.getElementById('statRechazadas').textContent = rechazadasCount;
-
-            updateBarChart(esCount, enCount);
-
-            document.getElementById('solicitudesCardsGrid').innerHTML = cardsHTML || '<div style="grid-column: 1/-1; text-align:center; padding:3.5rem; background:var(--card-bg); border-radius:20px; font-weight:600; color:var(--color-mid-blue); font-size: 1.1rem;">No hay solicitudes pendientes.</div>';
-            document.getElementById('historialTableBody').innerHTML = historialHTML || '<tr><td colspan="6" style="text-align:center; padding: 2.5rem;">No hay historial registrado.</td></tr>';
-        };
-
-        function initRealtimeListener() {
-            if (db) onSnapshot(collection(db, "cotizaciones"), () => cargarDatosCombinados(false));
-            setInterval(() => cargarDatosCombinados(false), 5000);
-        }
-
-        document.getElementById('refreshBtn').addEventListener('click', () => cargarDatosCombinados(false));
-
-        // RESPONDER WHATSAPP Y ACTUALIZAR FIRESTORE
-        window.enviarWhatsappYResponder = async function(keyId, textId, fileId, telefono, nombre) {
-            const respuestaEl = document.getElementById(textId);
-            const respuesta = respuestaEl ? respuestaEl.value.trim() : '';
-            const fileInput = document.getElementById(fileId);
-            let archivoInfo = (fileInput && fileInput.files && fileInput.files[0]) ? ` [Archivo adjunto: ${fileInput.files[0].name}]` : "";
-
-            if (!respuesta && !archivoInfo) {
-                alert("Por favor, ingrese un mensaje de cotización antes de enviar.");
-                return;
-            }
-
-            const respuestaFinal = respuesta + archivoInfo;
-
-            let cotizacionesLocal = JSON.parse(localStorage.getItem('hg_local_cotizaciones') || '[]');
-            let indexLocal = cotizacionesLocal.findIndex(item => (item.id === keyId || item.firestoreId === keyId));
-            if (indexLocal !== -1) {
-                cotizacionesLocal[indexLocal].estado = 'Respondido';
-                cotizacionesLocal[indexLocal].respuestaAdmin = respuestaFinal;
-                localStorage.setItem('hg_local_cotizaciones', JSON.stringify(cotizacionesLocal));
-            }
-
-            if (db && keyId) {
-                try {
-                    await updateDoc(doc(db, "cotizaciones", keyId), { 
-                        estado: 'Respondido', 
-                        respuestaAdmin: respuestaFinal 
-                    });
-                } catch (e) {}
-            }
-
-            const cleanPhone = telefono.replace(/[^0-9]/g, '');
-            window.open(`https://wa.me/${cleanPhone}?text=${encodeURIComponent(`Hola ${nombre}, gracias por contactar a H.G.Travel & Tours Panamá. Cotización: ${respuestaFinal}`)}`, '_blank');
-
-            cargarDatosCombinados(false);
-        };
-
-        // RECHAZAR SOLICITUD
-        window.rechazarSolicitud = async function(keyId) {
-            if (confirm("¿Desea rechazar esta solicitud?")) {
-                let cotizacionesLocal = JSON.parse(localStorage.getItem('hg_local_cotizaciones') || '[]');
-                let indexLocal = cotizacionesLocal.findIndex(item => (item.id === keyId || item.firestoreId === keyId));
-                if (indexLocal !== -1) {
-                    cotizacionesLocal[indexLocal].estado = 'Rechazado';
-                    localStorage.setItem('hg_local_cotizaciones', JSON.stringify(cotizacionesLocal));
-                }
-
-                if (db && keyId) {
-                    try {
-                        await updateDoc(doc(db, "cotizaciones", keyId), { estado: 'Rechazado' });
-                    } catch (e) {}
-                }
-                cargarDatosCombinados(false);
-            }
-        };
-
-        // GESTIÓN DE EMPLEADOS
-        async function cargarListaEmpleados() {
-            let empleadosContainer = document.getElementById('listaEmpleadosContainer');
-            if (!empleadosContainer) return;
-            
-            let empleados = JSON.parse(localStorage.getItem('hg_empleados_registrados') || '[]');
-            let html = "";
-            
-            if (empleados.length === 0) {
-                html = `<div style="padding: 15px; text-align: center; color: var(--color-mid-blue); font-size: 0.9rem;">No hay empleados registrados.</div>`;
-            } else {
-                empleados.forEach((emp, i) => {
-                    html += `
-                        <div class="employee-list-item">
-                            <div><strong>${emp.nombre}</strong><br><span style="font-size:0.82rem; opacity:0.8;">${emp.email}</span></div>
-                            <button type="button" class="btn-action" style="background:#e74c3c; padding:5px 10px; font-size:0.85rem;" onclick="eliminarEmpleado(${i})"><i class="fas fa-user-minus"></i> Despedir</button>
-                        </div>
-                    `;
-                });
-            }
-            empleadosContainer.innerHTML = html;
-        }
-
-        window.eliminarEmpleado = function(i) {
-            if (confirm("¿Está seguro de eliminar a este empleado del registro local?")) {
-                let empleados = JSON.parse(localStorage.getItem('hg_empleados_registrados') || '[]');
-                empleados.splice(i, 1);
-                localStorage.setItem('hg_empleados_registrados', JSON.stringify(empleados));
-                cargarListaEmpleados();
-                alert("Empleado retirado.");
-            }
-        };
-
-        // REGISTRAR NUEVO EMPLEADO EN FIREBASE AUTH
-        document.getElementById('userCreateForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const nom = document.getElementById('newUserName').value.trim();
-            const email = document.getElementById('newUserEmail').value.trim();
-            const pass = document.getElementById('newUserPass').value.trim();
-
-            if (auth) {
-                try {
-                    await createUserWithEmailAndPassword(auth, email, pass);
-                    let empleados = JSON.parse(localStorage.getItem('hg_empleados_registrados') || '[]');
-                    empleados.push({ nombre: nom, email: email });
-                    localStorage.setItem('hg_empleados_registrados', JSON.stringify(empleados));
-                    
-                    alert(`Empleado ${nom} (${email}) creado exitosamente.`);
-                    document.getElementById('userCreateForm').reset();
-                    cargarListaEmpleados();
-                } catch (err) {
-                    alert("Error creando empleado: " + err.message);
-                }
-            }
+            setTimeout(() => {
+                btn.className = "btn-submit success";
+                btn.innerHTML = '<i class="fas fa-check-circle"></i> <span>Solicitud enviada exitosamente ¡Pronto nos comunicaremos con usted!</span>';
+            }, 500);
         });
 
-        // CAMBIAR CONTRASEÑA ADMINISTRADOR
-        document.getElementById('changePasswordAdminForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const currentPass = document.getElementById('currentPassAdmin').value.trim();
-            const newPass = document.getElementById('newPassAdmin').value.trim();
-
-            if (auth && currentUser) {
-                try {
-                    const cred = EmailAuthProvider.credential(currentUser.email, currentPass);
-                    await reauthenticateWithCredential(currentUser, cred);
-                    await updatePassword(currentUser, newPass);
-                    alert("Contraseña actualizada exitosamente.");
-                    document.getElementById('changePasswordAdminForm').reset();
-                } catch (err) {
-                    alert("Error al cambiar contraseña: Verifique la clave actual. (" + err.message + ")");
-                }
-            }
-        });
-
-        // CAMBIAR CONTRASEÑA EMPLEADO
-        document.getElementById('changePasswordEmpForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const currentPass = document.getElementById('currentPassEmp').value.trim();
-            const newPass = document.getElementById('newPassEmp').value.trim();
-            const confirmNewPass = document.getElementById('confirmNewPassEmp').value.trim();
-
-            if (newPass !== confirmNewPass) {
-                alert("La contraseña nueva no coincide con la confirmación.");
-                return;
-            }
-
-            if (auth && currentUser) {
-                try {
-                    const cred = EmailAuthProvider.credential(currentUser.email, currentPass);
-                    await reauthenticateWithCredential(currentUser, cred);
-                    await updatePassword(currentUser, newPass);
-                    alert("Contraseña actualizada exitosamente.");
-                    document.getElementById('changePasswordEmpForm').reset();
-                } catch (err) {
-                    alert("Error al cambiar contraseña: Verifique la clave actual.");
-                }
-            }
-        });
-
-        // LIMPIAR SISTEMA COMPLETO (SOLO ADMINISTRADOR)
-        document.getElementById('resetSystemBtn').addEventListener('click', async () => {
-            if (confirm("¿Confirmar limpieza completa del sistema para entrega/traspaso?")) {
-                localStorage.removeItem('hg_local_cotizaciones');
-                if (db) {
-                    try {
-                        const snap = await getDocs(collection(db, "cotizaciones"));
-                        for (const d of snap.docs) { await deleteDoc(doc(db, "cotizaciones", d.id)); }
-                    } catch (error) {}
-                }
-                cargarDatosCombinados(false);
-                alert("Sistema reiniciado a cero.");
-            }
+        // Menú responsive móvil
+        document.getElementById('mobile-menu').addEventListener('click', () => {
+            document.getElementById('nav-menu').classList.toggle('active');
         });
     </script>
 </body>
