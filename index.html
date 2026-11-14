@@ -139,18 +139,13 @@
         .btn-nav-quote:hover { background-color: var(--color-deep-blue); }
         .menu-toggle { display: none; color: var(--color-white); font-size: 1.8rem; cursor: pointer; }
 
-        /* HERO SECTION OPTIMIZADO PARA EVITAR PIXELACIÓN EXCESIVA */
+        /* HERO SECTION - IMAGEN ORIGINAL RESTAURADA Y NÍTIDA */
         .hero {
             position: relative;
-            background-color: var(--color-dark-navy);
-            background-image: url('https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TBWsQQqv4W1rUxS59csVcDmpE3dPEwHXDZUgA7jmY7W2h64MLeBykncoXCX11EZwFnkDRxyjY9CF09_KDwEjWhqCVEa73APsYciQ28EWPioOQDy8waaqIyJR2NRCvZvFEEkfs=s680-w680-h510-rw');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
+            background: url('https://i.postimg.cc/7hh27pvr/AM.jpg') center/cover no-repeat;
             color: var(--color-white);
             padding: 7.5rem 2rem;
             text-align: center;
-            image-rendering: -webkit-optimize-contrast; /* Mejora la nitidez del navegador */
         }
 
         .hero-container { 
@@ -158,16 +153,15 @@
             margin: 0 auto; 
             position: relative;
             z-index: 2;
-            background: rgba(10, 25, 49, 0.70); /* Fondo un poco más sólido para que el texto resalte impecable */
-            backdrop-filter: blur(8px);
+            background: rgba(10, 25, 49, 0.45);
+            backdrop-filter: blur(6px);
             padding: 3rem 2rem;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
-        .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 1.2rem; line-height: 1.2; color: #ffffff; text-shadow: 0 2px 8px rgba(0,0,0,0.9); }
-        .hero p { font-size: 1.15rem; color: #f1f5f9; margin-bottom: 2.5rem; font-weight: 500; text-shadow: 0 1px 5px rgba(0,0,0,0.9); }
+        .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 1.2rem; line-height: 1.2; color: #ffffff; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
+        .hero p { font-size: 1.15rem; color: #f1f5f9; margin-bottom: 2.5rem; font-weight: 500; text-shadow: 0 1px 5px rgba(0,0,0,0.8); }
         .hero-buttons { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
 
         .btn-primary {
@@ -587,7 +581,7 @@
 
     <!-- MAIN CONTENT -->
     <main>
-        <!-- HERO SECTION OPTIMIZADO -->
+        <!-- HERO SECTION - IMAGEN ORIGINAL RESTAURADA -->
         <section class="hero">
             <div class="hero-container">
                 <h1 data-i18n="hero_title">Transporte Privado & Tours VIP en Panamá</h1>
@@ -722,13 +716,25 @@
                     </div>
                 </div>
 
+                <!-- NUEVA TARJETA: DREAMS PLAYA BONITA PANAMÁ (CON LA IMAGEN SOLICITADA) -->
+                <div class="bento-card">
+                    <div class="bento-media">
+                        <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TBWsQQqv4W1rUxS59csVcDmpE3dPEwHXDZUgA7jmY7W2h64MLeBykncoXCX11EZwFnkDRxyjY9CF09_KDwEjWhqCVEa73APsYciQ28EWPioOQDy8waaqIyJR2NRCvZvFEEkfs=s680-w680-h510-rw" alt="Dreams Playa Bonita">
+                        <span class="bento-badge">5 Estrellas Resort</span>
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-title">4. Dreams Playa Bonita Panamá</div>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_quote_transfer">Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
                 <div class="bento-card">
                     <div class="bento-media">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7rBQ8gOGLJ0pI8F9V-vbkoLkMMhKT2GIDhTqT9-GGCp_b12QCxXVKjKk&s=10" alt="The Santa María">
                         <span class="bento-badge">Luxury Resort</span>
                     </div>
                     <div class="bento-content">
-                        <div class="bento-title">4. The Santa María, a Luxury Collection Hotel</div>
+                        <div class="bento-title">5. The Santa María, a Luxury Collection Hotel</div>
                         <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_quote_transfer">Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
@@ -739,7 +745,7 @@
                         <span class="bento-badge">5 Estrellas Lifestyle</span>
                     </div>
                     <div class="bento-content">
-                        <div class="bento-title">5. W Panamá</div>
+                        <div class="bento-title">6. W Panamá</div>
                         <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_quote_transfer">Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
