@@ -90,25 +90,28 @@
             z-index: 1000;
         }
 
-        .sidebar-brand { display: flex; align-items: center; gap: 15px; margin-bottom: 3rem; }
+        .sidebar-brand { display: flex; align-items: center; gap: 15px; margin-bottom: 2rem; }
         .sidebar-brand img { height: 50px; }
         .sidebar-brand h3 { font-size: 1.1rem; color: #FFFFFF; }
         .sidebar-brand span { color: var(--color-soft-blue); font-size: 0.75rem; display: block; }
 
-        .sidebar-menu { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; flex-grow: 1; overflow-y: auto; }
+        .sidebar-menu { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; flex-grow: 1; overflow-y: auto; max-height: calc(100vh - 220px); padding-right: 5px; }
+        .sidebar-menu::-webkit-scrollbar { width: 4px; }
+        .sidebar-menu::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+
         .sidebar-item a {
-            display: flex; align-items: center; gap: 15px;
+            display: flex; align-items: center; gap: 12px;
             color: var(--color-soft-blue); text-decoration: none;
-            padding: 1rem 1.2rem; border-radius: 12px; font-weight: 600; font-size: 1rem;
+            padding: 0.8rem 1rem; border-radius: 12px; font-weight: 600; font-size: 0.92rem;
             transition: var(--transition);
         }
 
         .sidebar-item a:hover, .sidebar-item a.active { background-color: var(--color-deep-blue); color: #FFFFFF; }
 
         .btn-logout {
-            background: rgba(231, 76, 60, 0.2); color: #e74c3c; border: none; padding: 1rem;
+            background: rgba(231, 76, 60, 0.2); color: #e74c3c; border: none; padding: 0.9rem;
             border-radius: 12px; cursor: pointer; font-weight: 600; display: flex; align-items: center;
-            justify-content: center; gap: 10px; font-size: 1rem; transition: var(--transition);
+            justify-content: center; gap: 10px; font-size: 0.95rem; transition: var(--transition); margin-top: 10px;
         }
         .btn-logout:hover { background: #e74c3c; color: #FFFFFF; }
 
@@ -249,6 +252,13 @@
         .badge-en { background: #e6f4ea; color: #137333; }
 
         .employee-list-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; border-bottom: 1px solid var(--border-color); font-size: 0.95rem; }
+        
+        /* DIRECTORIOS ESTILOS */
+        .directory-container { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+        .directory-card { background: var(--card-bg); padding: 2rem; border-radius: 20px; box-shadow: var(--card-shadow); border: 1px solid var(--border-color); }
+        .directory-card h4 { font-size: 1.2rem; color: var(--color-mid-blue); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 10px; }
+        .directory-item-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; border-bottom: 1px solid var(--border-color); font-size: 0.95rem; }
+        .directory-item-row:last-child { border-bottom: none; }
 
         .mobile-menu-btn { display: none; background: none; border: none; color: var(--text-main); font-size: 1.8rem; cursor: pointer; }
 
@@ -293,6 +303,9 @@
                 <li class="sidebar-item"><a href="#" onclick="switchTab('resumen', event)" class="active"><i class="fas fa-chart-pie"></i> Resumen</a></li>
                 <li class="sidebar-item"><a href="#" onclick="switchTab('solicitudes', event)"><i class="fas fa-inbox"></i> Solicitudes</a></li>
                 <li class="sidebar-item"><a href="#" onclick="switchTab('historial', event)"><i class="fas fa-history"></i> Historial</a></li>
+                <li class="sidebar-item"><a href="#" onclick="switchTab('dirHoteles', event)"><i class="fas fa-hotel"></i> Dir. Hoteles Panamá</a></li>
+                <li class="sidebar-item"><a href="#" onclick="switchTab('dirAtractivos', event)"><i class="fas fa-camera-retro"></i> Dir. Atractivos</a></li>
+                <li class="sidebar-item"><a href="#" onclick="switchTab('dirDestinos', event)"><i class="fas fa-map-marked-alt"></i> Dir. Nacional Destinos</a></li>
                 <li class="sidebar-item" id="navItemUsuarios"><a href="#" onclick="switchTab('usuarios', event)"><i class="fas fa-users-cog"></i> Gestor de Usuarios</a></li>
                 <li class="sidebar-item" id="navItemAvanzadas"><a href="#" onclick="switchTab('avanzadas', event)"><i class="fas fa-sliders-h"></i> Opciones Avanzadas</a></li>
                 <li class="sidebar-item" id="navItemCambiarPass"><a href="#" onclick="switchTab('cambiarPassEmp', event)"><i class="fas fa-key"></i> Cambiar Contraseña</a></li>
@@ -372,10 +385,103 @@
                 </div>
             </div>
 
+            <!-- SECCIÓN: DIRECTORIO DE HOTELES -->
+            <div id="tab-dirHoteles" class="tab-section">
+                <h3 style="margin-bottom: 1.8rem; color: var(--text-main);">Directorio de Hoteles – Ciudad de Panamá</h3>
+                <div style="background: var(--card-bg); padding: 2.5rem; border-radius: 20px; margin-bottom: 2.5rem; box-shadow: var(--card-shadow); border: 1px solid var(--border-color);">
+                    <h4 style="margin-bottom: 1rem; color: var(--color-mid-blue);"><i class="fas fa-plus-circle"></i> Agregar Nuevo Hotel</h4>
+                    <form id="formAddHotel">
+                        <label style="font-weight:600; font-size:0.95rem;">Seleccionar Categoría</label>
+                        <select id="hotelCat" class="form-control" required>
+                            <option value="1">⭐⭐⭐⭐⭐ HOTELES DE LUJO 5 estrella</option>
+                            <option value="2">⭐⭐⭐⭐ HOTELES DE 4 ESTRELLAS Y EJECUTIVOS</option>
+                            <option value="3">⭐⭐⭐ HOTELES DE 3 ESTRELLAS Y ECONÓMICOS</option>
+                            <option value="4">HOSTALES Y OTROS ALOJAMIENTOS</option>
+                            <option value="5">HOTELES Y RESORTS FUERA DEL CENTRO DE LA CIUDAD</option>
+                            <option value="6">Incluir también otro</option>
+                        </select>
+                        <label style="font-weight:600; font-size:0.95rem;">Nombre del Hotel</label>
+                        <input type="text" id="hotelName" class="form-control" placeholder="Ej. Hotel Riu Plaza Panamá" required>
+                        <label style="font-weight:600; font-size:0.95rem;">URL del Hotel / Enlace</label>
+                        <input type="url" id="hotelUrl" class="form-control" placeholder="https://..." required>
+                        <button type="submit" class="btn-action">Guardar Hotel</button>
+                    </form>
+                </div>
+                <div class="directory-container" id="listHotelesContainer"></div>
+            </div>
+
+            <!-- SECCIÓN: DIRECTORIO DE ATRACTIVOS TURÍSTICOS -->
+            <div id="tab-dirAtractivos" class="tab-section">
+                <h3 style="margin-bottom: 1.8rem; color: var(--text-main);">Directorio de Atractivos Turísticos – Ciudad de Panamá</h3>
+                <div style="background: var(--card-bg); padding: 2.5rem; border-radius: 20px; margin-bottom: 2.5rem; box-shadow: var(--card-shadow); border: 1px solid var(--border-color);">
+                    <h4 style="margin-bottom: 1rem; color: var(--color-mid-blue);"><i class="fas fa-plus-circle"></i> Agregar Nuevo Atractivo</h4>
+                    <form id="formAddAtractivo">
+                        <label style="font-weight:600; font-size:0.95rem;">Seleccionar Categoría</label>
+                        <select id="atractivoCat" class="form-control" required>
+                            <option value="1">CASCO ANTIGUO Y CENTRO HISTÓRICO</option>
+                            <option value="2">CANAL DE PANAMÁ Y ESCLUSAS</option>
+                            <option value="3">AMADOR, CALZADA Y ZONA DE ISLAS</option>
+                            <option value="4">PANAMÁ VIEJO Y PATRIMONIO HISTÓRICO</option>
+                            <option value="5">PARQUES, NATURALEZA Y MIRADORES</option>
+                            <option value="6">ISLAS Y EXCURSIONES DESDE CIUDAD DE PANAMÁ</option>
+                            <option value="7">CENTROS COMERCIALES Y ENTRETENIMIENTO</option>
+                            <option value="8">CULTURA, ARTE Y EXPERIENCIAS</option>
+                            <option value="9">PLAYAS Y DESTINOS DE EXCURSIÓN</option>
+                            <option value="10">EXPERIENCIAS TURÍSTICAS ADICIONALES</option>
+                        </select>
+                        <label style="font-weight:600; font-size:0.95rem;">Nombre del Atractivo</label>
+                        <input type="text" id="atractivoName" class="form-control" placeholder="Ej. Mirador de Las Cruces" required>
+                        <label style="font-weight:600; font-size:0.95rem;">URL de Información</label>
+                        <input type="url" id="atractivoUrl" class="form-control" placeholder="https://..." required>
+                        <button type="submit" class="btn-action">Guardar Atractivo</button>
+                    </form>
+                </div>
+                <div class="directory-container" id="listAtractivosContainer"></div>
+            </div>
+
+            <!-- SECCIÓN: DIRECTORIO NACIONAL DE DESTINOS -->
+            <div id="tab-dirDestinos" class="tab-section">
+                <h3 style="margin-bottom: 1.8rem; color: var(--text-main);">Directorio Nacional de Destinos Turísticos de Panamá</h3>
+                <div style="background: var(--card-bg); padding: 2.5rem; border-radius: 20px; margin-bottom: 2.5rem; box-shadow: var(--card-shadow); border: 1px solid var(--border-color);">
+                    <h4 style="margin-bottom: 1rem; color: var(--color-mid-blue);"><i class="fas fa-plus-circle"></i> Agregar Nuevo Destino Nacional</h4>
+                    <form id="formAddDestino">
+                        <label style="font-weight:600; font-size:0.95rem;">Seleccionar Categoría / Provincia / Comarca</label>
+                        <select id="destinoCat" class="form-control" required>
+                            <option value="1">PANAMÁ OESTE: Playas y destinos costeros</option>
+                            <option value="2">Montañas, pueblos y naturaleza</option>
+                            <option value="3">PROVINCIA DE COLÓN</option>
+                            <option value="4">Historia y turismo</option>
+                            <option value="5">PROVINCIA DE COCLÉ: Playas y resorts</option>
+                            <option value="6">Montañas, cascadas y pueblos</option>
+                            <option value="7">PROVINCIA DE HERRERA</option>
+                            <option value="8">PROVINCIA DE LOS SANTOS: Playas e islas</option>
+                            <option value="9">Pueblos y atractivos</option>
+                            <option value="10">PROVINCIA DE VERAGUAS: Playas e islas</option>
+                            <option value="11">Naturaleza y aventura</option>
+                            <option value="12">PROVINCIA DE CHIRIQUÍ: Montañas y turismo de aventura</option>
+                            <option value="13">Playas e islas</option>
+                            <option value="14">PROVINCIA DE BOCAS DEL TORO: Islas y playas</option>
+                            <option value="15">Naturaleza y aventura</option>
+                            <option value="16">PROVINCIA DE DARIÉN</option>
+                            <option value="17">PROVINCIA DE PANAMÁ (FUERA DEL CENTRO URBANO)</option>
+                            <option value="18">COMARCA GUNA YALA – SAN BLAS</option>
+                            <option value="19">COMARCA NGÄBE-BUGLÉ</option>
+                            <option value="20">COMARCA EMBERÁ-WOUNAAN</option>
+                            <option value="21">COMARCA WARGANDÍ</option>
+                        </select>
+                        <label style="font-weight:600; font-size:0.95rem;">Nombre del Destino</label>
+                        <input type="text" id="destinoName" class="form-control" placeholder="Ej. Valle de Antón" required>
+                        <label style="font-weight:600; font-size:0.95rem;">URL del Destino</label>
+                        <input type="url" id="destinoUrl" class="form-control" placeholder="https://..." required>
+                        <button type="submit" class="btn-action">Guardar Destino</button>
+                    </form>
+                </div>
+                <div class="directory-container" id="listDestinosContainer"></div>
+            </div>
+
             <!-- SECCIÓN: GESTOR DE USUARIOS (SOLO ADMINISTRADOR) -->
             <div id="tab-usuarios" class="tab-section">
                 <h3 style="margin-bottom: 1.8rem; color: var(--text-main);">Gestor de Personal y Seguridad (Administrador)</h3>
-                
                 <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap:2.5rem;">
                     <div style="background: var(--card-bg); padding: 2.5rem; border-radius: 20px; box-shadow: var(--card-shadow); border: 1px solid var(--border-color);">
                         <h4 style="margin-bottom:1.2rem; color:var(--color-mid-blue); font-size: 1.2rem;"><i class="fas fa-user-plus"></i> Registrar Nuevo Empleado</h4>
@@ -392,9 +498,7 @@
 
                     <div style="background: var(--card-bg); padding: 2.5rem; border-radius: 20px; box-shadow: var(--card-shadow); border: 1px solid var(--border-color);">
                         <h4 style="margin-bottom:1.2rem; color:var(--color-mid-blue); font-size: 1.2rem;"><i class="fas fa-users"></i> Empleados Registrados</h4>
-                        <div id="listaEmpleadosContainer" style="max-height: 250px; overflow-y: auto; margin-bottom: 1.5rem; border: 1px solid var(--border-color); border-radius: 12px;">
-                            <!-- Dinámico -->
-                        </div>
+                        <div id="listaEmpleadosContainer" style="max-height: 250px; overflow-y: auto; margin-bottom: 1.5rem; border: 1px solid var(--border-color); border-radius: 12px;"></div>
                         <h4 style="margin-bottom:1.2rem; color:var(--color-mid-blue); font-size: 1.2rem;"><i class="fas fa-key"></i> Cambiar mi Contraseña de Administrador</h4>
                         <form id="changePasswordAdminForm">
                             <label style="font-weight: 600; font-size:0.95rem;">Contraseña Actual</label>
@@ -424,12 +528,12 @@
                 </div>
             </div>
 
-            <!-- SECCIÓN: OPCIONES AVANZADAS (SOLO ADMINISTRADOR) -->
+            <!-- SECCIÓN: OPCIONES AVANZADAS -->
             <div id="tab-avanzadas" class="tab-section">
                 <h3 style="margin-bottom: 1.8rem; color: var(--text-main);">Opciones de Sistema (Administrador)</h3>
                 <div style="background: var(--card-bg); padding: 2.5rem; border-radius: 20px; max-width: 650px; box-shadow: var(--card-shadow); border: 1px solid var(--border-color); border-left: 6px solid #e74c3c;">
-                    <h4 style="color: #e74c3c; margin-bottom: 1rem; font-size: 1.3rem;">Limpieza Total de Solicitudes (Traspaso de Propiedad)</h4>
-                    <p style="font-size: 1rem; color: var(--text-main); opacity: 0.85; margin-bottom: 1.8rem; line-height: 1.5;">Esta opción eliminará permanentemente todas las cotizaciones de la base de datos de Firebase y almacenamiento local para dejar el sitio completamente limpio.</p>
+                    <h4 style="color: #e74c3c; margin-bottom: 1rem; font-size: 1.3rem;">Limpieza Total de Solicitudes</h4>
+                    <p style="font-size: 1rem; color: var(--text-main); opacity: 0.85; margin-bottom: 1.8rem; line-height: 1.5;">Esta opción eliminará permanentemente todas las cotizaciones de la base de datos de Firebase y del almacenamiento local.</p>
                     <button type="button" id="resetSystemBtn" class="btn-action" style="background-color: #e74c3c; padding: 1rem 1.8rem; font-size: 1.1rem;"><i class="fas fa-trash-alt"></i> Limpiar Todo el Sistema</button>
                 </div>
             </div>
@@ -437,11 +541,11 @@
         </div>
     </div>
 
-    <!-- SCRIPT PRINCIPAL DE LÓGICA Y ESTABILIDAD DE ESCRITURA -->
+    <!-- SCRIPT PRINCIPAL -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, createUserWithEmailAndPassword, EmailAuthProvider, reauthenticateWithCredential, updatePassword } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
-        import { getFirestore, collection, getDocs, onSnapshot, deleteDoc, doc, updateDoc, setDoc } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
+        import { getFirestore, collection, getDocs, onSnapshot, deleteDoc, doc, updateDoc, setDoc, addDoc } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAmi32aTtpWepUPT2mi5hSVnBUVmTnRI9w",
@@ -461,9 +565,11 @@
             const app = initializeApp(firebaseConfig);
             auth = getAuth(app);
             db = getFirestore(app);
-        } catch (e) {}
+        } catch (e) {
+            console.warn("Inicialización Firebase parcial:", e);
+        }
 
-        // MODO OSCURO / CLARO
+        // TEMA OSCURO / CLARO
         const themeToggleBtn = document.getElementById('themeToggleBtn');
         const themeIcon = document.getElementById('themeIcon');
         
@@ -480,19 +586,14 @@
             if (languageChart) updateBarChart(lastEsCount, lastEnCount);
         }
 
-        themeToggleBtn.addEventListener('click', () => {
-            setTheme(!document.body.classList.contains('dark-theme'));
-        });
-
-        if (localStorage.getItem('hg_theme') === 'dark') {
-            setTheme(true);
-        }
+        themeToggleBtn.addEventListener('click', () => setTheme(!document.body.classList.contains('dark-theme')));
+        if (localStorage.getItem('hg_theme') === 'dark') setTheme(true);
 
         document.getElementById('menuToggleBtn').addEventListener('click', () => {
             document.getElementById('sidebarNav').classList.toggle('active');
         });
 
-        // AUDIO CAMPANA MESA
+        // AUDIO CAMPANA
         function playTableBellSound() {
             try {
                 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -514,7 +615,6 @@
 
         document.getElementById('testBellBtn').addEventListener('click', playTableBellSound);
 
-        // CONTROL DE ROLES
         function aplicarPermisosRol(email) {
             const emailLower = email ? email.toLowerCase().trim() : '';
             let empleados = JSON.parse(localStorage.getItem('hg_empleados_registrados') || '[]');
@@ -537,7 +637,6 @@
             }
         }
 
-        // LOGIN Y AUTENTICACIÓN
         const loginOverlay = document.getElementById('loginOverlay');
         const loginForm = document.getElementById('loginForm');
         const loginError = document.getElementById('loginError');
@@ -549,8 +648,8 @@
                     loginOverlay.style.display = 'none';
                     document.getElementById('adminUserEmail').textContent = user.email;
                     aplicarPermisosRol(user.email);
-                    cargarDatosCombinados(true);
                     initRealtimeListener();
+                    initDirectoriosListeners();
                 } else {
                     currentUser = null;
                     loginOverlay.style.display = 'flex';
@@ -571,7 +670,8 @@
         } else {
             loginOverlay.style.display = 'none';
             aplicarPermisosRol("admin@hgtravels.com");
-            cargarDatosCombinados(true);
+            initRealtimeListener();
+            initDirectoriosListeners();
         }
 
         window.switchTab = function(tabId, event) {
@@ -583,7 +683,6 @@
             if(window.innerWidth <= 900) document.getElementById('sidebarNav').classList.remove('active');
         };
 
-        // CHART.JS BARRAS 3D
         let languageChart = null;
         let lastEsCount = 0, lastEnCount = 0;
 
@@ -630,35 +729,10 @@
 
         let cantidadPendientesAnterior = -1;
 
-        // CARGAR SOLICITUDES (BLOQUEA EL REINICIO SI EL USUARIO ESTÁ ESCRIBIENDO)
-        window.cargarDatosCombinados = async function(isInitial = false) {
-            // Si el usuario tiene activo un cuadro de texto (está escribiendo), NO redibujamos para evitar que se borre su texto
+        function renderizarPanel(todas) {
             const activeElement = document.activeElement;
-            if (activeElement && activeElement.classList.contains('reply-textarea')) {
-                return;
-            }
+            if (activeElement && activeElement.classList.contains('reply-textarea')) return;
 
-            let cotizacionesLocal = JSON.parse(localStorage.getItem('hg_local_cotizaciones') || '[]');
-            let cotizacionesFirebase = [];
-
-            if (db) {
-                try {
-                    const snap = await getDocs(collection(db, "cotizaciones"));
-                    snap.forEach(docSnap => {
-                        const d = docSnap.data();
-                        d.firestoreId = docSnap.id;
-                        cotizacionesFirebase.push(d);
-                    });
-                } catch (e) {}
-            }
-
-            const mapUnico = new Map();
-            [...cotizacionesLocal, ...cotizacionesFirebase].forEach(item => {
-                const key = item.firestoreId || item.id || (item.nombre + item.fecha);
-                mapUnico.set(key, item);
-            });
-
-            const todas = Array.from(mapUnico.values());
             let total = todas.length, esCount = 0, enCount = 0;
             let respondidasCount = 0, pendientesCount = 0, rechazadasCount = 0;
             let cardsHTML = "", historialHTML = "";
@@ -738,7 +812,7 @@
                 }
             });
 
-            if (!isInitial && cantidadPendientesAnterior !== -1 && pendientesCount > cantidadPendientesAnterior) {
+            if (cantidadPendientesAnterior !== -1 && pendientesCount > cantidadPendientesAnterior) {
                 playTableBellSound();
             }
             cantidadPendientesAnterior = pendientesCount;
@@ -752,16 +826,46 @@
 
             document.getElementById('solicitudesCardsGrid').innerHTML = cardsHTML || '<div style="grid-column: 1/-1; text-align:center; padding:3.5rem; background:var(--card-bg); border-radius:20px; font-weight:600; color:var(--color-mid-blue); font-size: 1.1rem;">No hay solicitudes pendientes.</div>';
             document.getElementById('historialTableBody').innerHTML = historialHTML || '<tr><td colspan="6" style="text-align:center; padding: 2.5rem;">No hay historial registrado.</td></tr>';
-        };
-
-        function initRealtimeListener() {
-            if (db) onSnapshot(collection(db, "cotizaciones"), () => cargarDatosCombinados(false));
-            setInterval(() => cargarDatosCombinados(false), 5000);
         }
 
-        document.getElementById('refreshBtn').addEventListener('click', () => cargarDatosCombinados(false));
+        function initRealtimeListener() {
+            let datosCombinadosMap = new Map();
+            try {
+                let local = JSON.parse(localStorage.getItem('hg_local_cotizaciones') || '[]');
+                local.forEach(item => {
+                    const id = item.firestoreId || item.id;
+                    if(id) datosCombinadosMap.set(id, item);
+                });
+                renderizarPanel(Array.from(datosCombinadosMap.values()));
+            } catch(e) {}
 
-        // RESPONDER WHATSAPP Y ACTUALIZAR FIRESTORE
+            if (db) {
+                onSnapshot(collection(db, "cotizaciones"), (snapshot) => {
+                    snapshot.forEach(docSnap => {
+                        const data = docSnap.data();
+                        data.firestoreId = docSnap.id;
+                        datosCombinadosMap.set(docSnap.id, data);
+                    });
+
+                    let listaOrdenada = Array.from(datosCombinadosMap.values());
+                    listaOrdenada.sort((a, b) => new Date(b.fecha || 0) - new Date(a.fecha || 0));
+
+                    try {
+                        localStorage.setItem('hg_local_cotizaciones', JSON.stringify(listaOrdenada));
+                    } catch (e) {}
+
+                    renderizarPanel(listaOrdenada);
+                }, (error) => {
+                    console.error("Error sincronizando Firestore:", error);
+                });
+            }
+        }
+
+        document.getElementById('refreshBtn').addEventListener('click', () => {
+            initRealtimeListener();
+            alert("Panel sincronizado correctamente.");
+        });
+
         window.enviarWhatsappYResponder = async function(keyId, textId, fileId, telefono, nombre) {
             const respuestaEl = document.getElementById(textId);
             const respuesta = respuestaEl ? respuestaEl.value.trim() : '';
@@ -775,60 +879,239 @@
 
             const respuestaFinal = respuesta + archivoInfo;
 
-            let cotizacionesLocal = JSON.parse(localStorage.getItem('hg_local_cotizaciones') || '[]');
-            let indexLocal = cotizacionesLocal.findIndex(item => (item.id === keyId || item.firestoreId === keyId));
-            if (indexLocal !== -1) {
-                cotizacionesLocal[indexLocal].estado = 'Respondido';
-                cotizacionesLocal[indexLocal].respuestaAdmin = respuestaFinal;
-                localStorage.setItem('hg_local_cotizaciones', JSON.stringify(cotizacionesLocal));
-            }
-
-            if (db && keyId) {
+            if (db && keyId && !keyId.startsWith('cot_')) {
                 try {
                     await updateDoc(doc(db, "cotizaciones", keyId), { 
                         estado: 'Respondido', 
                         respuestaAdmin: respuestaFinal 
                     });
                 } catch (e) {
-                    console.error("Error al actualizar en Firebase:", e);
+                    console.error("Error al actualizar Firestore:", e);
                 }
             }
 
+            try {
+                let localQuotes = JSON.parse(localStorage.getItem('hg_local_cotizaciones') || '[]');
+                localQuotes = localQuotes.map(q => {
+                    if ((q.firestoreId === keyId) || (q.id === keyId)) {
+                        q.estado = 'Respondido';
+                        q.respuestaAdmin = respuestaFinal;
+                    }
+                    return q;
+                });
+                localStorage.setItem('hg_local_cotizaciones', JSON.stringify(localQuotes));
+                renderizarPanel(localQuotes);
+            } catch (err) {}
+
             const cleanPhone = telefono.replace(/[^0-9]/g, '');
             window.open(`https://wa.me/${cleanPhone}?text=${encodeURIComponent(`Hola ${nombre}, gracias por contactar a H.G.Travel & Tours Panamá. Cotización: ${respuestaFinal}`)}`, '_blank');
-
-            cargarDatosCombinados(false);
         };
 
-        // RECHAZAR SOLICITUD
         window.rechazarSolicitud = async function(keyId) {
             if (confirm("¿Desea rechazar esta solicitud?")) {
-                let cotizacionesLocal = JSON.parse(localStorage.getItem('hg_local_cotizaciones') || '[]');
-                let indexLocal = cotizacionesLocal.findIndex(item => (item.id === keyId || item.firestoreId === keyId));
-                if (indexLocal !== -1) {
-                    cotizacionesLocal[indexLocal].estado = 'Rechazado';
-                    localStorage.setItem('hg_local_cotizaciones', JSON.stringify(cotizacionesLocal));
-                }
-
-                if (db && keyId) {
+                if (db && keyId && !keyId.startsWith('cot_')) {
                     try {
                         await updateDoc(doc(db, "cotizaciones", keyId), { estado: 'Rechazado' });
                     } catch (e) {
                         console.error("Error al rechazar en Firebase:", e);
                     }
                 }
-                cargarDatosCombinados(false);
+
+                try {
+                    let localQuotes = JSON.parse(localStorage.getItem('hg_local_cotizaciones') || '[]');
+                    localQuotes = localQuotes.map(q => {
+                        if ((q.firestoreId === keyId) || (q.id === keyId)) {
+                            q.estado = 'Rechazado';
+                        }
+                        return q;
+                    });
+                    localStorage.setItem('hg_local_cotizaciones', JSON.stringify(localQuotes));
+                    renderizarPanel(localQuotes);
+                } catch (err) {}
             }
         };
 
-        // GESTIÓN DE EMPLEADOS
+        // --- GESTIÓN DE DIRECTORIOS CON FIREBASE ---
+        const hotelCats = {
+            "1": "⭐⭐⭐⭐⭐ HOTELES DE LUJO 5 estrella",
+            "2": "⭐⭐⭐⭐ HOTELES DE 4 ESTRELLAS Y EJECUTIVOS",
+            "3": "⭐⭐⭐ HOTELES DE 3 ESTRELLAS Y ECONÓMICOS",
+            "4": "HOSTALES Y OTROS ALOJAMIENTOS",
+            "5": "HOTELES Y RESORTS FUERA DEL CENTRO DE LA CIUDAD",
+            "6": "Incluir también otro"
+        };
+
+        const atractivoCats = {
+            "1": "CASCO ANTIGUO Y CENTRO HISTÓRICO",
+            "2": "CANAL DE PANAMÁ Y ESCLUSAS",
+            "3": "AMADOR, CALZADA Y ZONA DE ISLAS",
+            "4": "PANAMÁ VIEJO Y PATRIMONIO HISTÓRICO",
+            "5": "PARQUES, NATURALEZA Y MIRADORES",
+            "6": "ISLAS Y EXCURSIONES DESDE CIUDAD DE PANAMÁ",
+            "7": "CENTROS COMERCIALES Y ENTRETENIMIENTO",
+            "8": "CULTURA, ARTE Y EXPERIENCIAS",
+            "9": "PLAYAS Y DESTINOS DE EXCURSIÓN",
+            "10": "EXPERIENCIAS TURÍSTICAS ADICIONALES"
+        };
+
+        const destinoCats = {
+            "1": "PANAMÁ OESTE: Playas y destinos costeros",
+            "2": "Montañas, pueblos y naturaleza",
+            "3": "PROVINCIA DE COLÓN",
+            "4": "Historia y turismo",
+            "5": "PROVINCIA DE COCLÉ: Playas y resorts",
+            "6": "Montañas, cascadas y pueblos",
+            "7": "PROVINCIA DE HERRERA",
+            "8": "PROVINCIA DE LOS SANTOS: Playas e islas",
+            "9": "Pueblos y atractivos",
+            "10": "PROVINCIA DE VERAGUAS: Playas e islas",
+            "11": "Naturaleza y aventura",
+            "12": "PROVINCIA DE CHIRIQUÍ: Montañas y turismo de aventura",
+            "13": "Playas e islas",
+            "14": "PROVINCIA DE BOCAS DEL TORO: Islas y playas",
+            "15": "Naturaleza y aventura",
+            "16": "PROVINCIA DE DARIÉN",
+            "17": "PROVINCIA DE PANAMÁ (FUERA DEL CENTRO URBANO)",
+            "18": "COMARCA GUNA YALA – SAN BLAS",
+            "19": "COMARCA NGÄBE-BUGLÉ",
+            "20": "COMARCA EMBERÁ-WOUNAAN",
+            "21": "COMARCA WARGANDÍ"
+        };
+
+        function initDirectoriosListeners() {
+            // Hoteles
+            if (db) {
+                onSnapshot(collection(db, "dir_hoteles"), (snapshot) => {
+                    let items = [];
+                    snapshot.forEach(d => items.push({ id: d.id, ...d.data() }));
+                    renderDirectorio('listHotelesContainer', hotelCats, items, 'dir_hoteles');
+                });
+                onSnapshot(collection(db, "dir_atractivos"), (snapshot) => {
+                    let items = [];
+                    snapshot.forEach(d => items.push({ id: d.id, ...d.data() }));
+                    renderDirectorio('listAtractivosContainer', atractivoCats, items, 'dir_atractivos');
+                });
+                onSnapshot(collection(db, "dir_destinos"), (snapshot) => {
+                    let items = [];
+                    snapshot.forEach(d => items.push({ id: d.id, ...d.data() }));
+                    renderDirectorio('listDestinosContainer', destinoCats, items, 'dir_destinos');
+                });
+            } else {
+                renderDirectorio('listHotelesContainer', hotelCats, JSON.parse(localStorage.getItem('hg_dir_hoteles')||'[]'), 'dir_hoteles');
+                renderDirectorio('listAtractivosContainer', atractivoCats, JSON.parse(localStorage.getItem('hg_dir_atractivos')||'[]'), 'dir_atractivos');
+                renderDirectorio('listDestinosContainer', destinoCats, JSON.parse(localStorage.getItem('hg_dir_destinos')||'[]'), 'dir_destinos');
+            }
+        }
+
+        function renderDirectorio(containerId, catMap, items, collectionName) {
+            let container = document.getElementById(containerId);
+            if(!container) return;
+            let html = "";
+            for(let catKey in catMap) {
+                let catName = catMap[catKey];
+                let subItems = items.filter(i => String(i.categoria) === String(catKey));
+                
+                html += `
+                    <div class="directory-card">
+                        <h4><i class="fas fa-folder-open"></i> ${catName}</h4>
+                        <div>
+                `;
+                if(subItems.length === 0) {
+                    html += `<div style="font-size:0.9rem; color:var(--color-mid-blue); padding:5px 0;">No hay elementos registrados en esta categoría.</div>`;
+                } else {
+                    subItems.forEach(item => {
+                        html += `
+                            <div class="directory-item-row">
+                                <div><strong>${item.nombre}</strong><br><a href="${item.url}" target="_blank" style="font-size:0.85rem; color:var(--color-mid-blue); word-break:break-all;">${item.url}</a></div>
+                                <button type="button" class="btn-action" style="background:#e74c3c; padding:6px 12px; font-size:0.85rem;" onclick="eliminarDirectorioItem('${collectionName}', '${item.id}')"><i class="fas fa-trash"></i></button>
+                            </div>
+                        `;
+                    });
+                }
+                html += `</div></div>`;
+            }
+            container.innerHTML = html;
+        }
+
+        window.eliminarDirectorioItem = async function(collectionName, itemId) {
+            if(confirm("¿Eliminar este elemento del directorio?")) {
+                if(db) {
+                    try { await deleteDoc(doc(db, collectionName, itemId)); } catch(e){}
+                }
+                let localKey = 'hg_' + collectionName;
+                let data = JSON.parse(localStorage.getItem(localKey) || '[]');
+                data = data.filter(i => i.id !== itemId);
+                localStorage.setItem(localKey, JSON.stringify(data));
+                initDirectoriosListeners();
+            }
+        };
+
+        document.getElementById('formAddHotel').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            let cat = document.getElementById('hotelCat').value;
+            let nombre = document.getElementById('hotelName').value.trim();
+            let url = document.getElementById('hotelUrl').value.trim();
+            let newItem = { categoria: cat, nombre, url, fecha: new Date().toISOString() };
+            
+            if(db) {
+                try { await addDoc(collection(db, "dir_hoteles"), newItem); } catch(e){}
+            }
+            let local = JSON.parse(localStorage.getItem('hg_dir_hoteles') || '[]');
+            newItem.id = 'loc_' + Date.now();
+            local.push(newItem);
+            localStorage.setItem('hg_dir_hoteles', JSON.stringify(local));
+            
+            document.getElementById('formAddHotel').reset();
+            initDirectoriosListeners();
+            alert("Hotel agregado exitosamente.");
+        });
+
+        document.getElementById('formAddAtractivo').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            let cat = document.getElementById('atractivoCat').value;
+            let nombre = document.getElementById('atractivoName').value.trim();
+            let url = document.getElementById('atractivoUrl').value.trim();
+            let newItem = { categoria: cat, nombre, url, fecha: new Date().toISOString() };
+            
+            if(db) {
+                try { await addDoc(collection(db, "dir_atractivos"), newItem); } catch(e){}
+            }
+            let local = JSON.parse(localStorage.getItem('hg_dir_atractivos') || '[]');
+            newItem.id = 'loc_' + Date.now();
+            local.push(newItem);
+            localStorage.setItem('hg_dir_atractivos', JSON.stringify(local));
+            
+            document.getElementById('formAddAtractivo').reset();
+            initDirectoriosListeners();
+            alert("Atractivo agregado exitosamente.");
+        });
+
+        document.getElementById('formAddDestino').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            let cat = document.getElementById('destinoCat').value;
+            let nombre = document.getElementById('destinoName').value.trim();
+            let url = document.getElementById('destinoUrl').value.trim();
+            let newItem = { categoria: cat, nombre, url, fecha: new Date().toISOString() };
+            
+            if(db) {
+                try { await addDoc(collection(db, "dir_destinos"), newItem); } catch(e){}
+            }
+            let local = JSON.parse(localStorage.getItem('hg_dir_destinos') || '[]');
+            newItem.id = 'loc_' + Date.now();
+            local.push(newItem);
+            localStorage.setItem('hg_dir_destinos', JSON.stringify(local));
+            
+            document.getElementById('formAddDestino').reset();
+            initDirectoriosListeners();
+            alert("Destino agregado exitosamente.");
+        });
+
+        // GESTIÓN DE EMPLEADOS Y SEGURIDAD
         async function cargarListaEmpleados() {
             let empleadosContainer = document.getElementById('listaEmpleadosContainer');
             if (!empleadosContainer) return;
-            
             let empleados = JSON.parse(localStorage.getItem('hg_empleados_registrados') || '[]');
             let html = "";
-            
             if (empleados.length === 0) {
                 html = `<div style="padding: 15px; text-align: center; color: var(--color-mid-blue); font-size: 0.9rem;">No hay empleados registrados.</div>`;
             } else {
@@ -845,7 +1128,7 @@
         }
 
         window.eliminarEmpleado = function(i) {
-            if (confirm("¿Está seguro de eliminar a este empleado del registro local?")) {
+            if (confirm("¿Está seguro de eliminar a este empleado?")) {
                 let empleados = JSON.parse(localStorage.getItem('hg_empleados_registrados') || '[]');
                 empleados.splice(i, 1);
                 localStorage.setItem('hg_empleados_registrados', JSON.stringify(empleados));
@@ -854,7 +1137,6 @@
             }
         };
 
-        // REGISTRAR NUEVO EMPLEADO EN FIREBASE AUTH
         document.getElementById('userCreateForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const nom = document.getElementById('newUserName').value.trim();
@@ -867,8 +1149,7 @@
                     let empleados = JSON.parse(localStorage.getItem('hg_empleados_registrados') || '[]');
                     empleados.push({ nombre: nom, email: email });
                     localStorage.setItem('hg_empleados_registrados', JSON.stringify(empleados));
-                    
-                    alert(`Empleado ${nom} (${email}) creado exitosamente.`);
+                    alert(`Empleado ${nom} creado exitosamente.`);
                     document.getElementById('userCreateForm').reset();
                     cargarListaEmpleados();
                 } catch (err) {
@@ -877,12 +1158,10 @@
             }
         });
 
-        // CAMBIAR CONTRASEÑA ADMINISTRADOR
         document.getElementById('changePasswordAdminForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const currentPass = document.getElementById('currentPassAdmin').value.trim();
             const newPass = document.getElementById('newPassAdmin').value.trim();
-
             if (auth && currentUser) {
                 try {
                     const cred = EmailAuthProvider.credential(currentUser.email, currentPass);
@@ -891,23 +1170,20 @@
                     alert("Contraseña actualizada exitosamente.");
                     document.getElementById('changePasswordAdminForm').reset();
                 } catch (err) {
-                    alert("Error al cambiar contraseña: Verifique la clave actual. (" + err.message + ")");
+                    alert("Error al cambiar contraseña: Verifique la clave actual.");
                 }
             }
         });
 
-        // CAMBIAR CONTRASEÑA EMPLEADO
         document.getElementById('changePasswordEmpForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const currentPass = document.getElementById('currentPassEmp').value.trim();
             const newPass = document.getElementById('newPassEmp').value.trim();
             const confirmNewPass = document.getElementById('confirmNewPassEmp').value.trim();
-
             if (newPass !== confirmNewPass) {
                 alert("La contraseña nueva no coincide con la confirmación.");
                 return;
             }
-
             if (auth && currentUser) {
                 try {
                     const cred = EmailAuthProvider.credential(currentUser.email, currentPass);
@@ -921,9 +1197,8 @@
             }
         });
 
-        // LIMPIAR SISTEMA COMPLETO (SOLO ADMINISTRADOR)
         document.getElementById('resetSystemBtn').addEventListener('click', async () => {
-            if (confirm("¿Confirmar limpieza completa del sistema para entrega/traspaso?")) {
+            if (confirm("¿Confirmar limpieza completa del sistema?")) {
                 localStorage.removeItem('hg_local_cotizaciones');
                 if (db) {
                     try {
@@ -931,8 +1206,8 @@
                         for (const d of snap.docs) { await deleteDoc(doc(db, "cotizaciones", d.id)); }
                     } catch (error) {}
                 }
-                cargarDatosCombinados(false);
                 alert("Sistema reiniciado a cero.");
+                renderizarPanel([]);
             }
         });
     </script>
