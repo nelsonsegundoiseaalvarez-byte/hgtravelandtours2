@@ -139,18 +139,35 @@
         .btn-nav-quote:hover { background-color: var(--color-deep-blue); }
         .menu-toggle { display: none; color: var(--color-white); font-size: 1.8rem; cursor: pointer; }
 
-        /* HERO SECTION */
+        /* HERO SECTION OPTIMIZADO PARA EVITAR PIXELACIÓN EXCESIVA */
         .hero {
             position: relative;
-            background: linear-gradient(135deg, rgba(10, 25, 49, 0.92), rgba(26, 61, 99, 0.85)), url('https://i.postimg.cc/7hh27pvr/AM.jpg') center/cover no-repeat;
+            background-color: var(--color-dark-navy);
+            background-image: url('https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TBWsQQqv4W1rUxS59csVcDmpE3dPEwHXDZUgA7jmY7W2h64MLeBykncoXCX11EZwFnkDRxyjY9CF09_KDwEjWhqCVEa73APsYciQ28EWPioOQDy8waaqIyJR2NRCvZvFEEkfs=s680-w680-h510-rw');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
             color: var(--color-white);
-            padding: 6.5rem 2rem;
+            padding: 7.5rem 2rem;
             text-align: center;
+            image-rendering: -webkit-optimize-contrast; /* Mejora la nitidez del navegador */
         }
 
-        .hero-container { max-width: 900px; margin: 0 auto; }
-        .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 1.2rem; line-height: 1.2; }
-        .hero p { font-size: 1.15rem; color: var(--color-soft-blue); margin-bottom: 2.5rem; font-weight: 300; }
+        .hero-container { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            position: relative;
+            z-index: 2;
+            background: rgba(10, 25, 49, 0.70); /* Fondo un poco más sólido para que el texto resalte impecable */
+            backdrop-filter: blur(8px);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 1.2rem; line-height: 1.2; color: #ffffff; text-shadow: 0 2px 8px rgba(0,0,0,0.9); }
+        .hero p { font-size: 1.15rem; color: #f1f5f9; margin-bottom: 2.5rem; font-weight: 500; text-shadow: 0 1px 5px rgba(0,0,0,0.9); }
         .hero-buttons { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
 
         .btn-primary {
@@ -169,7 +186,7 @@
         .btn-primary:hover { background-color: var(--color-deep-blue); transform: translateY(-3px); }
 
         .btn-secondary {
-            background-color: rgba(255, 255, 255, 0.08);
+            background-color: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(8px);
             color: var(--color-white);
             padding: 0.9rem 2.2rem;
@@ -179,7 +196,7 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            border: 1px solid var(--color-soft-blue);
+            border: 1px solid var(--color-white);
             transition: var(--transition);
         }
 
@@ -309,7 +326,7 @@
             position: absolute;
             top: 15px;
             left: 15px;
-            background: rgba(10, 25, 49, 0.75);
+            background: rgba(10, 25, 49, 0.8);
             backdrop-filter: blur(8px);
             color: var(--color-white);
             font-size: 0.75rem;
@@ -570,7 +587,7 @@
 
     <!-- MAIN CONTENT -->
     <main>
-        <!-- HERO SECTION -->
+        <!-- HERO SECTION OPTIMIZADO -->
         <section class="hero">
             <div class="hero-container">
                 <h1 data-i18n="hero_title">Transporte Privado & Tours VIP en Panamá</h1>
@@ -623,40 +640,40 @@
         <!-- BENTO SECCIÓN 1: RECOGIDAS EN AEROPUERTO -->
         <section class="section" style="background-color: var(--color-white); border-radius: 30px;">
             <div class="section-header">
-                <span class="section-subtitle">Puntos de Recepción</span>
-                <h2 class="section-title">Recogidas en Aeropuerto</h2>
+                <span class="section-subtitle" data-i18n="airports_subtitle">Puntos de Recepción</span>
+                <h2 class="section-title" data-i18n="airports_title">Recogidas en Aeropuerto</h2>
             </div>
             <div class="bento-grid-3">
                 <div class="bento-card">
                     <div class="bento-media">
                         <img src="https://i.pinimg.com/1200x/77/34/fc/7734fc31bb5373fb490fb276a1458cc0.jpg" alt="Tocumen">
-                        <span class="bento-badge">Principal Hub (PTY)</span>
+                        <span class="bento-badge" data-i18n="badge_pty">Principal Hub (PTY)</span>
                     </div>
                     <div class="bento-content">
                         <div class="bento-title">Aeropuerto Internacional de Tocumen</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Reservar Traslado</span> <i class="fas fa-arrow-right"></i></a>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_reserve_transfer">Reservar Traslado</span> <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="bento-card">
                     <div class="bento-media">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN-2dMZcnRfBhQH39YfOKczrhVWjZstcheE0hKbS05en6dFt-IbAySDwDd&s=10" alt="Panamá Pacífico">
-                        <span class="bento-badge">Vuelos Charter / Low Cost</span>
+                        <span class="bento-badge" data-i18n="badge_charter">Vuelos Charter / Low Cost</span>
                     </div>
                     <div class="bento-content">
                         <div class="bento-title">Aeropuerto Internacional Panamá Pacífico</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Reservar Traslado</span> <i class="fas fa-arrow-right"></i></a>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_reserve_transfer">Reservar Traslado</span> <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="bento-card">
                     <div class="bento-media">
                         <img src="https://cloudfront-us-east-1.images.arcpublishing.com/corprensa/BJDHYXGAWBE3JELQEIZSZGQFBE.jpg" alt="Marcos A. Gelabert">
-                        <span class="bento-badge">Vuelos Locales (Albrook)</span>
+                        <span class="bento-badge" data-i18n="badge_local">Vuelos Locales (Albrook)</span>
                     </div>
                     <div class="bento-content">
                         <div class="bento-title">Aeropuerto Internacional Marcos A. Gelabert</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Reservar Traslado</span> <i class="fas fa-arrow-right"></i></a>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_reserve_transfer">Reservar Traslado</span> <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -665,12 +682,12 @@
         <!-- BENTO SECCIÓN 2: DIRECTORIO DE HOTELES -->
         <section class="section">
             <div class="section-header">
-                <span class="section-subtitle">Viaja Seguro del Aeropuerto al Hotel</span>
-                <h2 class="section-title">Directorio de Hoteles – Ciudad de Panamá</h2>
+                <span class="section-subtitle" data-i18n="hotels_subtitle">Viaja Seguro del Aeropuerto al Hotel</span>
+                <h2 class="section-title" data-i18n="hotels_title">Directorio de Hoteles – Ciudad de Panamá</h2>
             </div>
 
             <!-- HOTELES DE LUJO 5 ESTRELLAS -->
-            <div class="category-bento-header"><i class="fas fa-star"></i> HOTELES DE LUJO Y 5 ESTRELLAS ⭐⭐⭐⭐⭐</div>
+            <div class="category-bento-header"><i class="fas fa-star"></i> <span data-i18n="cat_luxury">HOTELES DE LUJO Y 5 ESTRELLAS ⭐⭐⭐⭐⭐</span></div>
             <div class="bento-grid-3">
                 <div class="bento-card">
                     <div class="bento-media">
@@ -679,18 +696,18 @@
                     </div>
                     <div class="bento-content">
                         <div class="bento-title">1. Hotel Riu Plaza Panamá</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_quote_transfer">Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
 
                 <div class="bento-card">
                     <div class="bento-media">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Panama_08_2013_Trump_Ocean_Tower_7085.JPG?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original" alt="JW Marriott">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Panama_08_2013_Trump_Ocean_Tower_7085.JPG" alt="JW Marriott">
                         <span class="bento-badge">5 Estrellas Luxury</span>
                     </div>
                     <div class="bento-content">
                         <div class="bento-title">2. JW Marriott Panamá</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_quote_transfer">Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
 
@@ -701,7 +718,7 @@
                     </div>
                     <div class="bento-content">
                         <div class="bento-title">3. The Westin Panamá</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_quote_transfer">Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
 
@@ -712,7 +729,7 @@
                     </div>
                     <div class="bento-content">
                         <div class="bento-title">4. The Santa María, a Luxury Collection Hotel</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_quote_transfer">Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
 
@@ -723,13 +740,13 @@
                     </div>
                     <div class="bento-content">
                         <div class="bento-title">5. W Panamá</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_quote_transfer">Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
 
             <!-- HOTELES DE 4 ESTRELLAS Y EJECUTIVOS -->
-            <div class="category-bento-header"><i class="fas fa-star"></i> HOTELES DE 4 ESTRELLAS Y EJECUTIVOS ⭐⭐⭐⭐</div>
+            <div class="category-bento-header"><i class="fas fa-star"></i> <span data-i18n="cat_exec">HOTELES DE 4 ESTRELLAS Y EJECUTIVOS ⭐⭐⭐⭐</span></div>
             <div class="bento-grid-3">
                 <div class="bento-card">
                     <div class="bento-media">
@@ -738,7 +755,7 @@
                     </div>
                     <div class="bento-content">
                         <div class="bento-title">AC Hotel Panamá City</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_quote_transfer">Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
 
@@ -749,7 +766,7 @@
                     </div>
                     <div class="bento-content">
                         <div class="bento-title">Courtyard by Marriott Multiplaza</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_quote_transfer">Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
 
@@ -760,7 +777,7 @@
                     </div>
                     <div class="bento-content">
                         <div class="bento-title">Courtyard by Marriott Metromall</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_quote_transfer">Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
 
@@ -771,7 +788,7 @@
                     </div>
                     <div class="bento-content">
                         <div class="bento-title">Marriott Executive Apartments Finisterre</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_quote_transfer">Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
 
@@ -782,13 +799,13 @@
                     </div>
                     <div class="bento-content">
                         <div class="bento-title">Residence Inn by Marriott</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_quote_transfer">Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
 
             <!-- HOTELES DE 3 ESTRELLAS Y ECONÓMICOS -->
-            <div class="category-bento-header"><i class="fas fa-star"></i> HOTELES DE 3 ESTRELLAS Y ECONÓMICOS ⭐⭐⭐</div>
+            <div class="category-bento-header"><i class="fas fa-star"></i> <span data-i18n="cat_econ">HOTELES DE 3 ESTRELLAS Y ECONÓMICOS ⭐⭐⭐</span></div>
             <div class="bento-grid-3">
                 <div class="bento-card">
                     <div class="bento-media">
@@ -797,7 +814,7 @@
                     </div>
                     <div class="bento-content">
                         <div class="bento-title">Grand International Hotel</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_quote_transfer">Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
 
@@ -808,7 +825,7 @@
                     </div>
                     <div class="bento-content">
                         <div class="bento-title">Cresta Inn</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_quote_transfer">Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
 
@@ -819,7 +836,7 @@
                     </div>
                     <div class="bento-content">
                         <div class="bento-title">Eurohotel</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_quote_transfer">Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
 
@@ -830,7 +847,7 @@
                     </div>
                     <div class="bento-content">
                         <div class="bento-title">Hotel Terranova</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_quote_transfer">Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
 
@@ -841,16 +858,16 @@
                     </div>
                     <div class="bento-content">
                         <div class="bento-title">Toscana Inn Hotel</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_quote_transfer">Cotizar Traslado</span> <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
 
                 <!-- CARD MÁS ALOJAMIENTOS -->
                 <div class="bento-more-card">
                     <i class="fas fa-hotel"></i>
-                    <h3>¡Y Muchos Más!</h3>
-                    <p>Cubrimos todos los hoteles, residencias, Airbnb, puertos y hospitales de Ciudad de Panamá.</p>
-                    <a href="contacto.html" class="btn-primary" style="padding: 0.7rem 1.4rem; font-size:0.85rem;">Ver Directorio Completo</a>
+                    <h3 data-i18n="more_hotels_title">¡Y Muchos Más!</h3>
+                    <p data-i18n="more_hotels_desc">Cubrimos todos los hoteles, residencias, Airbnb, puertos y hospitales de Ciudad de Panamá.</p>
+                    <a href="contacto.html" class="btn-primary" style="padding: 0.7rem 1.4rem; font-size:0.85rem;" data-i18n="btn_full_dir">Ver Directorio Completo</a>
                 </div>
             </div>
         </section>
@@ -858,62 +875,62 @@
         <!-- BENTO SECCIÓN 3: ATRACTIVOS TURÍSTICOS -->
         <section class="section" style="background-color: var(--color-white); border-radius: 30px;">
             <div class="section-header">
-                <span class="section-subtitle">Conoce nuestros</span>
-                <h2 class="section-title">Atractivos Turísticos – Ciudad de Panamá</h2>
+                <span class="section-subtitle" data-i18n="attractions_subtitle">Conoce nuestros</span>
+                <h2 class="section-title" data-i18n="attractions_title">Atractivos Turísticos – Ciudad de Panamá</h2>
             </div>
             <div class="bento-grid-3">
                 <div class="bento-card">
                     <div class="bento-media">
                         <img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,h_1200,q_75,w_1200/v1/clients/panama/large_Plaza_de_la_Catedral_Independence_Square_Casco_Antiguo_Panama_city_b1e7e18e-91a8-48ea-8c65-503d48fb6313.jpg" alt="Casco Antiguo">
-                        <span class="bento-badge">Patrimonio Cultural</span>
+                        <span class="bento-badge" data-i18n="b_culture">Patrimonio Cultural</span>
                     </div>
                     <div class="bento-content">
-                        <div class="bento-title">CASCO ANTIGUO Y CENTRO HISTÓRICO</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar City Tour</span> <i class="fas fa-arrow-right"></i></a>
+                        <div class="bento-title" data-i18n="att1_title">CASCO ANTIGUO Y CENTRO HISTÓRICO</div>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_citytour">Cotizar City Tour</span> <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="bento-card">
                     <div class="bento-media">
                         <img src="https://i.pinimg.com/1200x/07/82/a5/0782a5978eeda007c0c0b04a1948280a.jpg" alt="Canal de Panamá">
-                        <span class="bento-badge">Maravilla Mundial</span>
+                        <span class="bento-badge" data-i18n="b_wonder">Maravilla Mundial</span>
                     </div>
                     <div class="bento-content">
-                        <div class="bento-title">CANAL DE PANAMÁ Y ESCLUSAS</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar City Tour</span> <i class="fas fa-arrow-right"></i></a>
+                        <div class="bento-title" data-i18n="att2_title">CANAL DE PANAMÁ Y ESCLUSAS</div>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_citytour">Cotizar City Tour</span> <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="bento-card">
                     <div class="bento-media">
                         <img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,f_jpg,g_xy_center,h_325,q_65,w_640,x_2773,y_1312/v1/clients/panama/Amador_Dron_1_82cca744-0525-4015-ab6f-c7d485270340.jpg" alt="Calzada de Amador">
-                        <span class="bento-badge">Panorámico & Mar</span>
+                        <span class="bento-badge" data-i18n="b_pano">Panorámico & Mar</span>
                     </div>
                     <div class="bento-content">
-                        <div class="bento-title">AMADOR, CALZADA Y ZONA DE ISLAS</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar City Tour</span> <i class="fas fa-arrow-right"></i></a>
+                        <div class="bento-title" data-i18n="att3_title">AMADOR, CALZADA Y ZONA DE ISLAS</div>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_citytour">Cotizar City Tour</span> <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="bento-card">
                     <div class="bento-media">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Catedral_Panam%C3%A1_Viejo.jpg?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original" alt="Panamá Viejo">
-                        <span class="bento-badge">Sitio Arqueológico</span>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Catedral_Panam%C3%A1_Viejo.jpg" alt="Panamá Viejo">
+                        <span class="bento-badge" data-i18n="b_arch">Sitio Arqueológico</span>
                     </div>
                     <div class="bento-content">
-                        <div class="bento-title">PANAMÁ VIEJO Y PATRIMONIO HISTÓRICO</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar City Tour</span> <i class="fas fa-arrow-right"></i></a>
+                        <div class="bento-title" data-i18n="att4_title">PANAMÁ VIEJO Y PATRIMONIO HISTÓRICO</div>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_citytour">Cotizar City Tour</span> <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="bento-card">
                     <div class="bento-media">
                         <img src="https://res.cloudinary.com/simpleview/image/upload/v1719597705/clients/panama-update/Viewpoint_at_Metropolitan_Natural_Park_Panama_City_Panama_Province_Panam__5f5ba5c1-ff2a-4683-9ad5-820e579146a1.jpg" alt="Parques Naturales">
-                        <span class="bento-badge">Ecoturismo</span>
+                        <span class="bento-badge" data-i18n="b_eco">Ecoturismo</span>
                     </div>
                     <div class="bento-content">
-                        <div class="bento-title">PARQUES, NATURALEZA Y MIRADORES</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Cotizar City Tour</span> <i class="fas fa-arrow-right"></i></a>
+                        <div class="bento-title" data-i18n="att5_title">PARQUES, NATURALEZA Y MIRADORES</div>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_citytour">Cotizar City Tour</span> <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -922,62 +939,62 @@
         <!-- BENTO SECCIÓN 4: DESTINOS TURÍSTICOS NACIONALES -->
         <section class="section">
             <div class="section-header">
-                <span class="section-subtitle">Explora el País</span>
-                <h2 class="section-title">Visita DESTINOS TURÍSTICOS DE PANAMÁ</h2>
+                <span class="section-subtitle" data-i18n="nat_subtitle">Explora el País</span>
+                <h2 class="section-title" data-i18n="nat_title">Visita DESTINOS TURÍSTICOS DE PANAMÁ</h2>
             </div>
             <div class="bento-grid-3">
                 <div class="bento-card">
                     <div class="bento-media">
                         <img src="https://gruporesidencial.com/wp-content/uploads/2024/05/camilo-pinaud-HNFU3E1E4do-unsplash-scaled-1.jpg" alt="Panamá Oeste Playas">
-                        <span class="bento-badge">Pacífico Costa</span>
+                        <span class="bento-badge" data-i18n="b_coast">Pacífico Costa</span>
                     </div>
                     <div class="bento-content">
-                        <div class="bento-title">PANAMÁ OESTE: Playas y destinos costeros</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Explorar Destino</span> <i class="fas fa-arrow-right"></i></a>
+                        <div class="bento-title" data-i18n="nat1_title">PANAMÁ OESTE: Playas y destinos costeros</div>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_explore">Explorar Destino</span> <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="bento-card">
                     <div class="bento-media">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfODuO4Iviy-MJa4KyeV3oCKJidLD2vFQay2GVIxHncjh7wNj07gdBAJ8&s=10" alt="Montañas y Naturaleza">
-                        <span class="bento-badge">Ecoturismo</span>
+                        <span class="bento-badge" data-i18n="b_eco2">Ecoturismo</span>
                     </div>
                     <div class="bento-content">
-                        <div class="bento-title">Montañas, pueblos y naturaleza</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Explorar Destino</span> <i class="fas fa-arrow-right"></i></a>
+                        <div class="bento-title" data-i18n="nat2_title">Montañas, pueblos y naturaleza</div>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_explore">Explorar Destino</span> <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="bento-card">
                     <div class="bento-media">
                         <img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,f_jpg,g_xy_center,h_325,q_65,w_640,x_2520,y_724/v1/clients/panama/Portobelo_603f21aa-4673-456e-8255-41a298dbd51a.jpg" alt="Provincia de Colón">
-                        <span class="bento-badge">Caribe Histórico</span>
+                        <span class="bento-badge" data-i18n="b_carib">Caribe Histórico</span>
                     </div>
                     <div class="bento-content">
-                        <div class="bento-title">PROVINCIA DE COLÓN: Caribe e Historia</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Explorar Destino</span> <i class="fas fa-arrow-right"></i></a>
+                        <div class="bento-title" data-i18n="nat3_title">PROVINCIA DE COLÓN: Caribe e Historia</div>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_explore">Explorar Destino</span> <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="bento-card">
                     <div class="bento-media">
                         <img src="https://vetevolutionpanama.com/wp-content/uploads/2025/09/Turismo-Panama-Vet-Evolution-2026-900x800-3.webp" alt="Historia y Turismo">
-                        <span class="bento-badge">Cultura & Aventura</span>
+                        <span class="bento-badge" data-i18n="b_adv">Cultura & Aventura</span>
                     </div>
                     <div class="bento-content">
-                        <div class="bento-title">Historia y turismo de aventura</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Explorar Destino</span> <i class="fas fa-arrow-right"></i></a>
+                        <div class="bento-title" data-i18n="nat4_title">Historia y turismo de aventura</div>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_explore">Explorar Destino</span> <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="bento-card">
                     <div class="bento-media">
                         <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/2e/0a/89/hotel-playa-blanca-beach.jpg?w=1200&h=-1&s=1" alt="Provincia de Coclé">
-                        <span class="bento-badge">Resorts & Playas</span>
+                        <span class="bento-badge" data-i18n="b_resort">Resorts & Playas</span>
                     </div>
                     <div class="bento-content">
-                        <div class="bento-title">PROVINCIA DE COCLÉ: Playas y resorts</div>
-                        <a href="contacto.html" class="btn-bento-action"><span>Explorar Destino</span> <i class="fas fa-arrow-right"></i></a>
+                        <div class="bento-title" data-i18n="nat5_title">PROVINCIA DE COCLÉ: Playas y resorts</div>
+                        <a href="contacto.html" class="btn-bento-action"><span data-i18n="btn_explore">Explorar Destino</span> <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -1072,7 +1089,7 @@
         </div>
     </footer>
 
-    <!-- SCRIPT DE TRADUCCIÓN Y CARRUSEL -->
+    <!-- SCRIPT DE TRADUCCIÓN Y CARRUSEL COMPLETO -->
     <script>
         const translations = {
             es: {
@@ -1094,6 +1111,52 @@
                 s3_desc: "Conexiones eficientes con el Puerto de Cruceros de Amador y la Terminal de Colón 2000 para pasajeros y equipajes de grupo.",
                 s4_title: "Tours & Circuitos Nacionales",
                 s4_desc: "Recorridos por Casco Antiguo, Canal de Panamá, San Blas, El Valle de Antón, Boquete y principales playas del Pacífico y Caribe.",
+                
+                airports_subtitle: "Puntos de Recepción",
+                airports_title: "Recogidas en Aeropuerto",
+                badge_pty: "Principal Hub (PTY)",
+                badge_charter: "Vuelos Charter / Low Cost",
+                badge_local: "Vuelos Locales (Albrook)",
+                btn_reserve_transfer: "Reservar Traslado",
+
+                hotels_subtitle: "Viaja Seguro del Aeropuerto al Hotel",
+                hotels_title: "Directorio de Hoteles – Ciudad de Panamá",
+                cat_luxury: "HOTELES DE LUJO Y 5 ESTRELLAS ⭐⭐⭐⭐⭐",
+                cat_exec: "HOTELES DE 4 ESTRELLAS Y EJECUTIVOS ⭐⭐⭐⭐",
+                cat_econ: "HOTELES DE 3 ESTRELLAS Y ECONÓMICOS ⭐⭐⭐",
+                btn_quote_transfer: "Cotizar Traslado",
+                more_hotels_title: "¡Y Muchos Más!",
+                more_hotels_desc: "Cubrimos todos los hoteles, residencias, Airbnb, puertos y hospitales de Ciudad de Panamá.",
+                btn_full_dir: "Ver Directorio Completo",
+
+                attractions_subtitle: "Conoce nuestros",
+                attractions_title: "Atractivos Turísticos – Ciudad de Panamá",
+                b_culture: "Patrimonio Cultural",
+                b_wonder: "Maravilla Mundial",
+                b_pano: "Panorámico & Mar",
+                b_arch: "Sitio Arqueológico",
+                b_eco: "Ecoturismo",
+                att1_title: "CASCO ANTIGUO Y CENTRO HISTÓRICO",
+                att2_title: "CANAL DE PANAMÁ Y ESCLUSAS",
+                att3_title: "AMADOR, CALZADA Y ZONA DE ISLAS",
+                att4_title: "PANAMÁ VIEJO Y PATRIMONIO HISTÓRICO",
+                att5_title: "PARQUES, NATURALEZA Y MIRADORES",
+                btn_citytour: "Cotizar City Tour",
+
+                nat_subtitle: "Explora el País",
+                nat_title: "Visita DESTINOS TURÍSTICOS DE PANAMÁ",
+                b_coast: "Pacífico Costa",
+                b_eco2: "Ecoturismo",
+                b_carib: "Caribe Histórico",
+                b_adv: "Cultura & Aventura",
+                b_resort: "Resorts & Playas",
+                nat1_title: "PANAMÁ OESTE: Playas y destinos costeros",
+                nat2_title: "Montañas, pueblos y naturaleza",
+                nat3_title: "PROVINCIA DE COLÓN: Caribe e Historia",
+                nat4_title: "Historia y turismo de aventura",
+                nat5_title: "PROVINCIA DE COCLÉ: Playas y resorts",
+                btn_explore: "Explorar Destino",
+
                 fleet_subtitle: "Nuestra Flota",
                 fleet_title: "Conoce Nuestras Unidades",
                 footer_title: "H.G.Travel & Tours Panamá",
@@ -1122,6 +1185,52 @@
                 s3_desc: "Efficient connections with the Amador Cruise Port and the Colón 2000 Terminal for passengers and group luggage.",
                 s4_title: "Tours & National Circuits",
                 s4_desc: "Tours of Casco Antiguo, Panama Canal, San Blas, El Valle de Antón, Boquete, and main Pacific and Caribbean beaches.",
+                
+                airports_subtitle: "Pickup Points",
+                airports_title: "Airport Pickups",
+                badge_pty: "Main Hub (PTY)",
+                badge_charter: "Charter / Low Cost Flights",
+                badge_local: "Local Flights (Albrook)",
+                btn_reserve_transfer: "Book Transfer",
+
+                hotels_subtitle: "Travel Safely from Airport to Hotel",
+                hotels_title: "Hotel Directory – Panama City",
+                cat_luxury: "LUXURY & 5-STAR HOTELS ⭐⭐⭐⭐⭐",
+                cat_exec: "4-STAR & EXECUTIVE HOTELS ⭐⭐⭐⭐",
+                cat_econ: "3-STAR & BUDGET HOTELS ⭐⭐⭐",
+                btn_quote_transfer: "Quote Transfer",
+                more_hotels_title: "And Many More!",
+                more_hotels_desc: "We cover all hotels, residences, Airbnbs, ports, and hospitals in Panama City.",
+                btn_full_dir: "View Full Directory",
+
+                attractions_subtitle: "Discover Our",
+                attractions_title: "Tourist Attractions – Panama City",
+                b_culture: "Cultural Heritage",
+                b_wonder: "World Wonder",
+                b_pano: "Panoramic & Sea",
+                b_arch: "Archaeological Site",
+                b_eco: "Ecotourism",
+                att1_title: "CASCO ANTIGUO & HISTORIC CENTER",
+                att2_title: "PANAMA CANAL & LOCKS",
+                att3_title: "AMADOR CAUSEWAY & ISLANDS",
+                att4_title: "PANAMA VIEJO & HISTORIC HERITAGE",
+                att5_title: "PARKS, NATURE & VIEWPOINTS",
+                btn_citytour: "Quote City Tour",
+
+                nat_subtitle: "Explore the Country",
+                nat_title: "Visit TOURIST DESTINATIONS IN PANAMA",
+                b_coast: "Pacific Coast",
+                b_eco2: "Ecoturismo",
+                b_carib: "Historic Caribbean",
+                b_adv: "Culture & Adventure",
+                b_resort: "Resorts & Beaches",
+                nat1_title: "WEST PANAMA: Beaches & Coastal Destinations",
+                nat2_title: "Mountains, Towns & Nature",
+                nat3_title: "COLON PROVINCE: Caribbean & History",
+                nat4_title: "Adventure History & Tourism",
+                nat5_title: "COCLÉ PROVINCE: Beaches & Resorts",
+                btn_explore: "Explore Destination",
+
                 fleet_subtitle: "Our Fleet",
                 fleet_title: "Meet Our Units",
                 footer_title: "H.G.Travel & Tours Panama",
